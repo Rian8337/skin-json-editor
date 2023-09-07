@@ -49,7 +49,11 @@ export default function ColorEditor(props: Props) {
                 ) : null}
 
                 <input
-                    className="json-item-editor-input"
+                    className={`json-item-editor-input${
+                        !acceptMultipleColors
+                            ? " color-editor-picker-display"
+                            : ""
+                    }`}
                     type="text"
                     value={resettable.value}
                     maxLength={acceptMultipleColors ? undefined : 7}
@@ -80,7 +84,7 @@ export default function ColorEditor(props: Props) {
                 />
 
                 <input
-                    className="json-item-editor-input"
+                    className="json-item-editor-input color-editor-picker-display"
                     type="text"
                     disabled
                     value={hexCode}

@@ -4,3 +4,7 @@
     text-align: center;
     font: 0.85em Exo-Bold;
 }
+
+.color-editor-picker-display {
+    width: 10%;
+}

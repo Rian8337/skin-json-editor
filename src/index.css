@@ -15,7 +15,8 @@
 
 body {
     background-color: #222;
-    background-image: url("./assets/background.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("./assets/background.jpg");
     background-position: center;
     background-attachment: fixed;
     font: 1em Exo-Medium;

@@ -17,7 +17,7 @@ export default function LayoutGroup() {
 
             <CheckBoxEditor
                 title="Enable Customization"
-                description="Allows the customization of the back, mods, options, and random button in the song selection menu."
+                description="Allows the customization of the back, mods, options, and random buttons in the song selection menu."
                 resettable={useNewLayout}
             />
 

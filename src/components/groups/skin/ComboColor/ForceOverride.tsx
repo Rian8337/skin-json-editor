@@ -7,8 +7,8 @@ export default function ForceOverride() {
 
     return (
         <CheckBoxEditor
-            title="Force Override Combo Colors"
-            description="Use the combo colors provided in the colors list."
+            title="Override Combo Colors"
+            description="Use the combo colors provided in a colors list rather than the ones provided by a beatmap or default combo colors."
             resettable={ctx}
         />
     );

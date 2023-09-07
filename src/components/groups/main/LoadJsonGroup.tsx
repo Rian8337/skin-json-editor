@@ -240,14 +240,12 @@ export default function LoadJsonGroup() {
                 encType="multipart/form-data"
             >
                 <input type="file" accept=".json" name="jsonFile" />
-
-                <div className="load-json-form-submit-container">
-                    <input
-                        className="load-json-form-submit"
-                        type="submit"
-                        value="Load"
-                    />
-                </div>
+                <br />
+                <input
+                    className="load-json-form-submit"
+                    type="submit"
+                    value="Load"
+                />
             </form>
         </Group>
     );

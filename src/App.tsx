@@ -8,7 +8,6 @@ import LoadJsonGroup from "./components/groups/main/LoadJsonGroup";
 import FooterGroup from "./components/groups/main/FooterGroup";
 import SaveJsonGroup from "./components/groups/main/SaveJsonGroup";
 import ResetJsonGroup from "./components/groups/main/ResetJsonGroup";
-import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
     return (
@@ -23,7 +22,6 @@ export default function App() {
             <LayoutGroup />
             <SaveJsonGroup />
             <FooterGroup />
-            <ScrollToTop />
         </>
     );
 }

@@ -7,8 +7,8 @@ export default function ComboTextScale() {
 
     return (
         <UserInputEditor
-            title="Combo Counter Scale"
-            description="Increasing this number will increase the size of numbers in the combo counter in gameplay, and vice versa."
+            title="Combo Number Scale"
+            description="Increasing this number will increase the size of the numbers inside hitobjects in gameplay, and vice versa."
             resettable={ctx}
         />
     );

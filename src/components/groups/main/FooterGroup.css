@@ -1,0 +1,8 @@
+.footer-group {
+    background-color: rgba(24, 24, 24, 0.9);
+    margin-top: 0.5em;
+    padding: 2em;
+    border-radius: 1.5em;
+    text-align: center;
+    font: 0.75em Exo-Bold;
+}

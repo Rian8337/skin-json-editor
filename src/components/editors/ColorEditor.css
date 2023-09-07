@@ -1,0 +1,6 @@
+@import url("./BaseEditor.css");
+
+.color-editor-input-label {
+    text-align: center;
+    font: 0.85em Exo-Bold;
+}

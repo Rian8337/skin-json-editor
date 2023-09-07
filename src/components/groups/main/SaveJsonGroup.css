@@ -1,0 +1,10 @@
+.save-skin-json-container {
+    text-align: center;
+}
+
+.save-skin-json-input {
+    margin-top: 0.5em;
+    background-color: rgb(46, 46, 46, 0.8);
+    font-family: Exo-Medium;
+    color: white;
+}

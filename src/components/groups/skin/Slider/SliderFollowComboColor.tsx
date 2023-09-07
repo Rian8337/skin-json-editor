@@ -8,7 +8,7 @@ export default function SliderFollowComboColor() {
     return (
         <CheckBoxEditor
             title="Follow Combo Color"
-            description="If checked, the color of a slider's body will follow the color of its combo sequence."
+            description="If checked, its color will follow the color of its combo sequence."
             resettable={ctx}
         />
     );

@@ -1,18 +1,14 @@
-import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { createResettable } from "../../../utils/ResettableFactory";
-import { NumberResettable } from "../../../structures/resettable/NumberResettable";
-import { UseNewLayoutContext } from "../UseNewLayoutContext";
+import { PropsWithChildren, createContext, useState } from "react";
+import { createNumberResettable } from "../../../utils/ResettableFactory";
 
 const defaultValue = -1;
 const minValue = -1;
 
-export const OptionsButtonScaleContext = createContext<NumberResettable>({
-    ...createResettable(defaultValue),
-    minValue,
-});
+export const OptionsButtonScaleContext = createContext(
+    createNumberResettable(defaultValue, minValue)
+);
 
 export function OptionsButtonScaleContextProvider(props: PropsWithChildren) {
-    const useNewLayout = useContext(UseNewLayoutContext);
     const [value, setValue] = useState(defaultValue);
 
     return (
@@ -20,6 +16,7 @@ export function OptionsButtonScaleContextProvider(props: PropsWithChildren) {
             value={{
                 defaultValue,
                 value,
+                minValue,
                 get isDefault() {
                     return value === defaultValue;
                 },
@@ -35,8 +32,10 @@ export function OptionsButtonScaleContextProvider(props: PropsWithChildren) {
                     setValue(value);
                 },
                 saveToJSON(json) {
-                    if (useNewLayout.value && !this.isDefault) {
+                    if (!this.isDefault) {
                         json.Layout ??= {};
+                        json.Layout.useNewLayout = true;
+
                         json.Layout.OptionsButton ??= {};
                         json.Layout.OptionsButton.scale = value;
                     }

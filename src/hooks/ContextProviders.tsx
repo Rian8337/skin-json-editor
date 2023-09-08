@@ -46,7 +46,6 @@ import { OptionsButtonXContextProvider } from "./Layout/OptionsButton/OptionsBut
 import { OptionsButtonYContextProvider } from "./Layout/OptionsButton/OptionsButtonYContext";
 import { RandomButtonXContextProvider } from "./Layout/RandomButton/RandomButtonXContext";
 import { RandomButtonYContextProvider } from "./Layout/RandomButton/RandomButtonYContext";
-import { UseNewLayoutContextProvider } from "./Layout/UseNewLayoutContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -76,9 +75,6 @@ export const Providers = compose(
     ComboPrefixContextProvider,
     HitCirclePrefixContextProvider,
     ScorePrefixContextProvider,
-
-    // Layout Switch
-    UseNewLayoutContextProvider,
 
     // Layout (BackButton)
     BackButtonHeightContextProvider,

@@ -1,5 +1,4 @@
-import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { UseNewLayoutContext } from "../UseNewLayoutContext";
+import { PropsWithChildren, createContext, useState } from "react";
 import { createResettable } from "../../../utils/ResettableFactory";
 
 const defaultValue = true;
@@ -11,7 +10,6 @@ export const BackButtonScaleWhenHoldContext = createContext(
 export function BackButtonScaleWhenHoldContextProvider(
     props: PropsWithChildren
 ) {
-    const useNewLayout = useContext(UseNewLayoutContext);
     const [value, setValue] = useState(defaultValue);
 
     return (
@@ -29,8 +27,10 @@ export function BackButtonScaleWhenHoldContextProvider(
                     setValue(value);
                 },
                 saveToJSON(json) {
-                    if (useNewLayout.value && !this.isDefault) {
+                    if (!this.isDefault) {
                         json.Layout ??= {};
+                        json.Layout.useNewLayout = true;
+
                         json.Layout.BackButton ??= {};
                         json.Layout.BackButton.scaleWhenHold = value;
                     }

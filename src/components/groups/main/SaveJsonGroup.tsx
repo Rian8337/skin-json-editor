@@ -28,7 +28,6 @@ import { RandomButtonScaleContext } from "../../../hooks/Layout/RandomButton/Ran
 import { RandomButtonWidthContext } from "../../../hooks/Layout/RandomButton/RandomButtonWidthContext";
 import { RandomButtonXContext } from "../../../hooks/Layout/RandomButton/RandomButtonXContext";
 import { RandomButtonYContext } from "../../../hooks/Layout/RandomButton/RandomButtonYContext";
-import { UseNewLayoutContext } from "../../../hooks/Layout/UseNewLayoutContext";
 import { SliderBodyBaseAlphaContext } from "../../../hooks/Slider/SliderBodyBaseAlphaContext";
 import { SliderBodyColorContext } from "../../../hooks/Slider/SliderBodyColorContext";
 import { SliderBodyWidthContext } from "../../../hooks/Slider/SliderBodyWidthContext";
@@ -89,9 +88,6 @@ export default function SaveJsonGroup() {
     );
 
     // Layout
-    // Layout switch
-    const useNewLayout = useContext(UseNewLayoutContext);
-
     // Back button
     const backButtonWidth = useContext(BackButtonWidthContext);
     const backButtonHeight = useContext(BackButtonHeightContext);
@@ -156,9 +152,6 @@ export default function SaveJsonGroup() {
             menuItemSelectedTextColor.saveToJSON(json);
 
             // Layout
-            // Layout switch
-            useNewLayout.saveToJSON(json);
-
             // Back button
             backButtonWidth.saveToJSON(json);
             backButtonHeight.saveToJSON(json);

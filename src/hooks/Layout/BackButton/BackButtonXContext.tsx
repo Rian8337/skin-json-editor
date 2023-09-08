@@ -1,5 +1,4 @@
-import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { UseNewLayoutContext } from "../UseNewLayoutContext";
+import { PropsWithChildren, createContext, useState } from "react";
 import { createNumberResettable } from "../../../utils/ResettableFactory";
 
 const defaultValue = 0;
@@ -10,7 +9,6 @@ export const BackButtonXContext = createContext(
 );
 
 export function BackButtonXContextProvider(props: PropsWithChildren) {
-    const useNewLayout = useContext(UseNewLayoutContext);
     const [value, setValue] = useState(defaultValue);
 
     return (
@@ -29,8 +27,10 @@ export function BackButtonXContextProvider(props: PropsWithChildren) {
                     setValue(Math.max(value, minValue));
                 },
                 saveToJSON(json) {
-                    if (useNewLayout.value && !this.isDefault) {
+                    if (!this.isDefault) {
                         json.Layout ??= {};
+                        json.Layout.useNewLayout = true;
+
                         json.Layout.BackButton ??= {};
                         json.Layout.BackButton.x = value;
                     }

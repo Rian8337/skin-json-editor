@@ -24,7 +24,6 @@ import { MenuItemVersionsDefaultColorContext } from "../../../hooks/Color/MenuIt
 import { MenuItemVersionsSelectedColorContext } from "../../../hooks/Color/MenuItemVersionsSelectedColorContext";
 import { MenuItemDefaultTextColorContext } from "../../../hooks/Color/MenuItemDefaultTextColorContext";
 import { MenuItemSelectedTextColorContext } from "../../../hooks/Color/MenuItemSelectedTextColorContext";
-import { UseNewLayoutContext } from "../../../hooks/Layout/UseNewLayoutContext";
 import { BackButtonWidthContext } from "../../../hooks/Layout/BackButton/BackButtonWidthContext";
 import { BackButtonHeightContext } from "../../../hooks/Layout/BackButton/BackButtonHeightContext";
 import { BackButtonScaleContext } from "../../../hooks/Layout/BackButton/BackButtonScaleContext";
@@ -89,9 +88,6 @@ export default function LoadJsonGroup() {
     );
 
     // Layout
-    // Layout Switch
-    const useNewLayout = useContext(UseNewLayoutContext);
-
     // Back Button
     const backButtonWidth = useContext(BackButtonWidthContext);
     const backButtonHeight = useContext(BackButtonHeightContext);
@@ -189,9 +185,6 @@ export default function LoadJsonGroup() {
                 );
 
                 // Layout
-                // Layout Switch
-                useNewLayout.setValue(Layout?.useNewLayout);
-
                 // Back Button
                 backButtonWidth.setValue(Layout?.BackButton?.w);
                 backButtonHeight.setValue(Layout?.BackButton?.h);

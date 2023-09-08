@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { SliderBodyColorContext } from "../../../../hooks/Slider/SliderBodyColorContext";
-import ColorEditor from "../../../editors/ColorEditor";
+import SingleColorEditor from "../../../editors/SingleColorEditor";
 
 export default function SliderBodyColor() {
     const ctx = useContext(SliderBodyColorContext);
 
-    return <ColorEditor title="Color" resettable={ctx} />;
+    return <SingleColorEditor title="Color" resettable={ctx} />;
 }

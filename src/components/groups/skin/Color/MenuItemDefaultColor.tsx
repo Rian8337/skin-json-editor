@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { MenuItemDefaultColorContext } from "../../../../hooks/Color/MenuItemDefaultColorContext";
-import ColorEditor from "../../../editors/ColorEditor";
+import SingleColorEditor from "../../../editors/SingleColorEditor";
 
 export default function MenuItemDefaultColor() {
     const ctx = useContext(MenuItemDefaultColorContext);
 
     return (
-        <ColorEditor
+        <SingleColorEditor
             title="Unselected Color"
             description="The color of a beatmapset card when it is not selected."
             resettable={ctx}

@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { MenuItemOnTouchColorContext } from "../../../../hooks/Color/MenuItemOnTouchColorContext";
-import ColorEditor from "../../../editors/ColorEditor";
+import SingleColorEditor from "../../../editors/SingleColorEditor";
 
 export default function MenuItemOnTouchColor() {
     const ctx = useContext(MenuItemOnTouchColorContext);
 
     return (
-        <ColorEditor
+        <SingleColorEditor
             title="Selected Color"
             description="The color of a beatmapset card when it is selected."
             resettable={ctx}

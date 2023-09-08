@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Resettable } from "../../structures/resettable/Resettable";
-import "./ColorEditor.css";
+import "./MultipleColorEditor.css";
 
 interface Props {
     /**
@@ -16,23 +16,33 @@ interface Props {
     /**
      * The configuration that the input is responsible for.
      */
-    resettable: Resettable<string | undefined>;
+    resettable: Resettable<string[]>;
 
     /**
      * The label beside the color input box.
      */
     inputLabel?: string;
-
-    /**
-     * Whether to accept multiple colors. Defaults to `false`.
-     */
-    acceptMultipleColors?: boolean;
 }
 
-export default function ColorEditor(props: Props) {
-    const { title, description, resettable, inputLabel, acceptMultipleColors } =
-        props;
+export default function MultipleColorEditor(props: Props) {
+    const { title, description, resettable, inputLabel } = props;
     const [hexCode, setHexCode] = useState("#FFFFFF");
+
+    // Introduce additional hooks to convert the value from an array.
+    const defaultValue = resettable.defaultValue[0];
+    const [value, setValue] = useState(defaultValue);
+
+    const modifyValue = (value = defaultValue) => {
+        setValue(value);
+
+        resettable.setValue(value.split(",").map((v) => v.trim()));
+    };
+
+    const resetValue = () => {
+        setValue(defaultValue);
+
+        resettable.reset();
+    };
 
     return (
         <div className="json-item-editor">
@@ -51,10 +61,9 @@ export default function ColorEditor(props: Props) {
                 <input
                     className="json-item-editor-input"
                     type="text"
-                    value={resettable.value}
-                    maxLength={acceptMultipleColors ? undefined : 7}
+                    value={value}
                     onChange={(event) => {
-                        resettable.setValue(event.target.value || undefined);
+                        modifyValue(event.target.value || undefined);
                     }}
                 />
 
@@ -62,7 +71,7 @@ export default function ColorEditor(props: Props) {
                     className="json-item-editor-input"
                     type="reset"
                     onClick={() => {
-                        resettable.reset();
+                        resetValue();
                     }}
                 />
             </div>

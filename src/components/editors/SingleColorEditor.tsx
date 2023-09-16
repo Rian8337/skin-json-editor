@@ -1,5 +1,6 @@
 import { Resettable } from "../../structures/resettable/Resettable";
 import { validateColor } from "../../utils/validators";
+import BaseEditor from "./BaseEditor";
 
 interface Props {
     /**
@@ -22,14 +23,7 @@ export default function SingleColorEditor(props: Props) {
     const { title, description, resettable } = props;
 
     return (
-        <div className="json-item-editor">
-            <div className="json-item-editor-title">{title}</div>
-            {description ? (
-                <div className="json-item-editor-description">
-                    {description}
-                </div>
-            ) : null}
-
+        <BaseEditor title={title} description={description}>
             <div className="json-item-editor-flex-container">
                 <input
                     type="color"
@@ -75,6 +69,6 @@ export default function SingleColorEditor(props: Props) {
                     }}
                 />
             </div>
-        </div>
+        </BaseEditor>
     );
 }

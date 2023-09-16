@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Resettable } from "../../structures/resettable/Resettable";
 import "./MultipleColorEditor.css";
+import BaseEditor from "./BaseEditor";
 
 interface Props {
     /**
@@ -45,14 +46,7 @@ export default function MultipleColorEditor(props: Props) {
     };
 
     return (
-        <div className="json-item-editor">
-            <div className="json-item-editor-title">{title}</div>
-            {description ? (
-                <div className="json-item-editor-description">
-                    {description}
-                </div>
-            ) : null}
-
+        <BaseEditor title={title} description={description}>
             <div className="json-item-editor-flex-container">
                 {inputLabel ? (
                     <div className="color-editor-input-label">{inputLabel}</div>
@@ -95,6 +89,6 @@ export default function MultipleColorEditor(props: Props) {
                     value={hexCode}
                 />
             </div>
-        </div>
+        </BaseEditor>
     );
 }

@@ -1,5 +1,5 @@
 import { Resettable } from "../../structures/resettable/Resettable";
-import "./BaseEditor.css";
+import BaseEditor from "./BaseEditor";
 
 interface Props {
     /**
@@ -22,14 +22,7 @@ export default function CheckBoxEditor(props: Props) {
     const { title, description, resettable } = props;
 
     return (
-        <div className="json-item-editor">
-            <div className="json-item-editor-title">{title}</div>
-            {description ? (
-                <div className="json-item-editor-description">
-                    {description}
-                </div>
-            ) : null}
-
+        <BaseEditor title={title} description={description}>
             <div className="json-item-editor-flex-container">
                 <input
                     className="json-item-editor-input"
@@ -48,6 +41,6 @@ export default function CheckBoxEditor(props: Props) {
                     }}
                 />
             </div>
-        </div>
+        </BaseEditor>
     );
 }

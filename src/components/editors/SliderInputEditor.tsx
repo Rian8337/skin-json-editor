@@ -1,5 +1,6 @@
 import { isNumberResettable } from "../../structures/resettable/NumberResettable";
 import { Resettable } from "../../structures/resettable/Resettable";
+import BaseEditor from "./BaseEditor";
 import "./SliderInputEditor.css";
 
 interface Props {
@@ -23,14 +24,7 @@ export default function SliderInputEditor(props: Props) {
     const { title, description, resettable } = props;
 
     return (
-        <div className="json-item-editor">
-            <div className="json-item-editor-title">{title}</div>
-            {description ? (
-                <div className="json-item-editor-description">
-                    {description}
-                </div>
-            ) : null}
-
+        <BaseEditor title={title} description={description}>
             <div className="json-item-editor-flex-container">
                 <input
                     className="slider-input-editor-display"
@@ -82,6 +76,6 @@ export default function SliderInputEditor(props: Props) {
                     resettable.setValue(parseFloat(event.target.value));
                 }}
             />
-        </div>
+        </BaseEditor>
     );
 }

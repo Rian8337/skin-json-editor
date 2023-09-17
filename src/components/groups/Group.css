@@ -7,7 +7,7 @@
 
 .group-break-line {
     border: 0;
-    border-top: thick double lightgray;
+    border-top: thick double rgba(168, 168, 168, 0.8);
 }
 
 .group-item .group-title {
@@ -18,4 +18,8 @@
 .group-item .group-description {
     font-size: 0.9em;
     margin-top: 1em;
+}
+
+.group-item > .collapsed {
+    display: none;
 }

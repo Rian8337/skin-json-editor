@@ -5,7 +5,7 @@ import LimitComboTextLength from "./LimitComboTextLength";
 
 export default function UtilsGroup() {
     return (
-        <Group title="Utilities">
+        <Group title="Utilities" collapsible={true}>
             <LimitComboTextLength />
             <DisableKiai />
             <ComboTextScale />

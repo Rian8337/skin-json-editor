@@ -8,6 +8,7 @@ import LoadJsonGroup from "./components/groups/main/LoadJsonGroup";
 import FooterGroup from "./components/groups/main/FooterGroup";
 import SaveJsonGroup from "./components/groups/main/SaveJsonGroup";
 import ResetJsonGroup from "./components/groups/main/ResetJsonGroup";
+import FontsGroup from "./components/groups/skin/Fonts/FontsGroup";
 
 export default function App() {
     return (
@@ -20,6 +21,7 @@ export default function App() {
             <UtilsGroup />
             <ColorGroup />
             <LayoutGroup />
+            <FontsGroup />
             <SaveJsonGroup />
             <FooterGroup />
         </>

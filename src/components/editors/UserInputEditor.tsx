@@ -43,8 +43,10 @@ export default function UserInputEditor(props: Props) {
                     onChange={(event) => {
                         // Default to default value if there is nothing in the input.
                         if (isNumberResettable(resettable)) {
+                            const value = parseFloat(event.target.value);
+
                             resettable.setValue(
-                                parseFloat(event.target.value) || undefined
+                                !Number.isNaN(value) ? value : undefined
                             );
                         } else {
                             resettable.setValue(

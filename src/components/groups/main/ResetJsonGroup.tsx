@@ -44,6 +44,10 @@ import { DisableKiaiContext } from "../../../hooks/Utils/DisableKiaiContext";
 import { LimitComboTextLengthContext } from "../../../hooks/Utils/LimitComboTextLengthContext";
 import Group from "../Group";
 import "./ResetJsonGroup.css";
+import { ComboPrefixContext } from "../../../hooks/Fonts/ComboPrefixContext";
+import { ScorePrefixContext } from "../../../hooks/Fonts/ScorePrefixContext";
+import { HitCirclePrefixContext } from "../../../hooks/Fonts/HitCirclePrefixContext";
+import { HitCircleOverlapContext } from "../../../hooks/Fonts/HItCircleOverlapContext";
 
 export default function ResetJsonGroup() {
     // A bit dirty, but oh well...
@@ -85,6 +89,12 @@ export default function ResetJsonGroup() {
     const menuItemSelectedTextColor = useContext(
         MenuItemSelectedTextColorContext
     );
+
+    // Fonts
+    const comboPrefix = useContext(ComboPrefixContext);
+    const scorePrefix = useContext(ScorePrefixContext);
+    const hitCirclePrefix = useContext(HitCirclePrefixContext);
+    const hitCircleOverlap = useContext(HitCircleOverlapContext);
 
     // Layout
     // Back Button
@@ -154,6 +164,12 @@ export default function ResetJsonGroup() {
         menuItemVersionsSelectedColor.reset();
         menuItemDefaultTextColor.reset();
         menuItemSelectedTextColor.reset();
+
+        // Fonts
+        comboPrefix.reset();
+        scorePrefix.reset();
+        hitCirclePrefix.reset();
+        hitCircleOverlap.reset();
 
         // Layout
         // Back button

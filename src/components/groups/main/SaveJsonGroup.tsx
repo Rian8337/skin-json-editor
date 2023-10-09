@@ -45,6 +45,10 @@ import { LimitComboTextLengthContext } from "../../../hooks/Utils/LimitComboText
 import Group from "../Group";
 import "./SaveJsonGroup.css";
 import { SkinJson } from "../../../structures/skin/SkinJson";
+import { ComboPrefixContext } from "../../../hooks/Fonts/ComboPrefixContext";
+import { HitCircleOverlapContext } from "../../../hooks/Fonts/HItCircleOverlapContext";
+import { HitCirclePrefixContext } from "../../../hooks/Fonts/HitCirclePrefixContext";
+import { ScorePrefixContext } from "../../../hooks/Fonts/ScorePrefixContext";
 
 export default function SaveJsonGroup() {
     // A bit dirty, but oh well...
@@ -86,6 +90,12 @@ export default function SaveJsonGroup() {
     const menuItemSelectedTextColor = useContext(
         MenuItemSelectedTextColorContext
     );
+
+    // Fonts
+    const comboPrefix = useContext(ComboPrefixContext);
+    const scorePrefix = useContext(ScorePrefixContext);
+    const hitCirclePrefix = useContext(HitCirclePrefixContext);
+    const hitCircleOverlap = useContext(HitCircleOverlapContext);
 
     // Layout
     // Back button
@@ -150,6 +160,12 @@ export default function SaveJsonGroup() {
             menuItemVersionsSelectedColor.saveToJSON(json);
             menuItemDefaultTextColor.saveToJSON(json);
             menuItemSelectedTextColor.saveToJSON(json);
+
+            // Fonts
+            comboPrefix.saveToJSON(json);
+            scorePrefix.saveToJSON(json);
+            hitCirclePrefix.saveToJSON(json);
+            hitCircleOverlap.saveToJSON(json);
 
             // Layout
             // Back button

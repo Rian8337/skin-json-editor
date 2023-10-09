@@ -46,6 +46,7 @@ import { OptionsButtonXContextProvider } from "./Layout/OptionsButton/OptionsBut
 import { OptionsButtonYContextProvider } from "./Layout/OptionsButton/OptionsButtonYContext";
 import { RandomButtonXContextProvider } from "./Layout/RandomButton/RandomButtonXContext";
 import { RandomButtonYContextProvider } from "./Layout/RandomButton/RandomButtonYContext";
+import { HitCircleOverlapContextProvider } from "./Fonts/HItCircleOverlapContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -75,6 +76,7 @@ export const Providers = compose(
     ComboPrefixContextProvider,
     HitCirclePrefixContextProvider,
     ScorePrefixContextProvider,
+    HitCircleOverlapContextProvider,
 
     // Layout (BackButton)
     BackButtonHeightContextProvider,

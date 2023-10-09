@@ -22,4 +22,11 @@ export interface SkinJsonFonts {
      * Defaults to `score`.
      */
     comboPrefix?: string;
+
+    /**
+     * The amount of pixels that the hit circle numbers overlap.
+     *
+     * Defaults to -2.
+     */
+    hitCircleOverlap?: number;
 }

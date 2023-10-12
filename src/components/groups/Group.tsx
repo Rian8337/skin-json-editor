@@ -21,7 +21,9 @@ export default function Group(props: PropsWithChildren<Props>) {
             <hr className="group-break-line" />
             <div className="group-item">
                 <div
-                    className="group-title"
+                    className={`group-title${
+                        props.collapsible ? "-collapsible" : ""
+                    }`}
                     onClick={() => {
                         setVisible((visible) =>
                             props.collapsible ? !visible : true

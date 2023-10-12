@@ -15,6 +15,12 @@
     font: 1.1em Exo-Bold;
 }
 
+.group-item .group-title-collapsible {
+    text-align: center;
+    font: 1.1em Exo-Bold;
+    cursor: pointer;
+}
+
 .group-item .group-description {
     font-size: 0.9em;
     margin-top: 1em;

@@ -45,6 +45,10 @@ import { RandomButtonScaleContext } from "../../../hooks/Layout/RandomButton/Ran
 import { RandomButtonWidthContext } from "../../../hooks/Layout/RandomButton/RandomButtonWidthContext";
 import { RandomButtonXContext } from "../../../hooks/Layout/RandomButton/RandomButtonXContext";
 import { RandomButtonYContext } from "../../../hooks/Layout/RandomButton/RandomButtonYContext";
+import { ComboPrefixContext } from "../../../hooks/Fonts/ComboPrefixContext";
+import { HitCircleOverlapContext } from "../../../hooks/Fonts/HItCircleOverlapContext";
+import { HitCirclePrefixContext } from "../../../hooks/Fonts/HitCirclePrefixContext";
+import { ScorePrefixContext } from "../../../hooks/Fonts/ScorePrefixContext";
 
 export default function LoadJsonGroup() {
     // A bit dirty, but oh well...
@@ -86,6 +90,12 @@ export default function LoadJsonGroup() {
     const menuItemSelectedTextColor = useContext(
         MenuItemSelectedTextColorContext
     );
+
+    // Fonts
+    const comboPrefix = useContext(ComboPrefixContext);
+    const scorePrefix = useContext(ScorePrefixContext);
+    const hitCirclePrefix = useContext(HitCirclePrefixContext);
+    const hitCircleOverlap = useContext(HitCircleOverlapContext);
 
     // Layout
     // Back Button
@@ -142,7 +152,8 @@ export default function LoadJsonGroup() {
                     return;
                 }
 
-                const { ComboColor, Slider, Utils, Color, Layout } = json;
+                const { ComboColor, Slider, Utils, Color, Fonts, Layout } =
+                    json;
 
                 // ComboColor
                 forceOverride.setValue(ComboColor?.forceOverride);
@@ -183,6 +194,12 @@ export default function LoadJsonGroup() {
                 menuItemSelectedTextColor.setValue(
                     Color?.MenuItemSelectedTextColor
                 );
+
+                // Fonts
+                comboPrefix.setValue(Fonts?.comboPrefix);
+                scorePrefix.setValue(Fonts?.scorePrefix);
+                hitCirclePrefix.setValue(Fonts?.hitCirclePrefix);
+                hitCircleOverlap.setValue(Fonts?.hitCircleOverlap);
 
                 // Layout
                 // Back Button

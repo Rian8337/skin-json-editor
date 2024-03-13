@@ -5,5 +5,11 @@ import SingleColorEditor from "../../../editors/SingleColorEditor";
 export default function SliderHintColor() {
     const ctx = useContext(SliderHintColorContext);
 
-    return <SingleColorEditor title="Color" resettable={ctx} />;
+    return (
+        <SingleColorEditor
+            title="Color"
+            description="If unspecified, follows the combo color of the slider."
+            resettable={ctx}
+        />
+    );
 }

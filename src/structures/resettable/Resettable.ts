@@ -11,14 +11,11 @@ export interface Resettable<T = unknown> {
 
     /**
      * The current value.
-     *
-     * Note that this should not be mutated directly - use {@link setValue} instead to
-     * allow components to re-render.
      */
     readonly value: T;
 
     /**
-     * Resets the stored value to the default value,
+     * Resets the stored value to the default value.
      */
     reset(): void;
 

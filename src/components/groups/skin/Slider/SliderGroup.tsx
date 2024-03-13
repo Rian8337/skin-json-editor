@@ -14,6 +14,7 @@ import SliderHintColor from "./SliderHintColor";
 import SliderHintWidth from "./SliderHintWidth";
 import SliderHintShowMinLength from "./SliderHintShowMinLength";
 import SubGroup from "../../SubGroup";
+import SliderIllustrationGroup from "../../illustration/SliderIllustrationGroup";
 
 export default function SliderGroup() {
     const followComboColor = useContext(SliderFollowComboColorContext);
@@ -21,6 +22,8 @@ export default function SliderGroup() {
 
     return (
         <Group title="Slider" collapsible>
+            <SliderIllustrationGroup />
+
             <SubGroup title="Body">
                 <SliderBodyWidth />
                 <SliderBodyBaseAlpha />

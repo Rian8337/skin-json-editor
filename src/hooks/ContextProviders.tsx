@@ -47,6 +47,8 @@ import { OptionsButtonYContextProvider } from "./Layout/OptionsButton/OptionsBut
 import { RandomButtonXContextProvider } from "./Layout/RandomButton/RandomButtonXContext";
 import { RandomButtonYContextProvider } from "./Layout/RandomButton/RandomButtonYContext";
 import { HitCircleOverlapContextProvider } from "./Fonts/HItCircleOverlapContext";
+import { SliderIllustrationCircleSizeContextProvider } from "./SliderIllustration/SliderIllustrationCircleSizeContext";
+import { SliderIllustrationComboColorContextProvider } from "./SliderIllustration/SliderIllustrationComboColorContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -123,5 +125,9 @@ export const Providers = compose(
     // Utils
     ComboTextScaleContextProvider,
     DisableKiaiContextProvider,
-    LimitComboTextLengthContextProvider
+    LimitComboTextLengthContextProvider,
+
+    // Slider illustration
+    SliderIllustrationCircleSizeContextProvider,
+    SliderIllustrationComboColorContextProvider
 );

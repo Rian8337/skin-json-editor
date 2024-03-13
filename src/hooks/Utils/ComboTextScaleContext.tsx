@@ -1,11 +1,11 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberResettable } from "../../utils/ResettableFactory";
+import { createNumberJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = 1;
 const minValue = 0;
 
 export const ComboTextScaleContext = createContext(
-    createNumberResettable(defaultValue, minValue)
+    createNumberJSONResettable(defaultValue, minValue)
 );
 
 export function ComboTextScaleContextProvider(props: PropsWithChildren) {

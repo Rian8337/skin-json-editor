@@ -1,11 +1,11 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { validateColor, createColorError } from "../../utils/validators";
-import { createResettable } from "../../utils/ResettableFactory";
+import { createJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = undefined as string | undefined;
 
 export const MenuItemDefaultTextColorContext = createContext(
-    createResettable(defaultValue)
+    createJSONResettable(defaultValue)
 );
 
 export function MenuItemDefaultTextColorContextProvider(

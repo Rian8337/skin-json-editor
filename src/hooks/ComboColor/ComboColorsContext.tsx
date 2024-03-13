@@ -1,11 +1,13 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { ForceOverrideContext } from "./ForceOverrideContext";
 import { createColorError, validateColor } from "../../utils/validators";
-import { createResettable } from "../../utils/ResettableFactory";
+import { createJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = ["#FFFFFF"];
 
-export const ComboColorsContext = createContext(createResettable(defaultValue));
+export const ComboColorsContext = createContext(
+    createJSONResettable(defaultValue)
+);
 
 export function ComboColorsContextProvider(props: PropsWithChildren) {
     const forceOverride = useContext(ForceOverrideContext);

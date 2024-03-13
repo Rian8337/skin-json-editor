@@ -1,12 +1,12 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
 import { createColorError, validateColor } from "../../utils/validators";
-import { createResettable } from "../../utils/ResettableFactory";
+import { createJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = undefined as string | undefined;
 
 export const SliderHintColorContext = createContext(
-    createResettable(defaultValue)
+    createJSONResettable(defaultValue)
 );
 
 export function SliderHintColorContextProvider(props: PropsWithChildren) {

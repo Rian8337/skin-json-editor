@@ -1,11 +1,11 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberResettable } from "../../utils/ResettableFactory";
+import { createNumberJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = -2;
 const step = 1;
 
 export const HitCircleOverlapContext = createContext(
-    createNumberResettable(defaultValue, undefined, undefined, step)
+    createNumberJSONResettable(defaultValue, undefined, undefined, step)
 );
 
 export function HitCircleOverlapContextProvider(props: PropsWithChildren) {

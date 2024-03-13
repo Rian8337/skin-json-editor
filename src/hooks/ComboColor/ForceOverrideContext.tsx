@@ -1,10 +1,10 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createResettable } from "../../utils/ResettableFactory";
+import { createJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = false;
 
 export const ForceOverrideContext = createContext(
-    createResettable(defaultValue)
+    createJSONResettable(defaultValue)
 );
 
 export function ForceOverrideContextProvider(props: PropsWithChildren) {

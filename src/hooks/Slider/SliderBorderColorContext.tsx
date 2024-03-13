@@ -1,11 +1,11 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { createColorError, validateColor } from "../../utils/validators";
-import { createResettable } from "../../utils/ResettableFactory";
+import { createJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = "#FFFFFF";
 
 export const SliderBorderColorContext = createContext(
-    createResettable(defaultValue)
+    createJSONResettable(defaultValue)
 );
 
 export function SliderBorderColorContextProvider(props: PropsWithChildren) {

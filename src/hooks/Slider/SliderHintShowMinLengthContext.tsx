@@ -1,12 +1,12 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
-import { createNumberResettable } from "../../utils/ResettableFactory";
+import { createNumberJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = 300;
 const minValue = 0;
 
 export const SliderHintShowMinLengthContext = createContext(
-    createNumberResettable(defaultValue, minValue)
+    createNumberJSONResettable(defaultValue, minValue)
 );
 
 export function SliderHintShowMinLengthContextProvider(

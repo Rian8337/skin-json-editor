@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
-import { createNumberResettable } from "../../utils/ResettableFactory";
+import { createNumberJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = 0.3;
 const minValue = 0;
@@ -8,7 +8,7 @@ const maxValue = 1;
 const step = 0.01;
 
 export const SliderHintAlphaContext = createContext(
-    createNumberResettable(defaultValue, minValue, maxValue, step)
+    createNumberJSONResettable(defaultValue, minValue, maxValue, step)
 );
 
 export function SliderHintAlphaContextProvider(props: PropsWithChildren) {

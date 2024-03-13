@@ -1,9 +1,11 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createResettable } from "../../utils/ResettableFactory";
+import { createJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = false;
 
-export const DisableKiaiContext = createContext(createResettable(defaultValue));
+export const DisableKiaiContext = createContext(
+    createJSONResettable(defaultValue)
+);
 
 export function DisableKiaiContextProvider(props: PropsWithChildren) {
     const [value, setValue] = useState(defaultValue);

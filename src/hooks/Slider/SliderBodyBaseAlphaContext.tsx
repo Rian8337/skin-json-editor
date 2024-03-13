@@ -1,5 +1,5 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberResettable } from "../../utils/ResettableFactory";
+import { createNumberJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = 0.7;
 const minValue = 0;
@@ -7,7 +7,7 @@ const maxValue = 1;
 const step = 0.01;
 
 export const SliderBodyBaseAlphaContext = createContext(
-    createNumberResettable(defaultValue, minValue, maxValue, step)
+    createNumberJSONResettable(defaultValue, minValue, maxValue, step)
 );
 
 export function SliderBodyBaseAlphaContextProvider(props: PropsWithChildren) {

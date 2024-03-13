@@ -1,5 +1,3 @@
-import { SkinJson } from "../skin/SkinJson";
-
 /**
  * A storage structure that allows the stored value to be reset.
  */
@@ -30,13 +28,4 @@ export interface Resettable<T = unknown> {
      * @param value The new value. Defaults to the default value.
      */
     setValue(value?: T): void;
-
-    /**
-     * Saves this `Resettable` data to a skin.json.
-     *
-     * If the data cannot be saved, an error will be thrown.
-     *
-     * @param json The skin.json to save to.
-     */
-    saveToJSON(json: SkinJson): void;
 }

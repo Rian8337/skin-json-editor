@@ -1,9 +1,11 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createResettable } from "../../utils/ResettableFactory";
+import { createJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = "score";
 
-export const ScorePrefixContext = createContext(createResettable(defaultValue));
+export const ScorePrefixContext = createContext(
+    createJSONResettable(defaultValue)
+);
 
 export function ScorePrefixContextProvider(props: PropsWithChildren) {
     const [value, setValue] = useState(defaultValue);

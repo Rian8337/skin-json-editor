@@ -1,11 +1,11 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberResettable } from "../../../utils/ResettableFactory";
+import { createNumberJSONResettable } from "../../../utils/ResettableFactory";
 
 const defaultValue = -1;
 const minValue = -1;
 
 export const RandomButtonWidthContext = createContext(
-    createNumberResettable(defaultValue, minValue)
+    createNumberJSONResettable(defaultValue, minValue)
 );
 
 export function RandomButtonWidthContextProvider(props: PropsWithChildren) {

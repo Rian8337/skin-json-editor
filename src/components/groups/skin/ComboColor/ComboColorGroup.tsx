@@ -8,7 +8,7 @@ export default function ComboColorGroup() {
     const forceOverride = useContext(ForceOverrideContext);
 
     return (
-        <Group title="Combo Color" collapsible={true}>
+        <Group title="Combo Color" collapsible>
             <ForceOverride />
             {forceOverride.value ? <ColorList /> : null}
         </Group>

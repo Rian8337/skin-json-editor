@@ -7,7 +7,7 @@ import LayoutRandomButton from "./LayoutRandomButton";
 
 export default function LayoutGroup() {
     return (
-        <Group title="Song Selection Menu Buttons" collapsible={true}>
+        <Group title="Song Selection Menu Buttons" collapsible>
             <div className="group-description">
                 There are the same options for each button, namely:
                 <ul>

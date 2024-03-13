@@ -7,7 +7,7 @@ import ScorePrefix from "./ScorePrefix";
 
 export default function FontsGroup() {
     return (
-        <Group title="Fonts" collapsible={true}>
+        <Group title="Fonts" collapsible>
             <SubGroup title="Texture Prefixes">
                 <div className="group-description">
                     These options define the prefix of skin texture files that

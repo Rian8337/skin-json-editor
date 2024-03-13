@@ -20,7 +20,7 @@ export default function SliderGroup() {
     const sliderHintEnable = useContext(SliderHintEnableContext);
 
     return (
-        <Group title="Slider" collapsible={true}>
+        <Group title="Slider" collapsible>
             <SubGroup title="Body">
                 <SliderBodyWidth />
                 <SliderBodyBaseAlpha />

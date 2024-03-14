@@ -17,6 +17,7 @@ export default function UtilsGroup() {
                 <ComboNumberIllustrationCanvas />
                 <ComboNumberIllustrationCircleSize />
                 <ComboNumberIllustrationNumbers />
+                <hr />
                 <LimitComboTextLength />
                 <ComboTextScale />
                 <HitCircleOverlap />

@@ -42,7 +42,7 @@ export default function SingleColorEditor(props: Props) {
                 />
 
                 <input
-                    className="json-item-editor-input"
+                    className="json-item-editor-input color"
                     type="text"
                     value={resettable.value ?? ""}
                     maxLength={7}

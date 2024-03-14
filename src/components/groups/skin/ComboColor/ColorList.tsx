@@ -8,7 +8,7 @@ export default function ColorList() {
     return (
         <MultipleColorEditor
             title="Combo Colors"
-            description="The color order will determine the color appearance order in-game."
+            description="The order from top to bottom will determine the order of appearance in-game."
             inputLabel="Colors"
             resettable={ctx}
         />

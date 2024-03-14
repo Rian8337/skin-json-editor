@@ -30,3 +30,7 @@
     font-family: Exo-Medium;
     color: white;
 }
+
+.json-item-editor-input.color {
+    max-width: 5em;
+}

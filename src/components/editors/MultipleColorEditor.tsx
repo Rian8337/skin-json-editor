@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Resettable } from "../../structures/resettable/Resettable";
 import "./MultipleColorEditor.css";
 import BaseEditor from "./BaseEditor";
@@ -29,21 +29,81 @@ export default function MultipleColorEditor(props: Props) {
     const { title, description, resettable, inputLabel } = props;
     const [hexCode, setHexCode] = useState("#FFFFFF");
 
-    // Introduce additional hooks to convert the value from an array.
-    const defaultValue = resettable.defaultValue[0];
-    const [value, setValue] = useState(defaultValue);
+    const colorList = useMemo(
+        () =>
+            resettable.value.map((color, index, arr) => (
+                <div key={index} className="json-item-editor-flex-container">
+                    <input
+                        className="json-item-editor-input"
+                        type="color"
+                        value={color}
+                        disabled
+                    />
 
-    const modifyValue = (value = defaultValue) => {
-        setValue(value);
+                    <input
+                        className="json-item-editor-input color"
+                        type="text"
+                        value={color}
+                        disabled
+                    />
 
-        resettable.setValue(value.split(",").map((v) => v.trim()));
-    };
+                    <input
+                        className="json-item-editor-input"
+                        type="button"
+                        value="↑"
+                        disabled={index === 0}
+                        onClick={() => {
+                            resettable.setValue((value) => {
+                                const newValue = value.slice();
 
-    const resetValue = () => {
-        setValue(defaultValue);
+                                [newValue[index - 1], newValue[index]] = [
+                                    newValue[index],
+                                    newValue[index - 1],
+                                ];
 
-        resettable.reset();
-    };
+                                return newValue;
+                            });
+                        }}
+                    />
+
+                    <input
+                        className="json-item-editor-input"
+                        type="button"
+                        value="↓"
+                        disabled={index === arr.length - 1}
+                        onClick={() => {
+                            resettable.setValue((value) => {
+                                const newValue = value.slice();
+
+                                [newValue[index], newValue[index + 1]] = [
+                                    newValue[index + 1],
+                                    newValue[index],
+                                ];
+
+                                return newValue;
+                            });
+                        }}
+                    />
+
+                    <input
+                        className="json-item-editor-input"
+                        type="button"
+                        value="Remove"
+                        disabled={arr.length === 1}
+                        onClick={() => {
+                            resettable.setValue((value) => {
+                                const newValue = value.slice();
+
+                                newValue.splice(index, 1);
+
+                                return newValue;
+                            });
+                        }}
+                    />
+                </div>
+            )),
+        [resettable]
+    );
 
     return (
         <BaseEditor title={title} description={description}>
@@ -54,18 +114,9 @@ export default function MultipleColorEditor(props: Props) {
 
                 <input
                     className="json-item-editor-input"
-                    type="text"
-                    value={value}
-                    onChange={(event) => {
-                        modifyValue(event.target.value || undefined);
-                    }}
-                />
-
-                <input
-                    className="json-item-editor-input"
                     type="reset"
                     onClick={() => {
-                        resetValue();
+                        resettable.reset();
                     }}
                 />
             </div>
@@ -76,19 +127,30 @@ export default function MultipleColorEditor(props: Props) {
                 <input
                     className="json-item-editor-input"
                     type="color"
-                    defaultValue={hexCode}
+                    value={hexCode}
                     onChange={(event) => {
                         setHexCode(event.target.value.toUpperCase());
                     }}
                 />
 
                 <input
-                    className="json-item-editor-input"
+                    className="json-item-editor-input color"
                     type="text"
                     disabled
                     value={hexCode}
                 />
+
+                <input
+                    className="json-item-editor-input"
+                    type="button"
+                    value="Add"
+                    onClick={() => {
+                        resettable.setValue((value) => value.concat(hexCode));
+                    }}
+                />
             </div>
+
+            {colorList}
         </BaseEditor>
     );
 }

@@ -28,7 +28,7 @@ export function ComboColorsContextProvider(props: PropsWithChildren) {
                     setValue(defaultValue);
                 },
                 setValue: (value = defaultValue) => {
-                    setValue(value);
+                    setValue(value.slice());
                 },
                 saveToJSON(json) {
                     if (!forceOverride.value) {

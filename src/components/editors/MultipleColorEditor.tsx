@@ -53,16 +53,14 @@ export default function MultipleColorEditor(props: Props) {
                         value="↑"
                         disabled={index === 0}
                         onClick={() => {
-                            resettable.setValue((value) => {
-                                const newValue = value.slice();
+                            const newValue = arr.slice();
 
-                                [newValue[index - 1], newValue[index]] = [
-                                    newValue[index],
-                                    newValue[index - 1],
-                                ];
+                            [newValue[index - 1], newValue[index]] = [
+                                newValue[index],
+                                newValue[index - 1],
+                            ];
 
-                                return newValue;
-                            });
+                            resettable.setValue(newValue);
                         }}
                     />
 
@@ -72,16 +70,14 @@ export default function MultipleColorEditor(props: Props) {
                         value="↓"
                         disabled={index === arr.length - 1}
                         onClick={() => {
-                            resettable.setValue((value) => {
-                                const newValue = value.slice();
+                            const newValue = arr.slice();
 
-                                [newValue[index], newValue[index + 1]] = [
-                                    newValue[index + 1],
-                                    newValue[index],
-                                ];
+                            [newValue[index], newValue[index + 1]] = [
+                                newValue[index + 1],
+                                newValue[index],
+                            ];
 
-                                return newValue;
-                            });
+                            resettable.setValue(newValue);
                         }}
                     />
 
@@ -91,13 +87,10 @@ export default function MultipleColorEditor(props: Props) {
                         value="Remove"
                         disabled={arr.length === 1}
                         onClick={() => {
-                            resettable.setValue((value) => {
-                                const newValue = value.slice();
+                            const newValue = arr.slice();
+                            newValue.splice(index, 1);
 
-                                newValue.splice(index, 1);
-
-                                return newValue;
-                            });
+                            resettable.setValue(newValue);
                         }}
                     />
                 </div>
@@ -145,7 +138,7 @@ export default function MultipleColorEditor(props: Props) {
                     type="button"
                     value="Add"
                     onClick={() => {
-                        resettable.setValue((value) => value.concat(hexCode));
+                        resettable.setValue(resettable.value.concat(hexCode));
                     }}
                 />
             </div>

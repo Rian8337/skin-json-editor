@@ -1,5 +1,3 @@
-import { SetStateAction } from "react";
-
 /**
  * A storage structure that allows the stored value to be reset.
  */
@@ -29,5 +27,5 @@ export interface Resettable<T = unknown> {
      *
      * @param value The new value. Defaults to the default value.
      */
-    setValue(value?: SetStateAction<T>): void;
+    setValue(value?: T): void;
 }

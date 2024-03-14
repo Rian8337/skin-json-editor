@@ -50,6 +50,7 @@ import { HitCircleOverlapContextProvider } from "./Fonts/HItCircleOverlapContext
 import { SliderIllustrationCircleSizeContextProvider } from "./Illustration/SliderIllustrationCircleSizeContext";
 import { SliderIllustrationComboColorContextProvider } from "./Illustration/SliderIllustrationComboColorContext";
 import { ComboNumberIllustrationCircleSizeContextProvider } from "./Illustration/ComboNumberIllustrationCircleSizeContext";
+import { ComboNumberIllustrationNumbersContextProvider } from "./Illustration/ComboNumberIllustrationNumbersContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -132,6 +133,7 @@ export const Providers = compose(
     SliderIllustrationCircleSizeContextProvider,
     SliderIllustrationComboColorContextProvider,
 
-    // Combo number illustration,
-    ComboNumberIllustrationCircleSizeContextProvider
+    // Combo number illustration
+    ComboNumberIllustrationCircleSizeContextProvider,
+    ComboNumberIllustrationNumbersContextProvider
 );

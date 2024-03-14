@@ -7,22 +7,23 @@ import {
 import { ComboTextScaleContext } from "../../../../hooks/Utils/ComboTextScaleContext";
 import { LimitComboTextLengthContext } from "../../../../hooks/Utils/LimitComboTextLengthContext";
 import { HitCircleOverlapContext } from "../../../../hooks/Fonts/HItCircleOverlapContext";
+import { ComboNumberIllustrationNumbersContext } from "../../../../hooks/Illustration/ComboNumberIllustrationNumbersContext";
 
 export default function ComboNumberIllustrationCanvas() {
     const circleSize = useContext(ComboNumberIllustrationCircleSizeContext);
+    const comboNumbers = useContext(ComboNumberIllustrationNumbersContext);
 
-    const number0 = useMemo(() => {
-        const image = new Image();
-        image.src = "default-0.png";
+    const numberImages = useMemo(() => {
+        const images: HTMLImageElement[] = [];
 
-        return image;
-    }, []);
+        for (let i = 0; i < 10; i++) {
+            const image = new Image();
+            image.src = `default-${i}.png`;
 
-    const number1 = useMemo(() => {
-        const image = new Image();
-        image.src = "default-1.png";
+            images.push(image);
+        }
 
-        return image;
+        return images;
     }, []);
 
     const limitComboTextLength = useContext(LimitComboTextLengthContext);
@@ -53,7 +54,7 @@ export default function ComboNumberIllustrationCanvas() {
 
     // Canvas drawing
     useEffect(() => {
-        if (!canvasRef.current || !number0.complete || !number1.complete) {
+        if (!canvasRef.current || !numberImages.some((i) => i.complete)) {
             return;
         }
 
@@ -87,64 +88,66 @@ export default function ComboNumberIllustrationCanvas() {
 
         // Draw combo numbers.
         const comboNumberScale = scale * comboTextScale.value;
+        const comboLetters = comboNumbers.value.toString().split("");
 
         if (limitComboTextLength.value) {
-            const imageSizeScale = number1.height / height;
+            const image =
+                numberImages[parseInt(comboLetters[comboLetters.length - 1])];
 
-            const imageWidth =
-                number1.width * imageSizeScale * comboNumberScale;
+            const imageSizeScale = image.height / height;
+
+            const imageWidth = image.width * imageSizeScale * comboNumberScale;
             const imageHeight =
-                number1.height * imageSizeScale * comboNumberScale;
+                image.height * imageSizeScale * comboNumberScale;
 
             ctx.drawImage(
-                number1,
+                image,
                 -imageWidth / 2,
                 -imageHeight / 2,
                 imageWidth,
                 imageHeight
             );
         } else {
-            const number0SizeScale = number0.height / height;
-            const number0Width =
-                number0.width * number0SizeScale * comboNumberScale;
-            const number0Height =
-                number0.height * number0SizeScale * comboNumberScale;
-
-            const number1SizeScale = number1.height / height;
-            const number1Width =
-                number1.width * number1SizeScale * comboNumberScale;
-            const number1Height =
-                number1.height * number1SizeScale * comboNumberScale;
-            const number1X =
-                -(number1Width + number0Width + hitCircleOverlap.value) / 2;
-
-            ctx.drawImage(
-                number1,
-                number1X,
-                -number1Height / 2,
-                number1Width,
-                number1Height
+            const images = comboLetters.map(
+                (letter) => numberImages[parseInt(letter)]
             );
 
-            ctx.drawImage(
-                number0,
-                number1X + number1Width + hitCircleOverlap.value,
-                -number0Height / 2,
-                number0Width,
-                number0Height
-            );
+            let totalWidth =
+                images.reduce(
+                    (a, v) =>
+                        a + ((v.width * v.height) / height) * comboNumberScale,
+                    0
+                ) +
+                hitCircleOverlap.value * (images.length - 1);
+
+            for (const image of images) {
+                const imageSizeScale = image.height / height;
+
+                const imageWidth =
+                    image.width * imageSizeScale * comboNumberScale;
+                const imageHeight =
+                    image.height * imageSizeScale * comboNumberScale;
+
+                ctx.drawImage(
+                    image,
+                    -totalWidth / 2,
+                    -imageHeight / 2,
+                    imageWidth,
+                    imageHeight
+                );
+
+                totalWidth -= (imageWidth + hitCircleOverlap.value) * 2;
+            }
         }
 
         ctx.restore();
     }, [
         circleSize.value,
+        comboNumbers.value,
         comboTextScale.value,
         hitCircleOverlap.value,
         limitComboTextLength.value,
-        number0,
-        number0.complete,
-        number1,
-        number1.complete,
+        numberImages,
         width,
     ]);
 

@@ -47,8 +47,9 @@ import { OptionsButtonYContextProvider } from "./Layout/OptionsButton/OptionsBut
 import { RandomButtonXContextProvider } from "./Layout/RandomButton/RandomButtonXContext";
 import { RandomButtonYContextProvider } from "./Layout/RandomButton/RandomButtonYContext";
 import { HitCircleOverlapContextProvider } from "./Fonts/HItCircleOverlapContext";
-import { SliderIllustrationCircleSizeContextProvider } from "./SliderIllustration/SliderIllustrationCircleSizeContext";
-import { SliderIllustrationComboColorContextProvider } from "./SliderIllustration/SliderIllustrationComboColorContext";
+import { SliderIllustrationCircleSizeContextProvider } from "./Illustration/SliderIllustrationCircleSizeContext";
+import { SliderIllustrationComboColorContextProvider } from "./Illustration/SliderIllustrationComboColorContext";
+import { ComboNumberIllustrationCircleSizeContextProvider } from "./Illustration/ComboNumberIllustrationCircleSizeContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -129,5 +130,8 @@ export const Providers = compose(
 
     // Slider illustration
     SliderIllustrationCircleSizeContextProvider,
-    SliderIllustrationComboColorContextProvider
+    SliderIllustrationComboColorContextProvider,
+
+    // Combo number illustration,
+    ComboNumberIllustrationCircleSizeContextProvider
 );

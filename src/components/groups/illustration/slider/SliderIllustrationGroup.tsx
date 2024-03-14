@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SliderFollowComboColorContext } from "../../../hooks/Slider/SliderFollowComboColorContext";
-import SubGroup from "../SubGroup";
+import { SliderFollowComboColorContext } from "../../../../hooks/Slider/SliderFollowComboColorContext";
+import SubGroup from "../../SubGroup";
 import SliderIllustrationCanvas from "./SliderIllustrationCanvas";
 import SliderIllustrationCircleSize from "./SliderIllustrationCircleSize";
 import SliderIllustrationComboColor from "./SliderIllustrationComboColor";

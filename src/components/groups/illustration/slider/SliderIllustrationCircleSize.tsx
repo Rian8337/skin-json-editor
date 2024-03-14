@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SliderIllustrationCircleSizeContext } from "../../../hooks/SliderIllustration/SliderIllustrationCircleSizeContext";
-import SliderInputEditor from "../../editors/SliderInputEditor";
+import { SliderIllustrationCircleSizeContext } from "../../../../hooks/Illustration/SliderIllustrationCircleSizeContext";
+import SliderInputEditor from "../../../editors/SliderInputEditor";
 
 export default function SliderIllustrationCircleSize() {
     const ctx = useContext(SliderIllustrationCircleSizeContext);

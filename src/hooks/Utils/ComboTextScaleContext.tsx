@@ -3,9 +3,11 @@ import { createNumberJSONResettable } from "../../utils/ResettableFactory";
 
 const defaultValue = 1;
 const minValue = 0;
+const maxValue = undefined;
+const step = 0.1;
 
 export const ComboTextScaleContext = createContext(
-    createNumberJSONResettable(defaultValue, minValue)
+    createNumberJSONResettable(defaultValue, minValue, maxValue, step)
 );
 
 export function ComboTextScaleContextProvider(props: PropsWithChildren) {
@@ -17,6 +19,8 @@ export function ComboTextScaleContextProvider(props: PropsWithChildren) {
                 defaultValue,
                 value,
                 minValue,
+                maxValue,
+                step,
                 get isDefault() {
                     return value === defaultValue;
                 },

@@ -1,7 +1,6 @@
 import Group from "../../Group";
 import SubGroup from "../../SubGroup";
 import ComboPrefix from "./ComboPrefix";
-import HitCircleOverlap from "./HitCircleOverlap";
 import HitCirclePrefix from "./HitCirclePrefix";
 import ScorePrefix from "./ScorePrefix";
 
@@ -20,9 +19,6 @@ export default function FontsGroup() {
                 <ComboPrefix />
                 <ScorePrefix />
                 <HitCirclePrefix />
-            </SubGroup>
-            <SubGroup title="Other Options">
-                <HitCircleOverlap />
             </SubGroup>
         </Group>
     );

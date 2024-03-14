@@ -39,6 +39,11 @@ export default function UserInputEditor(props: Props) {
                             ? resettable.maxValue
                             : undefined
                     }
+                    step={
+                        isNumberResettable(resettable)
+                            ? resettable.step
+                            : undefined
+                    }
                     value={resettable.value}
                     onChange={(event) => {
                         // Default to default value if there is nothing in the input.

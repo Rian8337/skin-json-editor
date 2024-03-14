@@ -1,4 +1,8 @@
 import Group from "../../Group";
+import SubGroup from "../../SubGroup";
+import ComboNumberIllustrationCanvas from "../../illustration/combonumber/ComboNumberIllustrationCanvas";
+import ComboNumberIllustrationCircleSize from "../../illustration/combonumber/ComboNumberIllustrationCircleSize";
+import HitCircleOverlap from "../Fonts/HitCircleOverlap";
 import ComboTextScale from "./ComboTextScale";
 import DisableKiai from "./DisableKiai";
 import LimitComboTextLength from "./LimitComboTextLength";
@@ -6,9 +10,15 @@ import LimitComboTextLength from "./LimitComboTextLength";
 export default function UtilsGroup() {
     return (
         <Group title="Utilities" collapsible>
-            <LimitComboTextLength />
             <DisableKiai />
-            <ComboTextScale />
+
+            <SubGroup title="Combo Number">
+                <ComboNumberIllustrationCanvas />
+                <ComboNumberIllustrationCircleSize />
+                <LimitComboTextLength />
+                <ComboTextScale />
+                <HitCircleOverlap />
+            </SubGroup>
         </Group>
     );
 }

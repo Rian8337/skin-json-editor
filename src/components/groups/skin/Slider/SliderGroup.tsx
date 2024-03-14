@@ -14,7 +14,7 @@ import SliderHintColor from "./SliderHintColor";
 import SliderHintWidth from "./SliderHintWidth";
 import SliderHintShowMinLength from "./SliderHintShowMinLength";
 import SubGroup from "../../SubGroup";
-import SliderIllustrationGroup from "../../illustration/SliderIllustrationGroup";
+import SliderIllustrationGroup from "../../illustration/slider/SliderIllustrationGroup";
 
 export default function SliderGroup() {
     const followComboColor = useContext(SliderFollowComboColorContext);

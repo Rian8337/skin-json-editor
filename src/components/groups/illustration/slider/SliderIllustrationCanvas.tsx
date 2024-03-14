@@ -1,16 +1,20 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { SliderBodyColorContext } from "../../../hooks/Slider/SliderBodyColorContext";
-import { SliderIllustrationCircleSizeContext } from "../../../hooks/SliderIllustration/SliderIllustrationCircleSizeContext";
-import { SliderBodyWidthContext } from "../../../hooks/Slider/SliderBodyWidthContext";
-import { SliderBorderWidthContext } from "../../../hooks/Slider/SliderBorderWidthContext";
-import { SliderBodyBaseAlphaContext } from "../../../hooks/Slider/SliderBodyBaseAlphaContext";
-import { SliderFollowComboColorContext } from "../../../hooks/Slider/SliderFollowComboColorContext";
-import { SliderIllustrationComboColorContext } from "../../../hooks/SliderIllustration/SliderIllustrationComboColorContext";
-import { SliderHintEnableContext } from "../../../hooks/Slider/SliderHintEnableContext";
-import { SliderHintAlphaContext } from "../../../hooks/Slider/SliderHintAlphaContext";
-import { SliderHintColorContext } from "../../../hooks/Slider/SliderHintColorContext";
-import { SliderHintWidthContext } from "../../../hooks/Slider/SliderHintWidthContext";
-import { SliderBorderColorContext } from "../../../hooks/Slider/SliderBorderColorContext";
+import { SliderBodyColorContext } from "../../../../hooks/Slider/SliderBodyColorContext";
+import { SliderIllustrationCircleSizeContext } from "../../../../hooks/Illustration/SliderIllustrationCircleSizeContext";
+import { SliderBodyWidthContext } from "../../../../hooks/Slider/SliderBodyWidthContext";
+import { SliderBorderWidthContext } from "../../../../hooks/Slider/SliderBorderWidthContext";
+import { SliderBodyBaseAlphaContext } from "../../../../hooks/Slider/SliderBodyBaseAlphaContext";
+import { SliderFollowComboColorContext } from "../../../../hooks/Slider/SliderFollowComboColorContext";
+import { SliderIllustrationComboColorContext } from "../../../../hooks/Illustration/SliderIllustrationComboColorContext";
+import { SliderHintEnableContext } from "../../../../hooks/Slider/SliderHintEnableContext";
+import { SliderHintAlphaContext } from "../../../../hooks/Slider/SliderHintAlphaContext";
+import { SliderHintColorContext } from "../../../../hooks/Slider/SliderHintColorContext";
+import { SliderHintWidthContext } from "../../../../hooks/Slider/SliderHintWidthContext";
+import { SliderBorderColorContext } from "../../../../hooks/Slider/SliderBorderColorContext";
+import {
+    circleSizeToScale,
+    scaleToRadius,
+} from "../../../../utils/circleSizeCalculator";
 
 export default function SliderIllustrationCanvas() {
     const circleSize = useContext(SliderIllustrationCircleSizeContext);
@@ -67,8 +71,6 @@ export default function SliderIllustrationCanvas() {
         const { height } = canvas;
 
         // Redraw the canvas with respect to settings.
-        // Don't set the width first to clear the previous canvas.
-        ctx.clearRect(0, 0, canvas.width, height);
         canvas.width = width;
 
         ctx.save();
@@ -77,15 +79,8 @@ export default function SliderIllustrationCanvas() {
         // Put the origin at the left-center.
         ctx.translate(0, height / 2);
 
-        const scale =
-            (((1280 * width) / height / 480) *
-                (54.42 - circleSize.value * 4.48) *
-                2) /
-                128 +
-            (0.5 * (11 - 5.2450170716245195)) / 5;
-
-        const radius =
-            (64 * scale) / ((((1280 * width) / height) * 0.85) / 384);
+        const scale = circleSizeToScale(circleSize.value, height);
+        const radius = scaleToRadius(scale, height);
 
         // Stroke the slider path.
         ctx.beginPath();

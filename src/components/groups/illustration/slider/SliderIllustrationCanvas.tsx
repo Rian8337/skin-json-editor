@@ -109,7 +109,9 @@ export default function SliderIllustrationCanvas() {
         ctx.stroke();
 
         ctx.globalAlpha = sliderBodyBaseAlpha.value;
-        ctx.strokeStyle = sliderBodyColor.value;
+        ctx.strokeStyle = sliderFollowComboColor.value
+            ? sliderComboColor.value
+            : sliderBodyColor.value;
 
         ctx.stroke();
         ctx.globalCompositeOperation = "source-over";
@@ -127,9 +129,7 @@ export default function SliderIllustrationCanvas() {
         ctx.closePath();
 
         // Draw the slider head.
-        ctx.fillStyle = sliderFollowComboColor.value
-            ? sliderBodyColor.value
-            : sliderComboColor.value;
+        ctx.fillStyle = sliderComboColor.value;
         ctx.globalAlpha = 1;
 
         ctx.beginPath();

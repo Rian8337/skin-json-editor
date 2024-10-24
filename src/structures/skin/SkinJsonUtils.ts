@@ -31,9 +31,16 @@ export interface SkinJsonUtils {
     animationFramerate?: number;
 
     /**
-     * Whether hitnormal hitsounds should always be played.
+     * Whether `hitnormal` hitsounds should always be played.
      *
      * Defaults to `true`.
      */
     layeredHitSounds?: boolean;
+
+    /**
+     * Whether `spinnerspin` hitsounds should pitch up as a spinner progresses.
+     *
+     * Defaults to `true`.
+     */
+    spinnerFrequencyModulate?: boolean;
 }

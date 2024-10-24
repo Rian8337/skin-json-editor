@@ -57,6 +57,7 @@ import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/Dif
 import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
 import { AnimationFrameContext } from "@hooks/Utils/AnimationFramerateContext";
 import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
+import { SpinnerFrequencyModulateContext } from "@hooks/Utils/SpinnerFrequencyModulateContext";
 
 export default function SaveJsonGroup() {
     // A bit dirty, but oh well...
@@ -87,6 +88,9 @@ export default function SaveJsonGroup() {
     const comboTextScale = useContext(ComboTextScaleContext);
     const animationFramerate = useContext(AnimationFrameContext);
     const layeredHitSounds = useContext(LayeredHitSoundsContext);
+    const spinnerFrequencyModulate = useContext(
+        SpinnerFrequencyModulateContext
+    );
 
     // Color
     const menuItemDefaultColor = useContext(MenuItemDefaultColorContext);
@@ -179,6 +183,7 @@ export default function SaveJsonGroup() {
             comboTextScale.saveToJSON(json);
             animationFramerate.saveToJSON(json);
             layeredHitSounds.saveToJSON(json);
+            spinnerFrequencyModulate.saveToJSON(json);
 
             // Color
             menuItemDefaultColor.saveToJSON(json);

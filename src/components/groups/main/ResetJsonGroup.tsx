@@ -56,6 +56,7 @@ import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher
 import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
 import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
 import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
+import { SpinnerFrequencyModulateContext } from "@hooks/Utils/SpinnerFrequencyModulateContext";
 
 export default function ResetJsonGroup() {
     // A bit dirty, but oh well...
@@ -86,6 +87,9 @@ export default function ResetJsonGroup() {
     const comboTextScale = useContext(ComboTextScaleContext);
     const animationFramerate = useContext(AnimationFrameContext);
     const layeredHitSounds = useContext(LayeredHitSoundsContext);
+    const spinnerFrequencyModulate = useContext(
+        SpinnerFrequencyModulateContext
+    );
 
     // Color
     const menuItemDefaultColor = useContext(MenuItemDefaultColorContext);
@@ -183,6 +187,7 @@ export default function ResetJsonGroup() {
         comboTextScale.reset();
         animationFramerate.reset();
         layeredHitSounds.reset();
+        spinnerFrequencyModulate.reset();
 
         // Color
         menuItemDefaultColor.reset();

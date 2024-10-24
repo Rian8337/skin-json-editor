@@ -58,6 +58,7 @@ import { DifficultySwitcherXContextProvider } from "./Layout/DifficultySwitcher/
 import { DifficultySwitcherYContextProvider } from "./Layout/DifficultySwitcher/ModsButtonYContext";
 import { AnimationFrameContextProvider } from "./Utils/AnimationFramerateContext";
 import { LayeredHitSoundsContextProvider } from "./Utils/LayeredHitSoundsContext";
+import { SpinnerFrequencyModulateContextProvider } from "./Utils/SpinnerFrequencyModulateContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -144,6 +145,7 @@ export const Providers = compose(
     LimitComboTextLengthContextProvider,
     AnimationFrameContextProvider,
     LayeredHitSoundsContextProvider,
+    SpinnerFrequencyModulateContextProvider,
 
     // Slider illustration
     SliderIllustrationCircleSizeContextProvider,

@@ -9,6 +9,7 @@ import ComboTextScale from "./ComboTextScale";
 import DisableKiai from "./DisableKiai";
 import LayeredHitSounds from "./LayeredHitSounds";
 import LimitComboTextLength from "./LimitComboTextLength";
+import SpinnerFrequencyModulate from "./SpinnerFrequencyModulate";
 
 export default function UtilsGroup() {
     return (
@@ -25,6 +26,7 @@ export default function UtilsGroup() {
                 <HitCircleOverlap />
                 <AnimationFramerate />
                 <LayeredHitSounds />
+                <SpinnerFrequencyModulate />
             </SubGroup>
         </Group>
     );

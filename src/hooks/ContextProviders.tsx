@@ -51,6 +51,11 @@ import { SliderIllustrationCircleSizeContextProvider } from "./Illustration/Slid
 import { SliderIllustrationComboColorContextProvider } from "./Illustration/SliderIllustrationComboColorContext";
 import { ComboNumberIllustrationCircleSizeContextProvider } from "./Illustration/ComboNumberIllustrationCircleSizeContext";
 import { ComboNumberIllustrationNumbersContextProvider } from "./Illustration/ComboNumberIllustrationNumbersContext";
+import { DifficultySwitcherHeightContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherHeightContext";
+import { DifficultySwitcherScaleContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
+import { DifficultySwitcherWidthContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
+import { DifficultySwitcherXContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherXContext";
+import { DifficultySwitcherYContextProvider } from "./Layout/DifficultySwitcher/ModsButtonYContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -110,6 +115,13 @@ export const Providers = compose(
     RandomButtonWidthContextProvider,
     RandomButtonXContextProvider,
     RandomButtonYContextProvider,
+
+    // Layout (DifficultySwitcher),
+    DifficultySwitcherHeightContextProvider,
+    DifficultySwitcherScaleContextProvider,
+    DifficultySwitcherWidthContextProvider,
+    DifficultySwitcherXContextProvider,
+    DifficultySwitcherYContextProvider,
 
     // Slider
     SliderBodyBaseAlphaContextProvider,

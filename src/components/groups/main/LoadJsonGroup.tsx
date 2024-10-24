@@ -50,6 +50,11 @@ import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
 import { HitCirclePrefixContext } from "@hooks/Fonts/HitCirclePrefixContext";
 import { ScorePrefixContext } from "@hooks/Fonts/ScorePrefixContext";
 import { RotateCursorContext } from "@hooks/Cursor/RotateCursorContext";
+import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
+import { DifficultySwitcherHeightContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherHeightContext";
+import { DifficultySwitcherScaleContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
+import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
+import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
 
 export default function LoadJsonGroup() {
     // A bit dirty, but oh well...
@@ -130,6 +135,15 @@ export default function LoadJsonGroup() {
     const randomButtonScale = useContext(RandomButtonScaleContext);
     const randomButtonX = useContext(RandomButtonXContext);
     const randomButtonY = useContext(RandomButtonYContext);
+
+    // Difficulty Switcher Button
+    const difficultySwitcherWidth = useContext(DifficultySwitcherWidthContext);
+    const difficultySwitcherHeight = useContext(
+        DifficultySwitcherHeightContext
+    );
+    const difficultySwitcherScale = useContext(DifficultySwitcherScaleContext);
+    const difficultySwitcherX = useContext(DifficultySwitcherXContext);
+    const difficultySwitcherY = useContext(DifficultySwitcherYContext);
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
@@ -247,6 +261,17 @@ export default function LoadJsonGroup() {
                 randomButtonScale.setValue(Layout?.RandomButton?.scale);
                 randomButtonX.setValue(Layout?.RandomButton?.x);
                 randomButtonY.setValue(Layout?.RandomButton?.y);
+
+                // Difficulty Switcher Button
+                difficultySwitcherWidth.setValue(Layout?.DifficultySwitcher?.w);
+                difficultySwitcherHeight.setValue(
+                    Layout?.DifficultySwitcher?.h
+                );
+                difficultySwitcherScale.setValue(
+                    Layout?.DifficultySwitcher?.scale
+                );
+                difficultySwitcherX.setValue(Layout?.DifficultySwitcher?.x);
+                difficultySwitcherY.setValue(Layout?.DifficultySwitcher?.y);
 
                 alert("The skin.json file has been loaded successfully!");
             })

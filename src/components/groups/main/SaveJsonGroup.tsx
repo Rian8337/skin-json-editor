@@ -50,6 +50,11 @@ import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
 import { HitCirclePrefixContext } from "@hooks/Fonts/HitCirclePrefixContext";
 import { ScorePrefixContext } from "@hooks/Fonts/ScorePrefixContext";
 import { RotateCursorContext } from "@hooks/Cursor/RotateCursorContext";
+import { DifficultySwitcherHeightContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherHeightContext";
+import { DifficultySwitcherScaleContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
+import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
+import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
+import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
 
 export default function SaveJsonGroup() {
     // A bit dirty, but oh well...
@@ -131,6 +136,15 @@ export default function SaveJsonGroup() {
     const randomButtonX = useContext(RandomButtonXContext);
     const randomButtonY = useContext(RandomButtonYContext);
 
+    // Difficulty Switcher Button
+    const difficultySwitcherWidth = useContext(DifficultySwitcherWidthContext);
+    const difficultySwitcherHeight = useContext(
+        DifficultySwitcherHeightContext
+    );
+    const difficultySwitcherScale = useContext(DifficultySwitcherScaleContext);
+    const difficultySwitcherX = useContext(DifficultySwitcherXContext);
+    const difficultySwitcherY = useContext(DifficultySwitcherYContext);
+
     const onClick = () => {
         const json: SkinJson = {};
 
@@ -203,6 +217,13 @@ export default function SaveJsonGroup() {
             randomButtonScale.saveToJSON(json);
             randomButtonX.saveToJSON(json);
             randomButtonY.saveToJSON(json);
+
+            // Difficulty switcher button
+            difficultySwitcherWidth.saveToJSON(json);
+            difficultySwitcherHeight.saveToJSON(json);
+            difficultySwitcherScale.saveToJSON(json);
+            difficultySwitcherX.saveToJSON(json);
+            difficultySwitcherY.saveToJSON(json);
         } catch (e) {
             alert((e as Error).message);
 

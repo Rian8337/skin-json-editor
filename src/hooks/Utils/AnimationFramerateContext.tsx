@@ -1,4 +1,4 @@
-import { NumberResettable } from "@structures/resettable/NumberResettable";
+import { NumberResettable } from "@structures/resettable";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new NumberResettable({ defaultValue: 60, minValue: -1 });

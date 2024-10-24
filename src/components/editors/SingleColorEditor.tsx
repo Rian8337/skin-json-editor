@@ -1,4 +1,4 @@
-import { Resettable } from "@structures/resettable/Resettable";
+import { Resettable } from "@structures/resettable";
 import { validateColor } from "@utils/validators";
 import BaseEditor from "./BaseEditor";
 

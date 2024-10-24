@@ -1,8 +1,7 @@
 import { useMemo, useState } from "react";
 import "./MultipleColorEditor.css";
 import BaseEditor from "./BaseEditor";
-import { Resettable } from "@structures/resettable/Resettable";
-import { ArrayResettable } from "@structures/resettable/ArrayResettable";
+import { ArrayResettable, Resettable } from "@structures/resettable";
 
 interface Props {
     /**

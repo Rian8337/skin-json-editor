@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { validateColor, createColorError } from "@utils/validators";
-import { Resettable } from "@structures/resettable/Resettable";
+import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable<string | undefined>(undefined);
 

@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
 import { createColorError, validateColor } from "@utils/validators";
-import { Resettable } from "@structures/resettable/Resettable";
+import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable<string | undefined>(undefined);
 

@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { ForceOverrideContext } from "./ForceOverrideContext";
 import { createColorError, validateColor } from "@utils/validators";
-import { ArrayResettable } from "@structures/resettable/ArrayResettable";
+import { ArrayResettable } from "@structures/resettable";
 
 const resettable = new ArrayResettable(["#FFFFFF"]);
 

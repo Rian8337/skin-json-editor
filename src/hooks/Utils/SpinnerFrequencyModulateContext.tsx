@@ -1,4 +1,4 @@
-import { Resettable } from "@structures/resettable/Resettable";
+import { Resettable } from "@structures/resettable";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);

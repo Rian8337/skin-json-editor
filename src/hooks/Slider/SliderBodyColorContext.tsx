@@ -1,7 +1,7 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { createColorError, validateColor } from "@utils/validators";
 import { SliderFollowComboColorContext } from "./SliderFollowComboColorContext";
-import { Resettable } from "@structures/resettable/Resettable";
+import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable("#FFFFFF");
 

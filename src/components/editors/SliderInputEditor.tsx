@@ -1,5 +1,5 @@
-import { NumberResettable } from "@structures/resettable/NumberResettable";
-import { Resettable } from "@structures/resettable/Resettable";
+import { NumberResettable } from "@structures/resettable";
+import { Resettable } from "@structures/resettable";
 import BaseEditor from "./BaseEditor";
 import "./SliderInputEditor.css";
 

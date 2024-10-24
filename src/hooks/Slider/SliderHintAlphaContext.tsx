@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
-import { NumberResettable } from "@structures/resettable/NumberResettable";
+import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({
     defaultValue: 0.3,

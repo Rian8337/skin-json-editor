@@ -4,6 +4,7 @@ import ComboNumberIllustrationCanvas from "../../illustration/combonumber/ComboN
 import ComboNumberIllustrationCircleSize from "../../illustration/combonumber/ComboNumberIllustrationCircleSize";
 import ComboNumberIllustrationNumbers from "../../illustration/combonumber/ComboNumberIllustrationNumbers";
 import HitCircleOverlap from "../Fonts/HitCircleOverlap";
+import AnimationFramerate from "./AnimationFramerate";
 import ComboTextScale from "./ComboTextScale";
 import DisableKiai from "./DisableKiai";
 import LimitComboTextLength from "./LimitComboTextLength";
@@ -21,6 +22,7 @@ export default function UtilsGroup() {
                 <LimitComboTextLength />
                 <ComboTextScale />
                 <HitCircleOverlap />
+                <AnimationFramerate />
             </SubGroup>
         </Group>
     );

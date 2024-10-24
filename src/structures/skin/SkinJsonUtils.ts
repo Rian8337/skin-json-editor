@@ -22,4 +22,11 @@ export interface SkinJsonUtils {
      * Defaults to 1.
      */
     comboTextScale?: number;
+
+    /**
+     * The framerate at which animations should be played.
+     *
+     * Defaults to 60.
+     */
+    animationFramerate?: number;
 }

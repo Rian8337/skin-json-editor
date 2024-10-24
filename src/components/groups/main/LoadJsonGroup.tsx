@@ -55,6 +55,7 @@ import { DifficultySwitcherHeightContext } from "@hooks/Layout/DifficultySwitche
 import { DifficultySwitcherScaleContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
 import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
 import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
+import { AnimationFrameContext } from "@hooks/Utils/AnimationFramerateContext";
 
 export default function LoadJsonGroup() {
     // A bit dirty, but oh well...
@@ -83,6 +84,7 @@ export default function LoadJsonGroup() {
     const limitComboTextLength = useContext(LimitComboTextLengthContext);
     const disableKiai = useContext(DisableKiaiContext);
     const comboTextScale = useContext(ComboTextScaleContext);
+    const animationFramerate = useContext(AnimationFrameContext);
 
     // Color
     const menuItemDefaultColor = useContext(MenuItemDefaultColorContext);
@@ -207,6 +209,7 @@ export default function LoadJsonGroup() {
                 limitComboTextLength.setValue(Utils?.limitComboTextLength);
                 disableKiai.setValue(Utils?.limitComboTextLength);
                 comboTextScale.setValue(Utils?.comboTextScale);
+                animationFramerate.setValue(Utils?.animationFramerate);
 
                 // Color
                 menuItemDefaultColor.setValue(Color?.MenuItemDefaultColor);

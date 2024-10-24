@@ -48,6 +48,13 @@ import { ComboPrefixContext } from "@hooks/Fonts/ComboPrefixContext";
 import { ScorePrefixContext } from "@hooks/Fonts/ScorePrefixContext";
 import { HitCirclePrefixContext } from "@hooks/Fonts/HitCirclePrefixContext";
 import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
+import { AnimationFrameContext } from "@hooks/Utils/AnimationFramerateContext";
+import { RotateCursorContext } from "@hooks/Cursor/RotateCursorContext";
+import { DifficultySwitcherHeightContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherHeightContext";
+import { DifficultySwitcherScaleContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
+import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
+import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
+import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
 
 export default function ResetJsonGroup() {
     // A bit dirty, but oh well...
@@ -69,10 +76,14 @@ export default function ResetJsonGroup() {
     const sliderHintWidth = useContext(SliderHintWidthContext);
     const sliderHintShowMinLength = useContext(SliderHintShowMinLengthContext);
 
+    // Cursor
+    const rotateCursor = useContext(RotateCursorContext);
+
     // Utilities
     const limitComboTextLength = useContext(LimitComboTextLengthContext);
     const disableKiai = useContext(DisableKiaiContext);
     const comboTextScale = useContext(ComboTextScaleContext);
+    const animationFramerate = useContext(AnimationFrameContext);
 
     // Color
     const menuItemDefaultColor = useContext(MenuItemDefaultColorContext);
@@ -126,6 +137,15 @@ export default function ResetJsonGroup() {
     const randomButtonX = useContext(RandomButtonXContext);
     const randomButtonY = useContext(RandomButtonYContext);
 
+    // Difficulty Switcher Button
+    const difficultySwitcherWidth = useContext(DifficultySwitcherWidthContext);
+    const difficultySwitcherHeight = useContext(
+        DifficultySwitcherHeightContext
+    );
+    const difficultySwitcherScale = useContext(DifficultySwitcherScaleContext);
+    const difficultySwitcherX = useContext(DifficultySwitcherXContext);
+    const difficultySwitcherY = useContext(DifficultySwitcherYContext);
+
     const onClick = () => {
         const confirmation = confirm(
             "Are you sure you want to reset all configurations to their default state?"
@@ -152,10 +172,14 @@ export default function ResetJsonGroup() {
         sliderHintWidth.reset();
         sliderHintShowMinLength.reset();
 
+        // Cursor
+        rotateCursor.reset();
+
         // Utilities
         limitComboTextLength.reset();
         disableKiai.reset();
         comboTextScale.reset();
+        animationFramerate.reset();
 
         // Color
         menuItemDefaultColor.reset();
@@ -200,6 +224,13 @@ export default function ResetJsonGroup() {
         randomButtonScale.reset();
         randomButtonX.reset();
         randomButtonY.reset();
+
+        // Difficulty switcher button
+        difficultySwitcherWidth.reset();
+        difficultySwitcherHeight.reset();
+        difficultySwitcherScale.reset();
+        difficultySwitcherX.reset();
+        difficultySwitcherY.reset();
 
         alert("All configurations have been reset successfully!");
     };

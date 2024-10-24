@@ -1,4 +1,4 @@
-import UserInputEditor from "@components/editors/UserInputEditor";
+import { UserInputEditor } from "@components/editors";
 import { AnimationFrameContext } from "@hooks/Utils";
 import { useContext } from "react";
 

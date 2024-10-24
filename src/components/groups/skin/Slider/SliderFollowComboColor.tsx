@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import CheckBoxEditor from "@components/editors/CheckBoxEditor";
+import { CheckBoxEditor } from "@components/editors";
 import { SliderFollowComboColorContext } from "@hooks/Slider";
 
 export default function SliderFollowComboColor() {

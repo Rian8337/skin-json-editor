@@ -1,4 +1,4 @@
-import CheckBoxEditor from "@components/editors/CheckBoxEditor";
+import { CheckBoxEditor } from "@components/editors";
 import { SliderBallFlipContext } from "@hooks/Slider";
 import { useContext } from "react";
 

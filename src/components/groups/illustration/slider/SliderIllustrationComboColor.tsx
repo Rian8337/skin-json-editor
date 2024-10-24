@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { SliderIllustrationComboColorContext } from "@hooks/Illustration";
-import SingleColorEditor from "@components/editors/SingleColorEditor";
+import { SingleColorEditor } from "@components/editors";
 
 export default function SliderIllustrationComboColor() {
     const ctx = useContext(SliderIllustrationComboColorContext);

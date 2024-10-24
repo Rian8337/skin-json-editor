@@ -1,4 +1,4 @@
-import CheckBoxEditor from "@components/editors/CheckBoxEditor";
+import { CheckBoxEditor } from "@components/editors";
 import { LayeredHitSoundsContext } from "@hooks/Utils";
 import { useContext } from "react";
 

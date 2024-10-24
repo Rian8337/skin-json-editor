@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { LimitComboTextLengthContext } from "@hooks/Utils";
-import CheckBoxEditor from "@components/editors/CheckBoxEditor";
+import { CheckBoxEditor } from "@components/editors";
 
 export default function LimitComboTextLength() {
     const ctx = useContext(LimitComboTextLengthContext);

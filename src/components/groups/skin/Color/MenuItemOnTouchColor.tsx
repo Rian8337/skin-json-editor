@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MenuItemOnTouchColorContext } from "@hooks/Color";
-import SingleColorEditor from "@components/editors/SingleColorEditor";
+import { SingleColorEditor } from "@components/editors";
 
 export default function MenuItemOnTouchColor() {
     const ctx = useContext(MenuItemOnTouchColorContext);

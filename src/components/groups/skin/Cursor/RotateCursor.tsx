@@ -1,4 +1,4 @@
-import CheckBoxEditor from "@components/editors/CheckBoxEditor";
+import { CheckBoxEditor } from "@components/editors";
 import { RotateCursorContext } from "@hooks/Cursor";
 import { useContext } from "react";
 

@@ -7,7 +7,7 @@ import {
     BackButtonXContext,
     BackButtonYContext,
 } from "@hooks/Layout";
-import CheckBoxEditor from "@components/editors/CheckBoxEditor";
+import { CheckBoxEditor } from "@components/editors";
 import LayoutButtonEditors from "./LayoutButtonEditors";
 
 export default function LayoutBackButton() {

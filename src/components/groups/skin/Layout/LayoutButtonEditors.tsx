@@ -1,6 +1,6 @@
 import { NumberResettable } from "@structures/resettable/NumberResettable";
 import { Resettable } from "@structures/resettable/Resettable";
-import UserInputEditor from "@components/editors/UserInputEditor";
+import { UserInputEditor } from "@components/editors";
 
 interface Props {
     /**

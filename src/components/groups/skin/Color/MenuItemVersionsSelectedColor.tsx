@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { MenuItemVersionsSelectedColorContext } from "@hooks/Color";
-import SingleColorEditor from "@components/editors/SingleColorEditor";
+import { SingleColorEditor } from "@components/editors";
 
 export default function MenuItemVersionsSelectedColor() {
     const ctx = useContext(MenuItemVersionsSelectedColorContext);

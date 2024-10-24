@@ -1,36 +1,21 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = "score";
+const resettable = new Resettable("score");
 
-export const ComboPrefixContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Fonts ??= {};
+        json.Fonts.comboPrefix = this.value;
+    }
+});
+
+export const ComboPrefixContext = createContext(resettable.clone());
 
 export function ComboPrefixContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <ComboPrefixContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Fonts ??= {};
-                        json.Fonts.comboPrefix = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </ComboPrefixContext.Provider>

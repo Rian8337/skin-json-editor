@@ -1,41 +1,24 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberJSONResettable } from "../../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
 
-const defaultValue = 0;
-const minValue = 0;
+const resettable = new NumberResettable({ defaultValue: 0, minValue: 0 });
 
-export const RandomButtonYContext = createContext(
-    createNumberJSONResettable(defaultValue, minValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Layout ??= {};
+        json.Layout.useNewLayout = true;
+
+        json.Layout.RandomButton ??= {};
+        json.Layout.RandomButton.y = this.value;
+    }
+});
+
+export const RandomButtonYContext = createContext(resettable.clone());
 
 export function RandomButtonYContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <RandomButtonYContext.Provider
-            value={{
-                defaultValue,
-                value,
-                minValue,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(Math.max(value, minValue));
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Layout ??= {};
-                        json.Layout.useNewLayout = true;
-
-                        json.Layout.RandomButton ??= {};
-                        json.Layout.RandomButton.y = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </RandomButtonYContext.Provider>

@@ -1,49 +1,35 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { createColorError, validateColor } from "../../utils/validators";
+import { createColorError, validateColor } from "@utils/validators";
 import { SliderFollowComboColorContext } from "./SliderFollowComboColorContext";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = "#FFFFFF";
+const resettable = new Resettable("#FFFFFF");
 
-export const SliderBodyColorContext = createContext(
-    createJSONResettable(defaultValue)
-);
+export const SliderBodyColorContext = createContext(resettable.clone());
 
 export function SliderBodyColorContextProvider(props: PropsWithChildren) {
     const sliderFollowComboColor = useContext(SliderFollowComboColorContext);
-    const [value, setValue] = useState(defaultValue);
+
+    resettable.setJsonSaveHandler(function (json) {
+        if (sliderFollowComboColor.value) {
+            return;
+        }
+
+        if (!validateColor(this.value)) {
+            throw createColorError(
+                `The slider body color (${this.value}) is invalid`
+            );
+        }
+
+        if (!this.isDefault) {
+            json.Slider ??= {};
+            json.Slider.sliderBodyColor = this.value;
+        }
+    });
 
     return (
         <SliderBodyColorContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (sliderFollowComboColor.value) {
-                        return;
-                    }
-
-                    if (!validateColor(value)) {
-                        throw createColorError(
-                            `The slider body color (${value}) is invalid`
-                        );
-                    }
-
-                    if (!this.isDefault) {
-                        json.Slider ??= {};
-                        json.Slider.sliderBodyColor = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderBodyColorContext.Provider>

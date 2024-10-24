@@ -1,36 +1,21 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = true;
+const resettable = new Resettable(true);
 
-export const RotateCursorContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Cursor ??= {};
+        json.Cursor.rotateCursor = this.value;
+    }
+});
+
+export const RotateCursorContext = createContext(resettable.clone());
 
 export function RotateCursorContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <RotateCursorContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Cursor ??= {};
-                        json.Cursor.rotateCursor = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </RotateCursorContext.Provider>

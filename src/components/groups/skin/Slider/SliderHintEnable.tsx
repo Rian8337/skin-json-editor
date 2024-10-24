@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SliderHintEnableContext } from "../../../../hooks/Slider/SliderHintEnableContext";
-import CheckBoxEditor from "../../../editors/CheckBoxEditor";
+import { SliderHintEnableContext } from "@hooks/Slider/SliderHintEnableContext";
+import CheckBoxEditor from "@components/editors/CheckBoxEditor";
 
 export default function SliderHintEnable() {
     const ctx = useContext(SliderHintEnableContext);

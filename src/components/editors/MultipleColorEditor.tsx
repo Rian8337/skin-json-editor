@@ -1,7 +1,8 @@
 import { useMemo, useState } from "react";
-import { Resettable } from "../../structures/resettable/Resettable";
 import "./MultipleColorEditor.css";
 import BaseEditor from "./BaseEditor";
+import { Resettable } from "@structures/resettable/Resettable";
+import { ArrayResettable } from "@structures/resettable/ArrayResettable";
 
 interface Props {
     /**
@@ -17,7 +18,7 @@ interface Props {
     /**
      * The configuration that the input is responsible for.
      */
-    resettable: Resettable<string[]>;
+    resettable: ArrayResettable<string> | Resettable<string[]>;
 
     /**
      * The label beside the color input box.
@@ -60,6 +61,7 @@ export default function MultipleColorEditor(props: Props) {
                                 newValue[index - 1],
                             ];
 
+                            //@ts-expect-error: existential generics are not supported
                             resettable.setValue(newValue);
                         }}
                     />
@@ -77,6 +79,7 @@ export default function MultipleColorEditor(props: Props) {
                                 newValue[index],
                             ];
 
+                            //@ts-expect-error: existential generics are not supported
                             resettable.setValue(newValue);
                         }}
                     />
@@ -90,6 +93,7 @@ export default function MultipleColorEditor(props: Props) {
                             const newValue = arr.slice();
                             newValue.splice(index, 1);
 
+                            //@ts-expect-error: existential generics are not supported
                             resettable.setValue(newValue);
                         }}
                     />
@@ -138,6 +142,7 @@ export default function MultipleColorEditor(props: Props) {
                     type="button"
                     value="Add"
                     onClick={() => {
+                        //@ts-expect-error: existential generics are not supported
                         resettable.setValue(resettable.value.concat(hexCode));
                     }}
                 />

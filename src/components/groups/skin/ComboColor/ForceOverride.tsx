@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import CheckBoxEditor from "../../../editors/CheckBoxEditor";
-import { ForceOverrideContext } from "../../../../hooks/ComboColor/ForceOverrideContext";
+import CheckBoxEditor from "@components/editors/CheckBoxEditor";
+import { ForceOverrideContext } from "@hooks/ComboColor/ForceOverrideContext";
 
 export default function ForceOverride() {
     const ctx = useContext(ForceOverrideContext);

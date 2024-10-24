@@ -1,36 +1,24 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberResettable } from "../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
+import { NumberResettableType } from "@structures/resettable/NumberResettableType";
 
-const defaultValue = 1;
-const minValue = 1;
-const maxValue = 99;
+const resettable = new NumberResettable({
+    type: NumberResettableType.integer,
+    defaultValue: 1,
+    minValue: 1,
+    maxValue: 99,
+});
 
 export const ComboNumberIllustrationNumbersContext = createContext(
-    createNumberResettable(defaultValue, minValue, maxValue)
+    resettable.clone()
 );
 
 export function ComboNumberIllustrationNumbersContextProvider(
     props: PropsWithChildren
 ) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <ComboNumberIllustrationNumbersContext.Provider
-            value={{
-                defaultValue,
-                value,
-                minValue,
-                maxValue,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(Math.max(minValue, Math.min(value, maxValue)));
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </ComboNumberIllustrationNumbersContext.Provider>

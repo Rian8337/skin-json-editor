@@ -1,42 +1,25 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberJSONResettable } from "../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
 
-const defaultValue = 1;
-const minValue = 0;
-const maxValue = undefined;
-const step = 0.1;
+const resettable = new NumberResettable({
+    defaultValue: 1,
+    minValue: 0,
+    step: 0.1,
+});
 
-export const ComboTextScaleContext = createContext(
-    createNumberJSONResettable(defaultValue, minValue, maxValue, step)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Utils ??= {};
+        json.Utils.comboTextScale = this.value;
+    }
+});
+
+export const ComboTextScaleContext = createContext(resettable.clone());
 
 export function ComboTextScaleContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <ComboTextScaleContext.Provider
-            value={{
-                defaultValue,
-                value,
-                minValue,
-                maxValue,
-                step,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(Math.max(value, minValue));
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Utils ??= {};
-                        json.Utils.comboTextScale = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </ComboTextScaleContext.Provider>

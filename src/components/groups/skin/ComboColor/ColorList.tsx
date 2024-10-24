@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ComboColorsContext } from "../../../../hooks/ComboColor/ComboColorsContext";
-import MultipleColorEditor from "../../../editors/MultipleColorEditor";
+import { ComboColorsContext } from "@hooks/ComboColor/ComboColorsContext";
+import MultipleColorEditor from "@components/editors/MultipleColorEditor";
 
 export default function ColorList() {
     const ctx = useContext(ComboColorsContext);

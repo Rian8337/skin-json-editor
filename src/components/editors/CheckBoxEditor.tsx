@@ -1,4 +1,4 @@
-import { Resettable } from "../../structures/resettable/Resettable";
+import { Resettable } from "@structures/resettable/Resettable";
 import BaseEditor from "./BaseEditor";
 
 interface Props {

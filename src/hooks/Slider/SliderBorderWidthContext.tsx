@@ -1,38 +1,21 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberJSONResettable } from "../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
 
-const defaultValue = 5.2;
-const minValue = 0;
+const resettable = new NumberResettable({ defaultValue: 5.2, minValue: 0 });
 
-export const SliderBorderWidthContext = createContext(
-    createNumberJSONResettable(defaultValue, minValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Slider ??= {};
+        json.Slider.sliderBorderWidth = this.value;
+    }
+});
+
+export const SliderBorderWidthContext = createContext(resettable.clone());
 
 export function SliderBorderWidthContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <SliderBorderWidthContext.Provider
-            value={{
-                defaultValue,
-                value,
-                minValue,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(Math.max(value, minValue));
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Slider ??= {};
-                        json.Slider.sliderBorderWidth = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderBorderWidthContext.Provider>

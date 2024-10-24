@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SliderBodyWidthContext } from "../../../../hooks/Slider/SliderBodyWidthContext";
-import UserInputEditor from "../../../editors/UserInputEditor";
+import { SliderBodyWidthContext } from "@hooks/Slider/SliderBodyWidthContext";
+import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function SliderBodyWidth() {
     const ctx = useContext(SliderBodyWidthContext);

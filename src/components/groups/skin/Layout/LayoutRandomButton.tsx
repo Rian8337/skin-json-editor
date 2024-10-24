@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import LayoutButtonEditors from "./LayoutButtonEditors";
-import { RandomButtonWidthContext } from "../../../../hooks/Layout/RandomButton/RandomButtonWidthContext";
-import { RandomButtonHeightContext } from "../../../../hooks/Layout/RandomButton/RandomButtonHeightContext";
-import { RandomButtonScaleContext } from "../../../../hooks/Layout/RandomButton/RandomButtonScaleContext";
-import { RandomButtonXContext } from "../../../../hooks/Layout/RandomButton/RandomButtonXContext";
-import { RandomButtonYContext } from "../../../../hooks/Layout/RandomButton/RandomButtonYContext";
+import { RandomButtonWidthContext } from "@hooks/Layout/RandomButton/RandomButtonWidthContext";
+import { RandomButtonHeightContext } from "@hooks/Layout/RandomButton/RandomButtonHeightContext";
+import { RandomButtonScaleContext } from "@hooks/Layout/RandomButton/RandomButtonScaleContext";
+import { RandomButtonXContext } from "@hooks/Layout/RandomButton/RandomButtonXContext";
+import { RandomButtonYContext } from "@hooks/Layout/RandomButton/RandomButtonYContext";
 
 export default function LayoutRandomButton() {
     const width = useContext(RandomButtonWidthContext);

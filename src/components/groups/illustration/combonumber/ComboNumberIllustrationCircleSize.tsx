@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ComboNumberIllustrationCircleSizeContext } from "../../../../hooks/Illustration/ComboNumberIllustrationCircleSizeContext";
-import SliderInputEditor from "../../../editors/SliderInputEditor";
+import { ComboNumberIllustrationCircleSizeContext } from "@hooks/Illustration/ComboNumberIllustrationCircleSizeContext";
+import SliderInputEditor from "@components/editors/SliderInputEditor";
 
 export default function ComboNumberIllustrationCircleSize() {
     const ctx = useContext(ComboNumberIllustrationCircleSizeContext);

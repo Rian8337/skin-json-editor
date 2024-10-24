@@ -1,5 +1,5 @@
-import { isNumberResettable } from "../../structures/resettable/NumberResettable";
-import { Resettable } from "../../structures/resettable/Resettable";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
+import { Resettable } from "@structures/resettable/Resettable";
 import BaseEditor from "./BaseEditor";
 import "./UserInputEditor.css";
 
@@ -17,7 +17,7 @@ interface Props {
     /**
      * The configuration that the input is responsible for.
      */
-    resettable: Resettable<string | number>;
+    resettable: Resettable<string> | Resettable<number> | NumberResettable;
 }
 
 export default function UserInputEditor(props: Props) {
@@ -28,33 +28,41 @@ export default function UserInputEditor(props: Props) {
             <div className="json-item-editor-flex-container">
                 <input
                     className="json-item-editor-input user-input-editor-input"
-                    type={isNumberResettable(resettable) ? "number" : "text"}
+                    type={
+                        resettable instanceof NumberResettable ||
+                        typeof resettable.defaultValue === "number"
+                            ? "number"
+                            : "text"
+                    }
                     min={
-                        isNumberResettable(resettable)
+                        resettable instanceof NumberResettable
                             ? resettable.minValue
                             : undefined
                     }
                     max={
-                        isNumberResettable(resettable)
+                        resettable instanceof NumberResettable
                             ? resettable.maxValue
                             : undefined
                     }
                     step={
-                        isNumberResettable(resettable)
+                        resettable instanceof NumberResettable
                             ? resettable.step
                             : undefined
                     }
                     value={resettable.value}
                     onChange={(event) => {
                         // Default to default value if there is nothing in the input.
-                        if (isNumberResettable(resettable)) {
+                        if (
+                            resettable instanceof NumberResettable ||
+                            typeof resettable.value === "number"
+                        ) {
                             const value = parseFloat(event.target.value);
 
-                            resettable.setValue(
+                            (resettable as Resettable<number>).setValue(
                                 !Number.isNaN(value) ? value : undefined
                             );
                         } else {
-                            resettable.setValue(
+                            (resettable as Resettable<string>).setValue(
                                 event.target.value || undefined
                             );
                         }

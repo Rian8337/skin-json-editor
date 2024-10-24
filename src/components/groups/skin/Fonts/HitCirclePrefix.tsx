@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { HitCirclePrefixContext } from "../../../../hooks/Fonts/HitCirclePrefixContext";
-import UserInputEditor from "../../../editors/UserInputEditor";
+import { HitCirclePrefixContext } from "@hooks/Fonts/HitCirclePrefixContext";
+import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function HitCirclePrefix() {
     const ctx = useContext(HitCirclePrefixContext);

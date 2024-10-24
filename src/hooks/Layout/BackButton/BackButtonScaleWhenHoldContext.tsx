@@ -1,41 +1,26 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createJSONResettable } from "../../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = true;
+const resettable = new Resettable(true);
 
-export const BackButtonScaleWhenHoldContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Layout ??= {};
+        json.Layout.useNewLayout = true;
+
+        json.Layout.BackButton ??= {};
+        json.Layout.BackButton.scaleWhenHold = this.value;
+    }
+});
+
+export const BackButtonScaleWhenHoldContext = createContext(resettable.clone());
 
 export function BackButtonScaleWhenHoldContextProvider(
     props: PropsWithChildren
 ) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <BackButtonScaleWhenHoldContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Layout ??= {};
-                        json.Layout.useNewLayout = true;
-
-                        json.Layout.BackButton ??= {};
-                        json.Layout.BackButton.scaleWhenHold = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </BackButtonScaleWhenHoldContext.Provider>

@@ -1,46 +1,24 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberJSONResettable } from "../../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
 
-const defaultValue = -1;
-const minValue = -1;
+const resettable = new NumberResettable({ defaultValue: -1, minValue: -1 });
 
-export const RandomButtonWidthContext = createContext(
-    createNumberJSONResettable(defaultValue, minValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (this.value >= 0) {
+        json.Layout ??= {};
+        json.Layout.useNewLayout = true;
+
+        json.Layout.RandomButton ??= {};
+        json.Layout.RandomButton.w = this.value;
+    }
+});
+
+export const RandomButtonWidthContext = createContext(resettable.clone());
 
 export function RandomButtonWidthContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <RandomButtonWidthContext.Provider
-            value={{
-                defaultValue,
-                value,
-                minValue,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    if (value < 0 && value !== defaultValue) {
-                        setValue(defaultValue);
-                        return;
-                    }
-
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Layout ??= {};
-                        json.Layout.useNewLayout = true;
-
-                        json.Layout.RandomButton ??= {};
-                        json.Layout.RandomButton.w = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </RandomButtonWidthContext.Provider>

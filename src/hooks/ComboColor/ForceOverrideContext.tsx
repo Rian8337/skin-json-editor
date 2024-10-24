@@ -1,36 +1,21 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = false;
+const resettable = new Resettable(false);
 
-export const ForceOverrideContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (this.value) {
+        json.ComboColor ??= {};
+        json.ComboColor.forceOverride = this.value;
+    }
+});
+
+export const ForceOverrideContext = createContext(resettable.clone());
 
 export function ForceOverrideContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <ForceOverrideContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON: (json) => {
-                    if (value) {
-                        json.ComboColor ??= {};
-                        json.ComboColor.forceOverride = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </ForceOverrideContext.Provider>

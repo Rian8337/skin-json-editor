@@ -1,5 +1,5 @@
-import { Resettable } from "../../structures/resettable/Resettable";
-import { validateColor } from "../../utils/validators";
+import { Resettable } from "@structures/resettable/Resettable";
+import { validateColor } from "@utils/validators";
 import BaseEditor from "./BaseEditor";
 
 interface Props {
@@ -16,7 +16,7 @@ interface Props {
     /**
      * The configuration that the input is responsible for.
      */
-    resettable: Resettable<string | undefined>;
+    resettable: Resettable<string> | Resettable<string | undefined>;
 }
 
 export default function SingleColorEditor(props: Props) {

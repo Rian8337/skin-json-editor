@@ -1,9 +1,24 @@
-import { Resettable } from "./Resettable";
+import {
+    Resettable,
+    ResettableJSONSaveHandler,
+    ResettableStateHook,
+} from "./Resettable";
+import { NumberResettableType } from "./NumberResettableType";
 
 /**
- * A number `Resettable` that has additional properties to deal with numbers.
+ * The options for a `NumberResettable`.
  */
-export interface NumberResettable extends Resettable<number> {
+export interface NumberResettableOptions {
+    /**
+     * The default value of this `NumberResettable`.
+     */
+    readonly defaultValue: number;
+
+    /**
+     * The data type of the number stored in this `NumberResettable`. Defaults to `float`.
+     */
+    readonly type?: NumberResettableType;
+
     /**
      * The minimum number allowed.
      */
@@ -21,12 +36,75 @@ export interface NumberResettable extends Resettable<number> {
 }
 
 /**
- * Determines if a `Resettable` is a `NumberResettable`.
- *
- * @param resettable The `Resettable`.
+ * A number `Resettable` that has additional properties to deal with numbers.
  */
-export function isNumberResettable(
-    resettable: Resettable
-): resettable is NumberResettable {
-    return typeof resettable.value === "number";
+export class NumberResettable
+    extends Resettable<number>
+    implements NumberResettableOptions
+{
+    readonly type: NumberResettableType;
+    readonly minValue?: number;
+    readonly maxValue?: number;
+    readonly step?: number;
+
+    /**
+     * Creates a new `NumberResettable`.
+     *
+     * @param options The options for this `NumberResettable`.
+     */
+    constructor(options: NumberResettableOptions) {
+        super(options.defaultValue);
+
+        this.type = options.type ?? NumberResettableType.float;
+        this.minValue = options.minValue;
+        this.maxValue = options.maxValue;
+        this.step = options.step;
+    }
+
+    override setValue(value = this.defaultValue) {
+        if (this.minValue !== undefined) {
+            value = Math.max(this.minValue, value);
+        }
+
+        if (this.maxValue !== undefined) {
+            value = Math.min(this.maxValue, value);
+        }
+
+        switch (this.type) {
+            case NumberResettableType.integer:
+                super.setValue(Math.trunc(value));
+                break;
+
+            case NumberResettableType.float:
+                super.setValue(Math.fround(value));
+                break;
+        }
+    }
+
+    //@ts-expect-error: method should return its own instance type
+    override clone(): NumberResettable {
+        const clone = new NumberResettable({
+            defaultValue: this.defaultValue,
+            type: this.type,
+            minValue: this.minValue,
+            maxValue: this.maxValue,
+            step: this.step,
+        });
+
+        clone._value = this._value;
+        clone.jsonSaveHandler = this.jsonSaveHandler as
+            | ResettableJSONSaveHandler<NumberResettable>
+            | undefined;
+
+        return clone;
+    }
+
+    //@ts-expect-error: method should return its own instance type
+    override with(stateHook: ResettableStateHook<number>): NumberResettable {
+        const clone = this.clone();
+
+        clone.attachStateHook(stateHook);
+
+        return clone;
+    }
 }

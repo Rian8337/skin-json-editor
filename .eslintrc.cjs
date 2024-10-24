@@ -8,6 +8,8 @@ module.exports = {
         "plugin:react-hooks/recommended",
         "plugin:react/recommended",
         "plugin:react/jsx-runtime",
+        "plugin:import-x/recommended",
+        "plugin:import-x/typescript",
     ],
     ignorePatterns: ["dist", ".eslintrc.cjs"],
     parser: "@typescript-eslint/parser",
@@ -24,5 +26,15 @@ module.exports = {
             { allowConstantExport: true },
         ],
         "@typescript-eslint/no-empty-function": "off",
+    },
+    settings: {
+        "import-x/parsers": {
+            "@typescript-eslint/parser": [".ts", ".tsx"],
+        },
+        "import-x/resolver": {
+            typescript: {
+                alwaysTryTypes: true,
+            },
+        },
     },
 };

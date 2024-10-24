@@ -1,37 +1,21 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberJSONResettable } from "../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
 
-const defaultValue = -2;
-const step = 1;
+const resettable = new NumberResettable({ defaultValue: -2 });
 
-export const HitCircleOverlapContext = createContext(
-    createNumberJSONResettable(defaultValue, undefined, undefined, step)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Fonts ??= {};
+        json.Fonts.hitCircleOverlap = this.value;
+    }
+});
+
+export const HitCircleOverlapContext = createContext(resettable.clone());
 
 export function HitCircleOverlapContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <HitCircleOverlapContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(Math.trunc(value));
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Fonts ??= {};
-                        json.Fonts.hitCircleOverlap = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </HitCircleOverlapContext.Provider>

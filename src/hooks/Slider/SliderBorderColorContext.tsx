@@ -1,43 +1,28 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createColorError, validateColor } from "../../utils/validators";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { createColorError, validateColor } from "@utils/validators";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = "#FFFFFF";
+const resettable = new Resettable("#FFFFFF");
 
-export const SliderBorderColorContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!validateColor(this.value)) {
+        throw createColorError(
+            `The slider border color (${this.value}) is invalid`
+        );
+    }
+
+    if (!this.isDefault) {
+        json.Slider ??= {};
+        json.Slider.sliderBorderColor = this.value;
+    }
+});
+
+export const SliderBorderColorContext = createContext(resettable.clone());
 
 export function SliderBorderColorContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <SliderBorderColorContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!validateColor(value)) {
-                        throw createColorError(
-                            `The slider border color (${value}) is invalid`
-                        );
-                    }
-
-                    if (!this.isDefault) {
-                        json.Slider ??= {};
-                        json.Slider.sliderBorderColor = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderBorderColorContext.Provider>

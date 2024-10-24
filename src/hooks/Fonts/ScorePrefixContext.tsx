@@ -1,36 +1,21 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = "score";
+const resettable = new Resettable("score");
 
-export const ScorePrefixContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Fonts ??= {};
+        json.Fonts.scorePrefix = this.value;
+    }
+});
+
+export const ScorePrefixContext = createContext(resettable.clone());
 
 export function ScorePrefixContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <ScorePrefixContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Fonts ??= {};
-                        json.Fonts.scorePrefix = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </ScorePrefixContext.Provider>

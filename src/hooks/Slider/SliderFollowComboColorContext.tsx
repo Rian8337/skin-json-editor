@@ -1,38 +1,23 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = false;
+const resettable = new Resettable(false);
 
-export const SliderFollowComboColorContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Slider ??= {};
+        json.Slider.sliderFollowComboColor = this.value;
+    }
+});
+
+export const SliderFollowComboColorContext = createContext(resettable.clone());
 
 export function SliderFollowComboColorContextProvider(
     props: PropsWithChildren
 ) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <SliderFollowComboColorContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Slider ??= {};
-                        json.Slider.sliderFollowComboColor = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderFollowComboColorContext.Provider>

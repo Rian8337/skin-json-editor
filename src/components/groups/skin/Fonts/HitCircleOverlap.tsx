@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { HitCircleOverlapContext } from "../../../../hooks/Fonts/HItCircleOverlapContext";
-import UserInputEditor from "../../../editors/UserInputEditor";
+import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
+import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function HitCircleOverlap() {
     const ctx = useContext(HitCircleOverlapContext);

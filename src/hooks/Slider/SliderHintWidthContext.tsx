@@ -1,40 +1,24 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
-import { createNumberJSONResettable } from "../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
 
-const defaultValue = 3;
-const minValue = 0;
+const resettable = new NumberResettable({ defaultValue: 3, minValue: 0 });
 
-export const SliderHintWidthContext = createContext(
-    createNumberJSONResettable(defaultValue, minValue)
-);
+export const SliderHintWidthContext = createContext(resettable.clone());
 
 export function SliderHintWidthContextProvider(props: PropsWithChildren) {
     const sliderHintEnable = useContext(SliderHintEnableContext);
-    const [value, setValue] = useState(defaultValue);
+
+    resettable.setJsonSaveHandler(function (json) {
+        if (sliderHintEnable.value && !this.isDefault) {
+            json.Slider ??= {};
+            json.Slider.sliderHintWidth = this.value;
+        }
+    });
 
     return (
         <SliderHintWidthContext.Provider
-            value={{
-                defaultValue,
-                value,
-                minValue,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(Math.max(value, minValue));
-                },
-                saveToJSON(json) {
-                    if (sliderHintEnable.value && !this.isDefault) {
-                        json.Slider ??= {};
-                        json.Slider.sliderHintWidth = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderHintWidthContext.Provider>

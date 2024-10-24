@@ -1,5 +1,5 @@
-import { isNumberResettable } from "../../structures/resettable/NumberResettable";
-import { Resettable } from "../../structures/resettable/Resettable";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
+import { Resettable } from "@structures/resettable/Resettable";
 import BaseEditor from "./BaseEditor";
 import "./SliderInputEditor.css";
 
@@ -17,7 +17,7 @@ interface Props {
     /**
      * The configuration that the input is responsible for.
      */
-    resettable: Resettable<number>;
+    resettable: Resettable<number> | NumberResettable;
 }
 
 export default function SliderInputEditor(props: Props) {
@@ -31,12 +31,12 @@ export default function SliderInputEditor(props: Props) {
                     type="number"
                     value={resettable.value}
                     min={
-                        isNumberResettable(resettable)
+                        resettable instanceof NumberResettable
                             ? resettable.minValue
                             : undefined
                     }
                     max={
-                        isNumberResettable(resettable)
+                        resettable instanceof NumberResettable
                             ? resettable.maxValue
                             : undefined
                     }
@@ -60,17 +60,19 @@ export default function SliderInputEditor(props: Props) {
                 type="range"
                 value={resettable.value}
                 min={
-                    isNumberResettable(resettable)
+                    resettable instanceof NumberResettable
                         ? resettable.minValue
                         : undefined
                 }
                 max={
-                    isNumberResettable(resettable)
+                    resettable instanceof NumberResettable
                         ? resettable.maxValue
                         : undefined
                 }
                 step={
-                    isNumberResettable(resettable) ? resettable.step : undefined
+                    resettable instanceof NumberResettable
+                        ? resettable.step
+                        : undefined
                 }
                 onChange={(event) => {
                     resettable.setValue(parseFloat(event.target.value));

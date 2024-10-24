@@ -1,36 +1,21 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = "default";
+const resettable = new Resettable("default");
 
-export const HitCirclePrefixContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Fonts ??= {};
+        json.Fonts.hitCirclePrefix = this.value;
+    }
+});
+
+export const HitCirclePrefixContext = createContext(resettable.clone());
 
 export function HitCirclePrefixContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <HitCirclePrefixContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Fonts ??= {};
-                        json.Fonts.hitCirclePrefix = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </HitCirclePrefixContext.Provider>

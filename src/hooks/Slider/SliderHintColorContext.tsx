@@ -1,49 +1,35 @@
 import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
-import { createColorError, validateColor } from "../../utils/validators";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { createColorError, validateColor } from "@utils/validators";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = undefined as string | undefined;
+const resettable = new Resettable<string | undefined>(undefined);
 
-export const SliderHintColorContext = createContext(
-    createJSONResettable(defaultValue)
-);
+export const SliderHintColorContext = createContext(resettable.clone());
 
 export function SliderHintColorContextProvider(props: PropsWithChildren) {
     const sliderHintEnable = useContext(SliderHintEnableContext);
-    const [value, setValue] = useState<string | undefined>(defaultValue);
+
+    resettable.setJsonSaveHandler(function (json) {
+        if (!sliderHintEnable.value) {
+            return;
+        }
+
+        if (!validateColor(this.value)) {
+            throw createColorError(
+                `The slider hint color (${this.value}) is invalid`
+            );
+        }
+
+        if (!this.isDefault) {
+            json.Slider ??= {};
+            json.Slider.sliderHintColor = this.value;
+        }
+    });
 
     return (
         <SliderHintColorContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!sliderHintEnable.value) {
-                        return;
-                    }
-
-                    if (!validateColor(value)) {
-                        throw createColorError(
-                            `The slider hint color (${value}) is invalid`
-                        );
-                    }
-
-                    if (!this.isDefault) {
-                        json.Slider ??= {};
-                        json.Slider.sliderHintColor = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderHintColorContext.Provider>

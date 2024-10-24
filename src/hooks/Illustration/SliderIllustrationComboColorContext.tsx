@@ -1,32 +1,18 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createResettable } from "../../utils/ResettableFactory";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = "#FFFFFF";
+const resettable = new Resettable("#FFFFFF");
 
 export const SliderIllustrationComboColorContext = createContext(
-    createResettable(defaultValue)
+    resettable.clone()
 );
 
 export function SliderIllustrationComboColorContextProvider(
     props: PropsWithChildren
 ) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <SliderIllustrationComboColorContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderIllustrationComboColorContext.Provider>

@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { ComboTextScaleContext } from "../../../../hooks/Utils/ComboTextScaleContext";
-import UserInputEditor from "../../../editors/UserInputEditor";
+import { ComboTextScaleContext } from "@hooks/Utils/ComboTextScaleContext";
+import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function ComboTextScale() {
     const ctx = useContext(ComboTextScaleContext);

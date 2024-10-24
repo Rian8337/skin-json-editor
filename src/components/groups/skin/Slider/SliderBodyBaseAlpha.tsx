@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { SliderBodyBaseAlphaContext } from "../../../../hooks/Slider/SliderBodyBaseAlphaContext";
-import SliderInputEditor from "../../../editors/SliderInputEditor";
+import { SliderBodyBaseAlphaContext } from "@hooks/Slider/SliderBodyBaseAlphaContext";
+import SliderInputEditor from "@components/editors/SliderInputEditor";
 
 export default function SliderBodyBaseAlpha() {
     const ctx = useContext(SliderBodyBaseAlphaContext);

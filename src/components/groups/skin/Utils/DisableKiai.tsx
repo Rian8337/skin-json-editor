@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { DisableKiaiContext } from "../../../../hooks/Utils/DisableKiaiContext";
-import CheckBoxEditor from "../../../editors/CheckBoxEditor";
+import { DisableKiaiContext } from "@hooks/Utils/DisableKiaiContext";
+import CheckBoxEditor from "@components/editors/CheckBoxEditor";
 
 export default function DisableKiai() {
     const ctx = useContext(DisableKiaiContext);

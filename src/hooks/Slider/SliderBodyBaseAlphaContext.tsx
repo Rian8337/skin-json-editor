@@ -1,42 +1,26 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createNumberJSONResettable } from "../../utils/ResettableFactory";
+import { NumberResettable } from "@structures/resettable/NumberResettable";
 
-const defaultValue = 0.7;
-const minValue = 0;
-const maxValue = 1;
-const step = 0.01;
+const resettable = new NumberResettable({
+    defaultValue: 0.7,
+    minValue: 0,
+    maxValue: 1,
+    step: 0.01,
+});
 
-export const SliderBodyBaseAlphaContext = createContext(
-    createNumberJSONResettable(defaultValue, minValue, maxValue, step)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!this.isDefault) {
+        json.Slider ??= {};
+        json.Slider.sliderBodyBaseAlpha = this.value;
+    }
+});
+
+export const SliderBodyBaseAlphaContext = createContext(resettable.clone());
 
 export function SliderBodyBaseAlphaContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <SliderBodyBaseAlphaContext.Provider
-            value={{
-                defaultValue,
-                value,
-                minValue,
-                maxValue,
-                step,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(Math.max(minValue, Math.min(value, maxValue)));
-                },
-                saveToJSON(json) {
-                    if (!this.isDefault) {
-                        json.Slider ??= {};
-                        json.Slider.sliderBodyBaseAlpha = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </SliderBodyBaseAlphaContext.Provider>

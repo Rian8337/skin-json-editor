@@ -1,5 +1,5 @@
-import Group from "../../Group";
-import SubGroup from "../../SubGroup";
+import Group from "@components/groups/Group";
+import SubGroup from "@components/groups/SubGroup";
 import MenuItemDefaultColor from "./MenuItemDefaultColor";
 import MenuItemDefaultTextColor from "./MenuItemDefaultTextColor";
 import MenuItemOnTouchColor from "./MenuItemOnTouchColor";

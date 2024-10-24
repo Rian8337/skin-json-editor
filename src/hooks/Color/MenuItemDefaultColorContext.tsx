@@ -1,43 +1,28 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { createColorError, validateColor } from "../../utils/validators";
-import { createJSONResettable } from "../../utils/ResettableFactory";
+import { createColorError, validateColor } from "@utils/validators";
+import { Resettable } from "@structures/resettable/Resettable";
 
-const defaultValue = undefined as string | undefined;
+const resettable = new Resettable<string | undefined>(undefined);
 
-export const MenuItemDefaultColorContext = createContext(
-    createJSONResettable(defaultValue)
-);
+resettable.setJsonSaveHandler(function (json) {
+    if (!validateColor(this.value)) {
+        throw createColorError(
+            `The default color for an unselected beatmapset card (${this.value}) is invalid`
+        );
+    }
+
+    if (!this.isDefault) {
+        json.Color ??= {};
+        json.Color.MenuItemDefaultColor = this.value;
+    }
+});
+
+export const MenuItemDefaultColorContext = createContext(resettable.clone());
 
 export function MenuItemDefaultColorContextProvider(props: PropsWithChildren) {
-    const [value, setValue] = useState(defaultValue);
-
     return (
         <MenuItemDefaultColorContext.Provider
-            value={{
-                defaultValue,
-                value,
-                get isDefault() {
-                    return value === defaultValue;
-                },
-                reset: () => {
-                    setValue(defaultValue);
-                },
-                setValue: (value = defaultValue) => {
-                    setValue(value);
-                },
-                saveToJSON(json) {
-                    if (!validateColor(value)) {
-                        throw createColorError(
-                            `The default color for an unselected beatmapset card (${value}) is invalid`
-                        );
-                    }
-
-                    if (!this.isDefault) {
-                        json.Color ??= {};
-                        json.Color.MenuItemDefaultColor = value;
-                    }
-                },
-            }}
+            value={resettable.with(useState(resettable.value))}
         >
             {props.children}
         </MenuItemDefaultColorContext.Provider>

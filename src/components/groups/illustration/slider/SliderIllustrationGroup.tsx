@@ -1,4 +1,4 @@
-import SubGroup from "../../SubGroup";
+import SubGroup from "@components/groups/SubGroup";
 import SliderIllustrationCanvas from "./SliderIllustrationCanvas";
 import SliderIllustrationCircleSize from "./SliderIllustrationCircleSize";
 import SliderIllustrationComboColor from "./SliderIllustrationComboColor";

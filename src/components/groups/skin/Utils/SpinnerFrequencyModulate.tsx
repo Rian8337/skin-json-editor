@@ -1,5 +1,5 @@
 import CheckBoxEditor from "@components/editors/CheckBoxEditor";
-import { SpinnerFrequencyModulateContext } from "@hooks/Utils/SpinnerFrequencyModulateContext";
+import { SpinnerFrequencyModulateContext } from "@hooks/Utils";
 import { useContext } from "react";
 
 export default function SpinnerFrequencyModulate() {

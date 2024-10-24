@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { MenuItemOnTouchColorContext } from "@hooks/Color/MenuItemOnTouchColorContext";
+import { MenuItemOnTouchColorContext } from "@hooks/Color";
 import SingleColorEditor from "@components/editors/SingleColorEditor";
 
 export default function MenuItemOnTouchColor() {

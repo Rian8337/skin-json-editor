@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import UserInputEditor from "@components/editors/UserInputEditor";
-import { SliderBorderWidthContext } from "@hooks/Slider/SliderBorderWidthContext";
+import { SliderBorderWidthContext } from "@hooks/Slider";
 
 export default function SliderBorderWidth() {
     const ctx = useContext(SliderBorderWidthContext);

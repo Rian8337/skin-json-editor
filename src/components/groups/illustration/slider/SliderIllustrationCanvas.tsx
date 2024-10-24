@@ -1,16 +1,20 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { SliderBodyColorContext } from "@hooks/Slider/SliderBodyColorContext";
-import { SliderIllustrationCircleSizeContext } from "@hooks/Illustration/SliderIllustrationCircleSizeContext";
-import { SliderBodyWidthContext } from "@hooks/Slider/SliderBodyWidthContext";
-import { SliderBorderWidthContext } from "@hooks/Slider/SliderBorderWidthContext";
-import { SliderBodyBaseAlphaContext } from "@hooks/Slider/SliderBodyBaseAlphaContext";
-import { SliderFollowComboColorContext } from "@hooks/Slider/SliderFollowComboColorContext";
-import { SliderIllustrationComboColorContext } from "@hooks/Illustration/SliderIllustrationComboColorContext";
-import { SliderHintEnableContext } from "@hooks/Slider/SliderHintEnableContext";
-import { SliderHintAlphaContext } from "@hooks/Slider/SliderHintAlphaContext";
-import { SliderHintColorContext } from "@hooks/Slider/SliderHintColorContext";
-import { SliderHintWidthContext } from "@hooks/Slider/SliderHintWidthContext";
-import { SliderBorderColorContext } from "@hooks/Slider/SliderBorderColorContext";
+import {
+    SliderBodyColorContext,
+    SliderBodyWidthContext,
+    SliderBorderWidthContext,
+    SliderBodyBaseAlphaContext,
+    SliderFollowComboColorContext,
+    SliderHintEnableContext,
+    SliderHintAlphaContext,
+    SliderHintColorContext,
+    SliderHintWidthContext,
+    SliderBorderColorContext,
+} from "@hooks/Slider";
+import {
+    SliderIllustrationCircleSizeContext,
+    SliderIllustrationComboColorContext,
+} from "@hooks/Illustration";
 import { circleSizeToScale, scaleToRadius } from "@utils/circleSizeCalculator";
 
 export default function SliderIllustrationCanvas() {

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SliderHintColorContext } from "@hooks/Slider/SliderHintColorContext";
+import { SliderHintColorContext } from "@hooks/Slider";
 import SingleColorEditor from "@components/editors/SingleColorEditor";
 
 export default function SliderHintColor() {

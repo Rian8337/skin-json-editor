@@ -5,10 +5,12 @@ import SliderBodyColor from "./SliderBodyColor";
 import SliderBodyWidth from "./SliderBodyWidth";
 import SliderBorderWidth from "./SliderBorderWidth";
 import SliderFollowComboColor from "./SliderFollowComboColor";
-import { SliderFollowComboColorContext } from "@hooks/Slider/SliderFollowComboColorContext";
+import {
+    SliderFollowComboColorContext,
+    SliderHintEnableContext,
+} from "@hooks/Slider";
 import SliderBorderColor from "./SliderBorderColor";
 import SliderHintEnable from "./SliderHintEnable";
-import { SliderHintEnableContext } from "@hooks/Slider/SliderHintEnableContext";
 import SliderHintAlpha from "./SliderHintAlpha";
 import SliderHintColor from "./SliderHintColor";
 import SliderHintWidth from "./SliderHintWidth";

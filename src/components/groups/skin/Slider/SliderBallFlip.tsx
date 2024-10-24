@@ -1,5 +1,5 @@
 import CheckBoxEditor from "@components/editors/CheckBoxEditor";
-import { SliderBallFlipContext } from "@hooks/Slider/SliderBallFlipContext";
+import { SliderBallFlipContext } from "@hooks/Slider";
 import { useContext } from "react";
 
 export default function SliderBallFlip() {

@@ -1,8 +1,10 @@
-import { DifficultySwitcherHeightContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherHeightContext";
-import { DifficultySwitcherScaleContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
-import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
-import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
-import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
+import {
+    DifficultySwitcherHeightContext,
+    DifficultySwitcherScaleContext,
+    DifficultySwitcherWidthContext,
+    DifficultySwitcherXContext,
+    DifficultySwitcherYContext,
+} from "@hooks/Layout";
 import { useContext } from "react";
 import LayoutButtonEditors from "./LayoutButtonEditors";
 

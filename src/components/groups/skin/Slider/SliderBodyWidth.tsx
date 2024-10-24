@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SliderBodyWidthContext } from "@hooks/Slider/SliderBodyWidthContext";
+import { SliderBodyWidthContext } from "@hooks/Slider";
 import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function SliderBodyWidth() {

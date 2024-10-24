@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ComboNumberIllustrationNumbersContext } from "@hooks/Illustration/ComboNumberIllustrationNumbersContext";
+import { ComboNumberIllustrationNumbersContext } from "@hooks/Illustration";
 import SliderInputEditor from "@components/editors/SliderInputEditor";
 
 export default function ComboNumberIllustrationNumbers() {

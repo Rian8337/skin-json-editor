@@ -2,7 +2,7 @@ import { useContext } from "react";
 import Group from "../../Group";
 import ColorList from "./ColorList";
 import ForceOverride from "./ForceOverride";
-import { ForceOverrideContext } from "@hooks/ComboColor/ForceOverrideContext";
+import { ForceOverrideContext } from "@hooks/ComboColor";
 
 export default function ComboColorGroup() {
     const forceOverride = useContext(ForceOverrideContext);

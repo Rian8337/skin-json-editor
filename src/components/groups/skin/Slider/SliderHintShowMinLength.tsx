@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SliderHintShowMinLengthContext } from "@hooks/Slider/SliderHintShowMinLengthContext";
+import { SliderHintShowMinLengthContext } from "@hooks/Slider";
 import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function SliderHintShowMinLength() {

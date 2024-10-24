@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ComboPrefixContext } from "@hooks/Fonts/ComboPrefixContext";
+import { ComboPrefixContext } from "@hooks/Fonts";
 import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function ComboPrefix() {

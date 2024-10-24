@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SliderHintAlphaContext } from "@hooks/Slider/SliderHintAlphaContext";
+import { SliderHintAlphaContext } from "@hooks/Slider";
 import SliderInputEditor from "@components/editors/SliderInputEditor";
 
 export default function SliderHintAlpha() {

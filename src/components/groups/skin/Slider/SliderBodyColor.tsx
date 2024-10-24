@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { SliderBodyColorContext } from "@hooks/Slider/SliderBodyColorContext";
+import { SliderBodyColorContext } from "@hooks/Slider";
 import SingleColorEditor from "@components/editors/SingleColorEditor";
 
 export default function SliderBodyColor() {

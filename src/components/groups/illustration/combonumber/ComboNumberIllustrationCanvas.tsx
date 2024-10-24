@@ -1,10 +1,14 @@
 import { useRef, useState, useEffect, useContext, useMemo } from "react";
-import { ComboNumberIllustrationCircleSizeContext } from "@hooks/Illustration/ComboNumberIllustrationCircleSizeContext";
+import {
+    ComboNumberIllustrationCircleSizeContext,
+    ComboNumberIllustrationNumbersContext,
+} from "@hooks/Illustration";
 import { circleSizeToScale, scaleToRadius } from "@utils/circleSizeCalculator";
-import { ComboTextScaleContext } from "@hooks/Utils/ComboTextScaleContext";
-import { LimitComboTextLengthContext } from "@hooks/Utils/LimitComboTextLengthContext";
-import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
-import { ComboNumberIllustrationNumbersContext } from "@hooks/Illustration/ComboNumberIllustrationNumbersContext";
+import {
+    ComboTextScaleContext,
+    LimitComboTextLengthContext,
+} from "@hooks/Utils";
+import { HitCircleOverlapContext } from "@hooks/Fonts";
 
 export default function ComboNumberIllustrationCanvas() {
     const circleSize = useContext(ComboNumberIllustrationCircleSizeContext);

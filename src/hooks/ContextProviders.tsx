@@ -1,65 +1,12 @@
 import { FC } from "react";
-import { MenuItemDefaultColorContextProvider } from "./Color/MenuItemDefaultColorContext";
-import { MenuItemDefaultTextColorContextProvider } from "./Color/MenuItemDefaultTextColorContext";
-import { MenuItemOnTouchColorContextProvider } from "./Color/MenuItemOnTouchColorContext";
-import { MenuItemSelectedTextColorContextProvider } from "./Color/MenuItemSelectedTextColorContext";
-import { MenuItemVersionsDefaultColorContextProvider } from "./Color/MenuItemVersionsDefaultColorContext";
-import { MenuItemVersionsSelectedColorContextProvider } from "./Color/MenuItemVersionsSelectedColorContext";
-import { ComboColorsContextProvider } from "./ComboColor/ComboColorsContext";
-import { ForceOverrideContextProvider } from "./ComboColor/ForceOverrideContext";
-import { RotateCursorContextProvider } from "./Cursor/RotateCursorContext";
-import { ComboPrefixContextProvider } from "./Fonts/ComboPrefixContext";
-import { HitCirclePrefixContextProvider } from "./Fonts/HitCirclePrefixContext";
-import { ScorePrefixContextProvider } from "./Fonts/ScorePrefixContext";
-import { BackButtonHeightContextProvider } from "./Layout/BackButton/BackButtonHeightContext";
-import { BackButtonScaleContextProvider } from "./Layout/BackButton/BackButtonScaleContext";
-import { BackButtonScaleWhenHoldContextProvider } from "./Layout/BackButton/BackButtonScaleWhenHoldContext";
-import { BackButtonWidthContextProvider } from "./Layout/BackButton/BackButtonWidthContext";
-import { ModsButtonHeightContextProvider } from "./Layout/ModsButton/ModsButtonHeightContext";
-import { ModsButtonScaleContextProvider } from "./Layout/ModsButton/ModsButtonScaleContext";
-import { ModsButtonWidthContextProvider } from "./Layout/ModsButton/ModsButtonWidthContext";
-import { OptionsButtonHeightContextProvider } from "./Layout/OptionsButton/OptionsButtonHeightContext";
-import { OptionsButtonScaleContextProvider } from "./Layout/OptionsButton/OptionsButtonScaleContext";
-import { OptionsButtonWidthContextProvider } from "./Layout/OptionsButton/OptionsButtonWidthContext";
-import { RandomButtonHeightContextProvider } from "./Layout/RandomButton/RandomButtonHeightContext";
-import { RandomButtonWidthContextProvider } from "./Layout/RandomButton/RandomButtonWidthContext";
-import { RandomButtonScaleContextProvider } from "./Layout/RandomButton/RandomButtonScaleContext";
-import { SliderBodyBaseAlphaContextProvider } from "./Slider/SliderBodyBaseAlphaContext";
-import { SliderBodyColorContextProvider } from "./Slider/SliderBodyColorContext";
-import { SliderBodyWidthContextProvider } from "./Slider/SliderBodyWidthContext";
-import { SliderBorderColorContextProvider } from "./Slider/SliderBorderColorContext";
-import { SliderBorderWidthContextProvider } from "./Slider/SliderBorderWidthContext";
-import { SliderFollowComboColorContextProvider } from "./Slider/SliderFollowComboColorContext";
-import { SliderHintAlphaContextProvider } from "./Slider/SliderHintAlphaContext";
-import { SliderHintColorContextProvider } from "./Slider/SliderHintColorContext";
-import { SliderHintEnableContextProvider } from "./Slider/SliderHintEnableContext";
-import { SliderHintShowMinLengthContextProvider } from "./Slider/SliderHintShowMinLengthContext";
-import { SliderHintWidthContextProvider } from "./Slider/SliderHintWidthContext";
-import { ComboTextScaleContextProvider } from "./Utils/ComboTextScaleContext";
-import { DisableKiaiContextProvider } from "./Utils/DisableKiaiContext";
-import { LimitComboTextLengthContextProvider } from "./Utils/LimitComboTextLengthContext";
-import { BackButtonXContextProvider } from "./Layout/BackButton/BackButtonXContext";
-import { BackButtonYContextProvider } from "./Layout/BackButton/BackButtonYContext";
-import { ModsButtonXContextProvider } from "./Layout/ModsButton/ModsButtonXContext";
-import { ModsButtonYContextProvider } from "./Layout/ModsButton/ModsButtonYContext";
-import { OptionsButtonXContextProvider } from "./Layout/OptionsButton/OptionsButtonXContext";
-import { OptionsButtonYContextProvider } from "./Layout/OptionsButton/OptionsButtonYContext";
-import { RandomButtonXContextProvider } from "./Layout/RandomButton/RandomButtonXContext";
-import { RandomButtonYContextProvider } from "./Layout/RandomButton/RandomButtonYContext";
-import { HitCircleOverlapContextProvider } from "./Fonts/HItCircleOverlapContext";
-import { SliderIllustrationCircleSizeContextProvider } from "./Illustration/SliderIllustrationCircleSizeContext";
-import { SliderIllustrationComboColorContextProvider } from "./Illustration/SliderIllustrationComboColorContext";
-import { ComboNumberIllustrationCircleSizeContextProvider } from "./Illustration/ComboNumberIllustrationCircleSizeContext";
-import { ComboNumberIllustrationNumbersContextProvider } from "./Illustration/ComboNumberIllustrationNumbersContext";
-import { DifficultySwitcherHeightContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherHeightContext";
-import { DifficultySwitcherScaleContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
-import { DifficultySwitcherWidthContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
-import { DifficultySwitcherXContextProvider } from "./Layout/DifficultySwitcher/DifficultySwitcherXContext";
-import { DifficultySwitcherYContextProvider } from "./Layout/DifficultySwitcher/ModsButtonYContext";
-import { AnimationFrameContextProvider } from "./Utils/AnimationFramerateContext";
-import { LayeredHitSoundsContextProvider } from "./Utils/LayeredHitSoundsContext";
-import { SpinnerFrequencyModulateContextProvider } from "./Utils/SpinnerFrequencyModulateContext";
-import SliderBallFlipContextProvider from "./Slider/SliderBallFlipContext";
+import * as Color from "./Color";
+import * as ComboColor from "./ComboColor";
+import * as Cursor from "./Cursor";
+import * as Fonts from "./Fonts";
+import * as Illustration from "./Illustration";
+import * as Layout from "./Layout";
+import * as Slider from "./Slider";
+import * as Utils from "./Utils";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -71,89 +18,89 @@ const compose =
 
 export const Providers = compose(
     // Color
-    MenuItemDefaultColorContextProvider,
-    MenuItemDefaultTextColorContextProvider,
-    MenuItemOnTouchColorContextProvider,
-    MenuItemSelectedTextColorContextProvider,
-    MenuItemVersionsDefaultColorContextProvider,
-    MenuItemVersionsSelectedColorContextProvider,
+    Color.MenuItemDefaultColorContextProvider,
+    Color.MenuItemDefaultTextColorContextProvider,
+    Color.MenuItemOnTouchColorContextProvider,
+    Color.MenuItemSelectedTextColorContextProvider,
+    Color.MenuItemVersionsDefaultColorContextProvider,
+    Color.MenuItemVersionsSelectedColorContextProvider,
 
     // ComboColor
-    ComboColorsContextProvider,
-    ForceOverrideContextProvider,
+    ComboColor.ComboColorsContextProvider,
+    ComboColor.ForceOverrideContextProvider,
 
     // Cursor
-    RotateCursorContextProvider,
+    Cursor.RotateCursorContextProvider,
 
     // Fonts
-    ComboPrefixContextProvider,
-    HitCirclePrefixContextProvider,
-    ScorePrefixContextProvider,
-    HitCircleOverlapContextProvider,
+    Fonts.ComboPrefixContextProvider,
+    Fonts.HitCirclePrefixContextProvider,
+    Fonts.ScorePrefixContextProvider,
+    Fonts.HitCircleOverlapContextProvider,
 
-    // Layout (BackButton)
-    BackButtonHeightContextProvider,
-    BackButtonScaleContextProvider,
-    BackButtonScaleWhenHoldContextProvider,
-    BackButtonWidthContextProvider,
-    BackButtonXContextProvider,
-    BackButtonYContextProvider,
+    // Layout (Back Button)
+    Layout.BackButtonHeightContextProvider,
+    Layout.BackButtonScaleContextProvider,
+    Layout.BackButtonScaleWhenHoldContextProvider,
+    Layout.BackButtonWidthContextProvider,
+    Layout.BackButtonXContextProvider,
+    Layout.BackButtonYContextProvider,
 
-    // Layout (ModsButton)
-    ModsButtonHeightContextProvider,
-    ModsButtonScaleContextProvider,
-    ModsButtonWidthContextProvider,
-    ModsButtonXContextProvider,
-    ModsButtonYContextProvider,
+    // Layout (Mods Button)
+    Layout.ModsButtonHeightContextProvider,
+    Layout.ModsButtonScaleContextProvider,
+    Layout.ModsButtonWidthContextProvider,
+    Layout.ModsButtonXContextProvider,
+    Layout.ModsButtonYContextProvider,
 
-    // Layout (OptionsButton)
-    OptionsButtonHeightContextProvider,
-    OptionsButtonScaleContextProvider,
-    OptionsButtonWidthContextProvider,
-    OptionsButtonXContextProvider,
-    OptionsButtonYContextProvider,
+    // Layout (Options Button)
+    Layout.OptionsButtonHeightContextProvider,
+    Layout.OptionsButtonScaleContextProvider,
+    Layout.OptionsButtonWidthContextProvider,
+    Layout.OptionsButtonXContextProvider,
+    Layout.OptionsButtonYContextProvider,
 
-    // Layout (RandomButton)
-    RandomButtonHeightContextProvider,
-    RandomButtonScaleContextProvider,
-    RandomButtonWidthContextProvider,
-    RandomButtonXContextProvider,
-    RandomButtonYContextProvider,
+    // Layout (Random Button)
+    Layout.RandomButtonHeightContextProvider,
+    Layout.RandomButtonScaleContextProvider,
+    Layout.RandomButtonWidthContextProvider,
+    Layout.RandomButtonXContextProvider,
+    Layout.RandomButtonYContextProvider,
 
-    // Layout (DifficultySwitcher),
-    DifficultySwitcherHeightContextProvider,
-    DifficultySwitcherScaleContextProvider,
-    DifficultySwitcherWidthContextProvider,
-    DifficultySwitcherXContextProvider,
-    DifficultySwitcherYContextProvider,
+    // Layout (Difficulty Switcher),
+    Layout.DifficultySwitcherHeightContextProvider,
+    Layout.DifficultySwitcherScaleContextProvider,
+    Layout.DifficultySwitcherWidthContextProvider,
+    Layout.DifficultySwitcherXContextProvider,
+    Layout.DifficultySwitcherYContextProvider,
 
     // Slider
-    SliderBodyBaseAlphaContextProvider,
-    SliderBodyColorContextProvider,
-    SliderBodyWidthContextProvider,
-    SliderBorderColorContextProvider,
-    SliderBorderWidthContextProvider,
-    SliderFollowComboColorContextProvider,
-    SliderBallFlipContextProvider,
-    SliderHintAlphaContextProvider,
-    SliderHintColorContextProvider,
-    SliderHintEnableContextProvider,
-    SliderHintShowMinLengthContextProvider,
-    SliderHintWidthContextProvider,
+    Slider.SliderBodyBaseAlphaContextProvider,
+    Slider.SliderBodyColorContextProvider,
+    Slider.SliderBodyWidthContextProvider,
+    Slider.SliderBorderColorContextProvider,
+    Slider.SliderBorderWidthContextProvider,
+    Slider.SliderFollowComboColorContextProvider,
+    Slider.SliderBallFlipContextProvider,
+    Slider.SliderHintAlphaContextProvider,
+    Slider.SliderHintColorContextProvider,
+    Slider.SliderHintEnableContextProvider,
+    Slider.SliderHintShowMinLengthContextProvider,
+    Slider.SliderHintWidthContextProvider,
 
     // Utils
-    ComboTextScaleContextProvider,
-    DisableKiaiContextProvider,
-    LimitComboTextLengthContextProvider,
-    AnimationFrameContextProvider,
-    LayeredHitSoundsContextProvider,
-    SpinnerFrequencyModulateContextProvider,
+    Utils.ComboTextScaleContextProvider,
+    Utils.DisableKiaiContextProvider,
+    Utils.LimitComboTextLengthContextProvider,
+    Utils.AnimationFrameContextProvider,
+    Utils.LayeredHitSoundsContextProvider,
+    Utils.SpinnerFrequencyModulateContextProvider,
 
-    // Slider illustration
-    SliderIllustrationCircleSizeContextProvider,
-    SliderIllustrationComboColorContextProvider,
+    // Slider Illustration
+    Illustration.SliderIllustrationCircleSizeContextProvider,
+    Illustration.SliderIllustrationComboColorContextProvider,
 
-    // Combo number illustration
-    ComboNumberIllustrationCircleSizeContextProvider,
-    ComboNumberIllustrationNumbersContextProvider
+    // Combo Number Illustration
+    Illustration.ComboNumberIllustrationCircleSizeContextProvider,
+    Illustration.ComboNumberIllustrationNumbersContextProvider
 );

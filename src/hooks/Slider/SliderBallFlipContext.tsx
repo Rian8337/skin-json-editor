@@ -12,9 +12,7 @@ resettable.setJsonSaveHandler(function (json) {
 
 export const SliderBallFlipContext = createContext(resettable.clone());
 
-export default function SliderBallFlipContextProvider(
-    props: PropsWithChildren
-) {
+export function SliderBallFlipContextProvider(props: PropsWithChildren) {
     return (
         <SliderBallFlipContext.Provider
             value={resettable.with(useState(resettable.value))}

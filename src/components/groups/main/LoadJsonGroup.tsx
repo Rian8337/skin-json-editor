@@ -1,159 +1,119 @@
 import { FormEvent, useContext } from "react";
 import Group from "../Group";
 import "./LoadJsonGroup.css";
-import { ForceOverrideContext } from "@hooks/ComboColor/ForceOverrideContext";
+import * as Color from "@hooks/Color";
+import * as ComboColor from "@hooks/ComboColor";
+import * as Cursor from "@hooks/Cursor";
+import * as Fonts from "@hooks/Fonts";
+import * as Layout from "@hooks/Layout";
+import * as Slider from "@hooks/Slider";
+import * as Utils from "@hooks/Utils";
 import { SkinJson } from "@structures/skin/SkinJson";
-import { ComboColorsContext } from "@hooks/ComboColor/ComboColorsContext";
-import { SliderBodyWidthContext } from "@hooks/Slider/SliderBodyWidthContext";
-import { SliderBorderWidthContext } from "@hooks/Slider/SliderBorderWidthContext";
-import { SliderBodyBaseAlphaContext } from "@hooks/Slider/SliderBodyBaseAlphaContext";
-import { SliderFollowComboColorContext } from "@hooks/Slider/SliderFollowComboColorContext";
-import { SliderBodyColorContext } from "@hooks/Slider/SliderBodyColorContext";
-import { SliderBorderColorContext } from "@hooks/Slider/SliderBorderColorContext";
-import { SliderHintEnableContext } from "@hooks/Slider/SliderHintEnableContext";
-import { SliderHintAlphaContext } from "@hooks/Slider/SliderHintAlphaContext";
-import { SliderHintColorContext } from "@hooks/Slider/SliderHintColorContext";
-import { SliderHintWidthContext } from "@hooks/Slider/SliderHintWidthContext";
-import { SliderHintShowMinLengthContext } from "@hooks/Slider/SliderHintShowMinLengthContext";
-import { LimitComboTextLengthContext } from "@hooks/Utils/LimitComboTextLengthContext";
-import { DisableKiaiContext } from "@hooks/Utils/DisableKiaiContext";
-import { ComboTextScaleContext } from "@hooks/Utils/ComboTextScaleContext";
-import { MenuItemDefaultColorContext } from "@hooks/Color/MenuItemDefaultColorContext";
-import { MenuItemOnTouchColorContext } from "@hooks/Color/MenuItemOnTouchColorContext";
-import { MenuItemVersionsDefaultColorContext } from "@hooks/Color/MenuItemVersionsDefaultColorContext";
-import { MenuItemVersionsSelectedColorContext } from "@hooks/Color/MenuItemVersionsSelectedColorContext";
-import { MenuItemDefaultTextColorContext } from "@hooks/Color/MenuItemDefaultTextColorContext";
-import { MenuItemSelectedTextColorContext } from "@hooks/Color/MenuItemSelectedTextColorContext";
-import { BackButtonWidthContext } from "@hooks/Layout/BackButton/BackButtonWidthContext";
-import { BackButtonHeightContext } from "@hooks/Layout/BackButton/BackButtonHeightContext";
-import { BackButtonScaleContext } from "@hooks/Layout/BackButton/BackButtonScaleContext";
-import { BackButtonXContext } from "@hooks/Layout/BackButton/BackButtonXContext";
-import { BackButtonYContext } from "@hooks/Layout/BackButton/BackButtonYContext";
-import { BackButtonScaleWhenHoldContext } from "@hooks/Layout/BackButton/BackButtonScaleWhenHoldContext";
-import { ModsButtonHeightContext } from "@hooks/Layout/ModsButton/ModsButtonHeightContext";
-import { ModsButtonScaleContext } from "@hooks/Layout/ModsButton/ModsButtonScaleContext";
-import { ModsButtonWidthContext } from "@hooks/Layout/ModsButton/ModsButtonWidthContext";
-import { ModsButtonXContext } from "@hooks/Layout/ModsButton/ModsButtonXContext";
-import { ModsButtonYContext } from "@hooks/Layout/ModsButton/ModsButtonYContext";
-import { OptionsButtonHeightContext } from "@hooks/Layout/OptionsButton/OptionsButtonHeightContext";
-import { OptionsButtonScaleContext } from "@hooks/Layout/OptionsButton/OptionsButtonScaleContext";
-import { OptionsButtonWidthContext } from "@hooks/Layout/OptionsButton/OptionsButtonWidthContext";
-import { OptionsButtonXContext } from "@hooks/Layout/OptionsButton/OptionsButtonXContext";
-import { OptionsButtonYContext } from "@hooks/Layout/OptionsButton/OptionsButtonYContext";
-import { RandomButtonHeightContext } from "@hooks/Layout/RandomButton/RandomButtonHeightContext";
-import { RandomButtonScaleContext } from "@hooks/Layout/RandomButton/RandomButtonScaleContext";
-import { RandomButtonWidthContext } from "@hooks/Layout/RandomButton/RandomButtonWidthContext";
-import { RandomButtonXContext } from "@hooks/Layout/RandomButton/RandomButtonXContext";
-import { RandomButtonYContext } from "@hooks/Layout/RandomButton/RandomButtonYContext";
-import { ComboPrefixContext } from "@hooks/Fonts/ComboPrefixContext";
-import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
-import { HitCirclePrefixContext } from "@hooks/Fonts/HitCirclePrefixContext";
-import { ScorePrefixContext } from "@hooks/Fonts/ScorePrefixContext";
-import { RotateCursorContext } from "@hooks/Cursor/RotateCursorContext";
-import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
-import { DifficultySwitcherHeightContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherHeightContext";
-import { DifficultySwitcherScaleContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherScaleContext";
-import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
-import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
-import { AnimationFrameContext } from "@hooks/Utils/AnimationFramerateContext";
-import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
-import { SpinnerFrequencyModulateContext } from "@hooks/Utils/SpinnerFrequencyModulateContext";
-import { SliderBallFlipContext } from "@hooks/Slider/SliderBallFlipContext";
 
 export default function LoadJsonGroup() {
     // A bit dirty, but oh well...
 
     // ComboColor
-    const forceOverride = useContext(ForceOverrideContext);
-    const comboColors = useContext(ComboColorsContext);
+    const forceOverride = useContext(ComboColor.ForceOverrideContext);
+    const comboColors = useContext(ComboColor.ComboColorsContext);
 
     // Slider
-    const sliderBodyWidth = useContext(SliderBodyWidthContext);
-    const sliderBorderWidth = useContext(SliderBorderWidthContext);
-    const sliderBodyBaseAlpha = useContext(SliderBodyBaseAlphaContext);
-    const sliderFollowComboColor = useContext(SliderFollowComboColorContext);
-    const sliderBodyColor = useContext(SliderBodyColorContext);
-    const sliderBorderColor = useContext(SliderBorderColorContext);
-    const sliderBallFlip = useContext(SliderBallFlipContext);
-    const sliderHintEnable = useContext(SliderHintEnableContext);
-    const sliderHintAlpha = useContext(SliderHintAlphaContext);
-    const sliderHintColor = useContext(SliderHintColorContext);
-    const sliderHintWidth = useContext(SliderHintWidthContext);
-    const sliderHintShowMinLength = useContext(SliderHintShowMinLengthContext);
+    const sliderBodyWidth = useContext(Slider.SliderBodyWidthContext);
+    const sliderBorderWidth = useContext(Slider.SliderBorderWidthContext);
+    const sliderBodyBaseAlpha = useContext(Slider.SliderBodyBaseAlphaContext);
+    const sliderFollowComboColor = useContext(
+        Slider.SliderFollowComboColorContext
+    );
+    const sliderBodyColor = useContext(Slider.SliderBodyColorContext);
+    const sliderBorderColor = useContext(Slider.SliderBorderColorContext);
+    const sliderBallFlip = useContext(Slider.SliderBallFlipContext);
+    const sliderHintEnable = useContext(Slider.SliderHintEnableContext);
+    const sliderHintAlpha = useContext(Slider.SliderHintAlphaContext);
+    const sliderHintColor = useContext(Slider.SliderHintColorContext);
+    const sliderHintWidth = useContext(Slider.SliderHintWidthContext);
+    const sliderHintShowMinLength = useContext(
+        Slider.SliderHintShowMinLengthContext
+    );
 
     // Cursor
-    const rotateCursor = useContext(RotateCursorContext);
+    const rotateCursor = useContext(Cursor.RotateCursorContext);
 
     // Utilities
-    const limitComboTextLength = useContext(LimitComboTextLengthContext);
-    const disableKiai = useContext(DisableKiaiContext);
-    const comboTextScale = useContext(ComboTextScaleContext);
-    const animationFramerate = useContext(AnimationFrameContext);
-    const layeredHitSounds = useContext(LayeredHitSoundsContext);
+    const limitComboTextLength = useContext(Utils.LimitComboTextLengthContext);
+    const disableKiai = useContext(Utils.DisableKiaiContext);
+    const comboTextScale = useContext(Utils.ComboTextScaleContext);
+    const animationFramerate = useContext(Utils.AnimationFrameContext);
+    const layeredHitSounds = useContext(Utils.LayeredHitSoundsContext);
     const spinnerFrequencyModulate = useContext(
-        SpinnerFrequencyModulateContext
+        Utils.SpinnerFrequencyModulateContext
     );
 
     // Color
-    const menuItemDefaultColor = useContext(MenuItemDefaultColorContext);
-    const menuItemOnTouchColor = useContext(MenuItemOnTouchColorContext);
+    const menuItemDefaultColor = useContext(Color.MenuItemDefaultColorContext);
+    const menuItemOnTouchColor = useContext(Color.MenuItemOnTouchColorContext);
     const menuItemVersionsDefaultColor = useContext(
-        MenuItemVersionsDefaultColorContext
+        Color.MenuItemVersionsDefaultColorContext
     );
     const menuItemVersionsSelectedColor = useContext(
-        MenuItemVersionsSelectedColorContext
+        Color.MenuItemVersionsSelectedColorContext
     );
     const menuItemDefaultTextColor = useContext(
-        MenuItemDefaultTextColorContext
+        Color.MenuItemDefaultTextColorContext
     );
     const menuItemSelectedTextColor = useContext(
-        MenuItemSelectedTextColorContext
+        Color.MenuItemSelectedTextColorContext
     );
 
     // Fonts
-    const comboPrefix = useContext(ComboPrefixContext);
-    const scorePrefix = useContext(ScorePrefixContext);
-    const hitCirclePrefix = useContext(HitCirclePrefixContext);
-    const hitCircleOverlap = useContext(HitCircleOverlapContext);
+    const comboPrefix = useContext(Fonts.ComboPrefixContext);
+    const scorePrefix = useContext(Fonts.ScorePrefixContext);
+    const hitCirclePrefix = useContext(Fonts.HitCirclePrefixContext);
+    const hitCircleOverlap = useContext(Fonts.HitCircleOverlapContext);
 
     // Layout
     // Back Button
-    const backButtonWidth = useContext(BackButtonWidthContext);
-    const backButtonHeight = useContext(BackButtonHeightContext);
-    const backButtonScale = useContext(BackButtonScaleContext);
-    const backButtonX = useContext(BackButtonXContext);
-    const backButtonY = useContext(BackButtonYContext);
-    const backButtonScaleWhenHold = useContext(BackButtonScaleWhenHoldContext);
+    const backButtonWidth = useContext(Layout.BackButtonWidthContext);
+    const backButtonHeight = useContext(Layout.BackButtonHeightContext);
+    const backButtonScale = useContext(Layout.BackButtonScaleContext);
+    const backButtonX = useContext(Layout.BackButtonXContext);
+    const backButtonY = useContext(Layout.BackButtonYContext);
+    const backButtonScaleWhenHold = useContext(
+        Layout.BackButtonScaleWhenHoldContext
+    );
 
     // Mods Button
-    const modsButtonWidth = useContext(ModsButtonWidthContext);
-    const modsButtonHeight = useContext(ModsButtonHeightContext);
-    const modsButtonScale = useContext(ModsButtonScaleContext);
-    const modsButtonX = useContext(ModsButtonXContext);
-    const modsButtonY = useContext(ModsButtonYContext);
+    const modsButtonWidth = useContext(Layout.ModsButtonWidthContext);
+    const modsButtonHeight = useContext(Layout.ModsButtonHeightContext);
+    const modsButtonScale = useContext(Layout.ModsButtonScaleContext);
+    const modsButtonX = useContext(Layout.ModsButtonXContext);
+    const modsButtonY = useContext(Layout.ModsButtonYContext);
 
     // Options Button
-    const optionsButtonWidth = useContext(OptionsButtonWidthContext);
-    const optionsButtonHeight = useContext(OptionsButtonHeightContext);
-    const optionsButtonScale = useContext(OptionsButtonScaleContext);
-    const optionsButtonX = useContext(OptionsButtonXContext);
-    const optionsButtonY = useContext(OptionsButtonYContext);
+    const optionsButtonWidth = useContext(Layout.OptionsButtonWidthContext);
+    const optionsButtonHeight = useContext(Layout.OptionsButtonHeightContext);
+    const optionsButtonScale = useContext(Layout.OptionsButtonScaleContext);
+    const optionsButtonX = useContext(Layout.OptionsButtonXContext);
+    const optionsButtonY = useContext(Layout.OptionsButtonYContext);
 
     // Random Button
-    const randomButtonWidth = useContext(RandomButtonWidthContext);
-    const randomButtonHeight = useContext(RandomButtonHeightContext);
-    const randomButtonScale = useContext(RandomButtonScaleContext);
-    const randomButtonX = useContext(RandomButtonXContext);
-    const randomButtonY = useContext(RandomButtonYContext);
+    const randomButtonWidth = useContext(Layout.RandomButtonWidthContext);
+    const randomButtonHeight = useContext(Layout.RandomButtonHeightContext);
+    const randomButtonScale = useContext(Layout.RandomButtonScaleContext);
+    const randomButtonX = useContext(Layout.RandomButtonXContext);
+    const randomButtonY = useContext(Layout.RandomButtonYContext);
 
     // Difficulty Switcher Button
-    const difficultySwitcherWidth = useContext(DifficultySwitcherWidthContext);
-    const difficultySwitcherHeight = useContext(
-        DifficultySwitcherHeightContext
+    const difficultySwitcherWidth = useContext(
+        Layout.DifficultySwitcherWidthContext
     );
-    const difficultySwitcherScale = useContext(DifficultySwitcherScaleContext);
-    const difficultySwitcherX = useContext(DifficultySwitcherXContext);
-    const difficultySwitcherY = useContext(DifficultySwitcherYContext);
+    const difficultySwitcherHeight = useContext(
+        Layout.DifficultySwitcherHeightContext
+    );
+    const difficultySwitcherScale = useContext(
+        Layout.DifficultySwitcherScaleContext
+    );
+    const difficultySwitcherX = useContext(Layout.DifficultySwitcherXContext);
+    const difficultySwitcherY = useContext(Layout.DifficultySwitcherYContext);
 
     const onSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();

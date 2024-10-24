@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ScorePrefixContext } from "@hooks/Fonts/ScorePrefixContext";
+import { ScorePrefixContext } from "@hooks/Fonts";
 import UserInputEditor from "@components/editors/UserInputEditor";
 
 export default function ScorePrefix() {

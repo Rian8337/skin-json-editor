@@ -15,6 +15,7 @@ import SliderHintWidth from "./SliderHintWidth";
 import SliderHintShowMinLength from "./SliderHintShowMinLength";
 import SubGroup from "../../SubGroup";
 import SliderIllustrationGroup from "../../illustration/slider/SliderIllustrationGroup";
+import SliderBallFlip from "./SliderBallFlip";
 
 export default function SliderGroup() {
     const followComboColor = useContext(SliderFollowComboColorContext);
@@ -34,6 +35,10 @@ export default function SliderGroup() {
             <SubGroup title="Border">
                 <SliderBorderWidth />
                 <SliderBorderColor />
+            </SubGroup>
+
+            <SubGroup title="Ball">
+                <SliderBallFlip />
             </SubGroup>
 
             <SubGroup title="Hint">

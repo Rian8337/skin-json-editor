@@ -58,6 +58,7 @@ import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/Mod
 import { AnimationFrameContext } from "@hooks/Utils/AnimationFramerateContext";
 import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
 import { SpinnerFrequencyModulateContext } from "@hooks/Utils/SpinnerFrequencyModulateContext";
+import { SliderBallFlipContext } from "@hooks/Slider/SliderBallFlipContext";
 
 export default function SaveJsonGroup() {
     // A bit dirty, but oh well...
@@ -73,6 +74,7 @@ export default function SaveJsonGroup() {
     const sliderFollowComboColor = useContext(SliderFollowComboColorContext);
     const sliderBodyColor = useContext(SliderBodyColorContext);
     const sliderBorderColor = useContext(SliderBorderColorContext);
+    const sliderBallFlip = useContext(SliderBallFlipContext);
     const sliderHintEnable = useContext(SliderHintEnableContext);
     const sliderHintAlpha = useContext(SliderHintAlphaContext);
     const sliderHintColor = useContext(SliderHintColorContext);
@@ -168,6 +170,7 @@ export default function SaveJsonGroup() {
             sliderFollowComboColor.saveToJSON(json);
             sliderBodyColor.saveToJSON(json);
             sliderBorderColor.saveToJSON(json);
+            sliderBallFlip.saveToJSON(json);
             sliderHintEnable.saveToJSON(json);
             sliderHintAlpha.saveToJSON(json);
             sliderHintColor.saveToJSON(json);

@@ -59,6 +59,7 @@ import { DifficultySwitcherYContextProvider } from "./Layout/DifficultySwitcher/
 import { AnimationFrameContextProvider } from "./Utils/AnimationFramerateContext";
 import { LayeredHitSoundsContextProvider } from "./Utils/LayeredHitSoundsContext";
 import { SpinnerFrequencyModulateContextProvider } from "./Utils/SpinnerFrequencyModulateContext";
+import SliderBallFlipContextProvider from "./Slider/SliderBallFlipContext";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
@@ -133,6 +134,7 @@ export const Providers = compose(
     SliderBorderColorContextProvider,
     SliderBorderWidthContextProvider,
     SliderFollowComboColorContextProvider,
+    SliderBallFlipContextProvider,
     SliderHintAlphaContextProvider,
     SliderHintColorContextProvider,
     SliderHintEnableContextProvider,

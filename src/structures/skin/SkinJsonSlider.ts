@@ -48,6 +48,13 @@ export interface SkinJsonSlider {
     sliderBorderColor?: string;
 
     /**
+     * Whether the slider ball should be flipped horizontally when a slider is reversed.
+     *
+     * Defaults to `true`.
+     */
+    sliderBallFlip?: boolean;
+
+    /**
      * Whether to enable slider hints.
      *
      * When a slider exceeds a certain length, its path will be indicated

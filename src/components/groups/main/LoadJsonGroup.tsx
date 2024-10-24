@@ -58,6 +58,7 @@ import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/Mod
 import { AnimationFrameContext } from "@hooks/Utils/AnimationFramerateContext";
 import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
 import { SpinnerFrequencyModulateContext } from "@hooks/Utils/SpinnerFrequencyModulateContext";
+import { SliderBallFlipContext } from "@hooks/Slider/SliderBallFlipContext";
 
 export default function LoadJsonGroup() {
     // A bit dirty, but oh well...
@@ -73,6 +74,7 @@ export default function LoadJsonGroup() {
     const sliderFollowComboColor = useContext(SliderFollowComboColorContext);
     const sliderBodyColor = useContext(SliderBodyColorContext);
     const sliderBorderColor = useContext(SliderBorderColorContext);
+    const sliderBallFlip = useContext(SliderBallFlipContext);
     const sliderHintEnable = useContext(SliderHintEnableContext);
     const sliderHintAlpha = useContext(SliderHintAlphaContext);
     const sliderHintColor = useContext(SliderHintColorContext);
@@ -200,6 +202,7 @@ export default function LoadJsonGroup() {
                 sliderFollowComboColor.setValue(Slider?.sliderFollowComboColor);
                 sliderBodyColor.setValue(Slider?.sliderBodyColor);
                 sliderBorderColor.setValue(Slider?.sliderBorderColor);
+                sliderBallFlip.setValue(Slider?.sliderBallFlip);
                 sliderHintEnable.setValue(Slider?.sliderHintEnable);
                 sliderHintAlpha.setValue(Slider?.sliderHintAlpha);
                 sliderHintColor.setValue(Slider?.sliderHintColor);

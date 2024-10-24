@@ -57,6 +57,7 @@ import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/Dif
 import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
 import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
 import { SpinnerFrequencyModulateContext } from "@hooks/Utils/SpinnerFrequencyModulateContext";
+import { SliderBallFlipContext } from "@hooks/Slider/SliderBallFlipContext";
 
 export default function ResetJsonGroup() {
     // A bit dirty, but oh well...
@@ -72,6 +73,7 @@ export default function ResetJsonGroup() {
     const sliderFollowComboColor = useContext(SliderFollowComboColorContext);
     const sliderBodyColor = useContext(SliderBodyColorContext);
     const sliderBorderColor = useContext(SliderBorderColorContext);
+    const sliderBallFlip = useContext(SliderBallFlipContext);
     const sliderHintEnable = useContext(SliderHintEnableContext);
     const sliderHintAlpha = useContext(SliderHintAlphaContext);
     const sliderHintColor = useContext(SliderHintColorContext);
@@ -172,6 +174,7 @@ export default function ResetJsonGroup() {
         sliderFollowComboColor.reset();
         sliderBodyColor.reset();
         sliderBorderColor.reset();
+        sliderBallFlip.reset();
         sliderHintEnable.reset();
         sliderHintAlpha.reset();
         sliderHintColor.reset();

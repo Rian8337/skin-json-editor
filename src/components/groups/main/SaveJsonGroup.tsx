@@ -56,6 +56,7 @@ import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher
 import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
 import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
 import { AnimationFrameContext } from "@hooks/Utils/AnimationFramerateContext";
+import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
 
 export default function SaveJsonGroup() {
     // A bit dirty, but oh well...
@@ -85,6 +86,7 @@ export default function SaveJsonGroup() {
     const disableKiai = useContext(DisableKiaiContext);
     const comboTextScale = useContext(ComboTextScaleContext);
     const animationFramerate = useContext(AnimationFrameContext);
+    const layeredHitSounds = useContext(LayeredHitSoundsContext);
 
     // Color
     const menuItemDefaultColor = useContext(MenuItemDefaultColorContext);
@@ -176,6 +178,7 @@ export default function SaveJsonGroup() {
             disableKiai.saveToJSON(json);
             comboTextScale.saveToJSON(json);
             animationFramerate.saveToJSON(json);
+            layeredHitSounds.saveToJSON(json);
 
             // Color
             menuItemDefaultColor.saveToJSON(json);

@@ -7,6 +7,7 @@ import HitCircleOverlap from "../Fonts/HitCircleOverlap";
 import AnimationFramerate from "./AnimationFramerate";
 import ComboTextScale from "./ComboTextScale";
 import DisableKiai from "./DisableKiai";
+import LayeredHitSounds from "./LayeredHitSounds";
 import LimitComboTextLength from "./LimitComboTextLength";
 
 export default function UtilsGroup() {
@@ -23,6 +24,7 @@ export default function UtilsGroup() {
                 <ComboTextScale />
                 <HitCircleOverlap />
                 <AnimationFramerate />
+                <LayeredHitSounds />
             </SubGroup>
         </Group>
     );

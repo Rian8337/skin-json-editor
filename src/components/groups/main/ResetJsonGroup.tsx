@@ -55,6 +55,7 @@ import { DifficultySwitcherScaleContext } from "@hooks/Layout/DifficultySwitcher
 import { DifficultySwitcherWidthContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherWidthContext";
 import { DifficultySwitcherXContext } from "@hooks/Layout/DifficultySwitcher/DifficultySwitcherXContext";
 import { DifficultySwitcherYContext } from "@hooks/Layout/DifficultySwitcher/ModsButtonYContext";
+import { LayeredHitSoundsContext } from "@hooks/Utils/LayeredHitSoundsContext";
 
 export default function ResetJsonGroup() {
     // A bit dirty, but oh well...
@@ -84,6 +85,7 @@ export default function ResetJsonGroup() {
     const disableKiai = useContext(DisableKiaiContext);
     const comboTextScale = useContext(ComboTextScaleContext);
     const animationFramerate = useContext(AnimationFrameContext);
+    const layeredHitSounds = useContext(LayeredHitSoundsContext);
 
     // Color
     const menuItemDefaultColor = useContext(MenuItemDefaultColorContext);
@@ -180,6 +182,7 @@ export default function ResetJsonGroup() {
         disableKiai.reset();
         comboTextScale.reset();
         animationFramerate.reset();
+        layeredHitSounds.reset();
 
         // Color
         menuItemDefaultColor.reset();

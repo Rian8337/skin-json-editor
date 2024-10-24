@@ -29,4 +29,11 @@ export interface SkinJsonUtils {
      * Defaults to 60.
      */
     animationFramerate?: number;
+
+    /**
+     * Whether hitnormal hitsounds should always be played.
+     *
+     * Defaults to `true`.
+     */
+    layeredHitSounds?: boolean;
 }

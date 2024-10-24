@@ -131,7 +131,7 @@ export default function LoadJsonGroup() {
                 let json: SkinJson;
 
                 try {
-                    json = JSON.parse(text) as unknown as SkinJson;
+                    json = JSON.parse(text) as SkinJson;
                 } catch {
                     alert(
                         "Encountered an error when attempting to process your skin.json file."

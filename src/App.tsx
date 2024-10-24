@@ -9,6 +9,7 @@ import FooterGroup from "./components/groups/main/FooterGroup";
 import SaveJsonGroup from "./components/groups/main/SaveJsonGroup";
 import ResetJsonGroup from "./components/groups/main/ResetJsonGroup";
 import FontsGroup from "./components/groups/skin/Fonts/FontsGroup";
+import CursorGroup from "@components/groups/skin/Cursor/CursorGroup";
 
 export default function App() {
     return (
@@ -18,6 +19,7 @@ export default function App() {
             <ResetJsonGroup />
             <ComboColorGroup />
             <SliderGroup />
+            <CursorGroup />
             <UtilsGroup />
             <ColorGroup />
             <LayoutGroup />

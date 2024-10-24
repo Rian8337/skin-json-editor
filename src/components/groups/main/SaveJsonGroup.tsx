@@ -49,6 +49,7 @@ import { ComboPrefixContext } from "@hooks/Fonts/ComboPrefixContext";
 import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
 import { HitCirclePrefixContext } from "@hooks/Fonts/HitCirclePrefixContext";
 import { ScorePrefixContext } from "@hooks/Fonts/ScorePrefixContext";
+import { RotateCursorContext } from "@hooks/Cursor/RotateCursorContext";
 
 export default function SaveJsonGroup() {
     // A bit dirty, but oh well...
@@ -69,6 +70,9 @@ export default function SaveJsonGroup() {
     const sliderHintColor = useContext(SliderHintColorContext);
     const sliderHintWidth = useContext(SliderHintWidthContext);
     const sliderHintShowMinLength = useContext(SliderHintShowMinLengthContext);
+
+    // Cursor
+    const rotateCursor = useContext(RotateCursorContext);
 
     // Utilities
     const limitComboTextLength = useContext(LimitComboTextLengthContext);
@@ -147,6 +151,9 @@ export default function SaveJsonGroup() {
             sliderHintColor.saveToJSON(json);
             sliderHintWidth.saveToJSON(json);
             sliderHintShowMinLength.saveToJSON(json);
+
+            // Cursor
+            rotateCursor.saveToJSON(json);
 
             // Utilities
             limitComboTextLength.saveToJSON(json);

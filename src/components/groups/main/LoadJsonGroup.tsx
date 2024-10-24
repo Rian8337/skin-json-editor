@@ -49,6 +49,7 @@ import { ComboPrefixContext } from "@hooks/Fonts/ComboPrefixContext";
 import { HitCircleOverlapContext } from "@hooks/Fonts/HItCircleOverlapContext";
 import { HitCirclePrefixContext } from "@hooks/Fonts/HitCirclePrefixContext";
 import { ScorePrefixContext } from "@hooks/Fonts/ScorePrefixContext";
+import { RotateCursorContext } from "@hooks/Cursor/RotateCursorContext";
 
 export default function LoadJsonGroup() {
     // A bit dirty, but oh well...
@@ -69,6 +70,9 @@ export default function LoadJsonGroup() {
     const sliderHintColor = useContext(SliderHintColorContext);
     const sliderHintWidth = useContext(SliderHintWidthContext);
     const sliderHintShowMinLength = useContext(SliderHintShowMinLengthContext);
+
+    // Cursor
+    const rotateCursor = useContext(RotateCursorContext);
 
     // Utilities
     const limitComboTextLength = useContext(LimitComboTextLengthContext);
@@ -152,8 +156,15 @@ export default function LoadJsonGroup() {
                     return;
                 }
 
-                const { ComboColor, Slider, Utils, Color, Fonts, Layout } =
-                    json;
+                const {
+                    ComboColor,
+                    Slider,
+                    Cursor,
+                    Utils,
+                    Color,
+                    Fonts,
+                    Layout,
+                } = json;
 
                 // ComboColor
                 forceOverride.setValue(ComboColor?.forceOverride);
@@ -174,6 +185,9 @@ export default function LoadJsonGroup() {
                 sliderHintShowMinLength.setValue(
                     Slider?.sliderHintShowMinLength
                 );
+
+                // Cursor
+                rotateCursor.setValue(Cursor?.rotateCursor);
 
                 // Utilities
                 limitComboTextLength.setValue(Utils?.limitComboTextLength);

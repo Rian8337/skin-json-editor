@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import "./MultipleColorEditor.css";
+import "./BaseEditor.css";
 import BaseEditor from "./BaseEditor";
 import { ArrayResettable, Resettable } from "@structures/resettable";
 
@@ -118,8 +118,6 @@ export default function MultipleColorEditor(props: Props) {
             </div>
 
             <div className="json-item-editor-flex-container">
-                <div className="color-editor-input-label">Picker</div>
-
                 <input
                     className="json-item-editor-input"
                     type="color"

@@ -1,6 +1,5 @@
 import { PropsWithChildren, createContext, useState } from "react";
-import { NumberResettable } from "@structures/resettable";
-import { NumberResettableType } from "@structures/resettable";
+import { NumberResettable, NumberResettableType } from "@structures/resettable";
 
 const resettable = new NumberResettable({
     type: NumberResettableType.integer,

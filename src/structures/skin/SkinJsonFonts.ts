@@ -10,6 +10,13 @@ export interface SkinJsonFonts {
     hitCirclePrefix?: string;
 
     /**
+     * The amount of pixels that the hit circle numbers overlap.
+     *
+     * Defaults to -2.
+     */
+    hitCircleOverlap?: number;
+
+    /**
      * The prefix of score number texture file names.
      *
      * Defaults to `score`.
@@ -24,9 +31,9 @@ export interface SkinJsonFonts {
     comboPrefix?: string;
 
     /**
-     * The amount of pixels that the hit circle numbers overlap.
+     * The amount of pixels that the combo numbers overlap.
      *
-     * Defaults to -2.
+     * Defaults to 0.
      */
-    hitCircleOverlap?: number;
+    comboOverlap?: number;
 }

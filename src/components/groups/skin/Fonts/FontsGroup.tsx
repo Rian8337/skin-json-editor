@@ -1,5 +1,6 @@
 import Group from "../../Group";
 import SubGroup from "../../SubGroup";
+import ComboOverlap from "./ComboOverlap";
 import ComboPrefix from "./ComboPrefix";
 import HitCircleOverlap from "./HitCircleOverlap";
 import HitCirclePrefix from "./HitCirclePrefix";
@@ -31,6 +32,7 @@ export default function FontsGroup() {
                     Negative numbers will add a gap between textures.
                 </div>
 
+                <ComboOverlap />
                 <HitCircleOverlap />
             </SubGroup>
         </Group>

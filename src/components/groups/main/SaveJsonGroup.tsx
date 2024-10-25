@@ -66,6 +66,7 @@ export default function SaveJsonGroup() {
 
     // Fonts
     const comboPrefix = useContext(Fonts.ComboPrefixContext);
+    const comboOverlap = useContext(Fonts.ComboOverlapContext);
     const scorePrefix = useContext(Fonts.ScorePrefixContext);
     const hitCirclePrefix = useContext(Fonts.HitCirclePrefixContext);
     const hitCircleOverlap = useContext(Fonts.HitCircleOverlapContext);
@@ -158,6 +159,7 @@ export default function SaveJsonGroup() {
 
             // Fonts
             comboPrefix.saveToJSON(json);
+            comboOverlap.saveToJSON(json);
             scorePrefix.saveToJSON(json);
             hitCirclePrefix.saveToJSON(json);
             hitCircleOverlap.saveToJSON(json);

@@ -66,6 +66,7 @@ export default function LoadJsonGroup() {
 
     // Fonts
     const comboPrefix = useContext(Fonts.ComboPrefixContext);
+    const comboOverlap = useContext(Fonts.ComboOverlapContext);
     const scorePrefix = useContext(Fonts.ScorePrefixContext);
     const hitCirclePrefix = useContext(Fonts.HitCirclePrefixContext);
     const hitCircleOverlap = useContext(Fonts.HitCircleOverlapContext);
@@ -179,6 +180,7 @@ export default function LoadJsonGroup() {
 
                 // Fonts
                 comboPrefix.loadFromJSON(json);
+                comboOverlap.loadFromJSON(json);
                 scorePrefix.loadFromJSON(json);
                 hitCirclePrefix.loadFromJSON(json);
                 hitCircleOverlap.loadFromJSON(json);

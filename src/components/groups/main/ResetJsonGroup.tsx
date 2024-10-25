@@ -65,6 +65,7 @@ export default function ResetJsonGroup() {
 
     // Fonts
     const comboPrefix = useContext(Fonts.ComboPrefixContext);
+    const comboOverlap = useContext(Fonts.ComboOverlapContext);
     const scorePrefix = useContext(Fonts.ScorePrefixContext);
     const hitCirclePrefix = useContext(Fonts.HitCirclePrefixContext);
     const hitCircleOverlap = useContext(Fonts.HitCircleOverlapContext);
@@ -162,6 +163,7 @@ export default function ResetJsonGroup() {
 
         // Fonts
         comboPrefix.reset();
+        comboOverlap.reset();
         scorePrefix.reset();
         hitCirclePrefix.reset();
         hitCircleOverlap.reset();

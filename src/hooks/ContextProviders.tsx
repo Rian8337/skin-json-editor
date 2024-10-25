@@ -33,10 +33,11 @@ export const Providers = compose(
     Cursor.RotateCursorContextProvider,
 
     // Fonts
-    Fonts.ComboPrefixContextProvider,
     Fonts.HitCirclePrefixContextProvider,
-    Fonts.ScorePrefixContextProvider,
     Fonts.HitCircleOverlapContextProvider,
+    Fonts.ScorePrefixContextProvider,
+    Fonts.ComboPrefixContextProvider,
+    Fonts.ComboOverlapContextProvider,
 
     // Layout (Back Button)
     Layout.BackButtonHeightContextProvider,

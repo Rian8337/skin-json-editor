@@ -24,6 +24,11 @@
 .group-item .group-description {
     font-size: 0.9em;
     margin-top: 1em;
+    text-align: center;
+
+    li {
+        text-align: left;
+    }
 }
 
 .group-item > .collapsed {

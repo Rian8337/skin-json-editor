@@ -4,6 +4,10 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: 3, minValue: 0 });
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Slider?.sliderHintWidth);
+});
+
 export const SliderHintWidthContext = createContext(resettable.clone());
 
 export function SliderHintWidthContextProvider(props: PropsWithChildren) {

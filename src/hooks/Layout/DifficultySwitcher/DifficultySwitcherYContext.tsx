@@ -3,13 +3,17 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: 0, minValue: 0 });
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Layout?.DifficultySwitcher?.y);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Layout ??= {};
         json.Layout.useNewLayout = true;
 
-        json.Layout.ModsButton ??= {};
-        json.Layout.ModsButton.y = this.value;
+        json.Layout.DifficultySwitcher ??= {};
+        json.Layout.DifficultySwitcher.y = this.value;
     }
 });
 

@@ -1,6 +1,6 @@
 import {
     Resettable,
-    ResettableJSONSaveHandler,
+    ResettableJSONHandler,
     ResettableStateHook,
 } from "./Resettable";
 import { NumberResettableType } from "./NumberResettableType";
@@ -92,8 +92,13 @@ export class NumberResettable
         });
 
         clone._value = this._value;
+
+        clone.jsonLoadHandler = this.jsonLoadHandler as
+            | ResettableJSONHandler<NumberResettable>
+            | undefined;
+
         clone.jsonSaveHandler = this.jsonSaveHandler as
-            | ResettableJSONSaveHandler<NumberResettable>
+            | ResettableJSONHandler<NumberResettable>
             | undefined;
 
         return clone;

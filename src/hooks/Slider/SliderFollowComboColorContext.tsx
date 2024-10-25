@@ -3,6 +3,10 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(false);
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Slider?.sliderFollowComboColor);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Slider ??= {};

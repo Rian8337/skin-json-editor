@@ -3,6 +3,10 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Utils?.spinnerFrequencyModulate);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Utils ??= {};

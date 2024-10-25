@@ -3,6 +3,10 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable("score");
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Fonts?.scorePrefix);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Fonts ??= {};

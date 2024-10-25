@@ -9,6 +9,10 @@ const resettable = new NumberResettable({
     step: 0.01,
 });
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Slider?.sliderHintAlpha);
+});
+
 export const SliderHintAlphaContext = createContext(resettable.clone());
 
 export function SliderHintAlphaContextProvider(props: PropsWithChildren) {

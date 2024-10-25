@@ -3,6 +3,10 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(true);
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Layout?.BackButton?.scaleWhenHold);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Layout ??= {};

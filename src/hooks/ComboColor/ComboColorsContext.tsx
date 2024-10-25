@@ -5,6 +5,11 @@ import { ArrayResettable } from "@structures/resettable";
 
 const resettable = new ArrayResettable(["#FFFFFF"]);
 
+resettable.setJsonLoadHandler(function (json) {
+    //@ts-expect-error: existential generics are not supported
+    this.setValue(json.ComboColor?.colors);
+});
+
 export const ComboColorsContext = createContext(resettable.clone());
 
 export function ComboColorsContextProvider(props: PropsWithChildren) {

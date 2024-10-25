@@ -5,6 +5,10 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Slider?.sliderHintColor);
+});
+
 export const SliderHintColorContext = createContext(resettable.clone());
 
 export function SliderHintColorContextProvider(props: PropsWithChildren) {

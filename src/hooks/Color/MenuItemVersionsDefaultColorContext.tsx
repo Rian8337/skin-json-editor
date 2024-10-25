@@ -4,6 +4,10 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Color?.MenuItemVersionsDefaultColor);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!validateColor(this.value)) {
         throw createColorError(

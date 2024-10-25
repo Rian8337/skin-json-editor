@@ -2,9 +2,9 @@ import { Dispatch, SetStateAction } from "react";
 import { SkinJson } from "../skin/SkinJson";
 
 /**
- * A function that saves the data of a `Resettable` to a skin.json.
+ * A function that handles the data of a `Resettable` with respect to a skin.json.
  */
-export type ResettableJSONSaveHandler<T> = (this: T, json: SkinJson) => void;
+export type ResettableJSONHandler<T> = (this: T, json: SkinJson) => void;
 
 /**
  * A React state hook without `undefined` overload.
@@ -33,9 +33,14 @@ export class Resettable<T> {
     }
 
     /**
+     * The function to call when loading from a skin.json.
+     */
+    protected jsonLoadHandler?: ResettableJSONHandler<this>;
+
+    /**
      * The function to call when saving to a skin.json.
      */
-    protected jsonSaveHandler?: ResettableJSONSaveHandler<this>;
+    protected jsonSaveHandler?: ResettableJSONHandler<this>;
 
     /**
      * The state hook attached to this `Resettable`.
@@ -47,6 +52,13 @@ export class Resettable<T> {
      */
     get isDefault(): boolean {
         return this.value === this.defaultValue;
+    }
+
+    /**
+     * Whether this `Resettable` can be loaded from a skin.json.
+     */
+    get canLoadFromSkinJson(): boolean {
+        return !!this.jsonLoadHandler;
     }
 
     /**
@@ -107,12 +119,36 @@ export class Resettable<T> {
     }
 
     /**
+     * Sets the function to call when loading from a skin.json.
+     *
+     * @param jsonLoadHandler The function to call when loading from a skin.json. Set to `undefined` to disable loading.
+     */
+    setJsonLoadHandler(jsonLoadHandler?: ResettableJSONHandler<this>) {
+        this.jsonLoadHandler = jsonLoadHandler;
+    }
+
+    /**
      * Sets the function to call when saving to a skin.json.
      *
      * @param jsonSaveHandler The function to call when saving to a skin.json. Set to `undefined` to disable saving.
      */
-    setJsonSaveHandler(jsonSaveHandler?: ResettableJSONSaveHandler<this>) {
+    setJsonSaveHandler(jsonSaveHandler?: ResettableJSONHandler<this>) {
         this.jsonSaveHandler = jsonSaveHandler;
+    }
+
+    /**
+     * Loads this `Resettable` data from a skin.json.
+     *
+     * @param json The skin.json to load from.
+     */
+    loadFromJSON(json: SkinJson) {
+        if (!this.canLoadFromSkinJson) {
+            throw new Error(
+                "This `Resettable` cannot be loaded from a skin.json."
+            );
+        }
+
+        this.jsonLoadHandler?.call(this, json);
     }
 
     /**
@@ -146,8 +182,13 @@ export class Resettable<T> {
         const clone = new Resettable(this.defaultValue);
 
         clone._value = this._value;
+
+        clone.jsonLoadHandler = this.jsonLoadHandler as
+            | ResettableJSONHandler<Resettable<T>>
+            | undefined;
+
         clone.jsonSaveHandler = this.jsonSaveHandler as
-            | ResettableJSONSaveHandler<Resettable<T>>
+            | ResettableJSONHandler<Resettable<T>>
             | undefined;
 
         return clone;

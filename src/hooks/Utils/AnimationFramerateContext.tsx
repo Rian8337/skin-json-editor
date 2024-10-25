@@ -3,6 +3,10 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new NumberResettable({ defaultValue: 60, minValue: -1 });
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Utils?.animationFramerate);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Utils ??= {};

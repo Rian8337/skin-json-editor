@@ -4,6 +4,10 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable("#FFFFFF");
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Slider?.sliderBorderColor);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!validateColor(this.value)) {
         throw createColorError(

@@ -3,6 +3,10 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: -2 });
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Fonts?.hitCircleOverlap);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Fonts ??= {};

@@ -3,6 +3,10 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: 0, minValue: 0 });
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Layout?.BackButton?.y);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Layout ??= {};

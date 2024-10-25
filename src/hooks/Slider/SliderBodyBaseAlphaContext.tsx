@@ -8,6 +8,10 @@ const resettable = new NumberResettable({
     step: 0.01,
 });
 
+resettable.setJsonLoadHandler(function (json) {
+    this.setValue(json.Slider?.sliderBodyBaseAlpha);
+});
+
 resettable.setJsonSaveHandler(function (json) {
     if (!this.isDefault) {
         json.Slider ??= {};

@@ -1,6 +1,6 @@
 import {
     Resettable,
-    ResettableJSONSaveHandler,
+    ResettableJSONHandler,
     ResettableStateHook,
 } from "./Resettable";
 
@@ -23,8 +23,13 @@ export class ArrayResettable<T> extends Resettable<T[]> {
         const clone = new ArrayResettable(this.defaultValue.slice());
 
         clone._value = this._value.slice();
+
+        clone.jsonLoadHandler = this.jsonLoadHandler as
+            | ResettableJSONHandler<ArrayResettable<T>>
+            | undefined;
+
         clone.jsonSaveHandler = this.jsonSaveHandler as
-            | ResettableJSONSaveHandler<ArrayResettable<T>>
+            | ResettableJSONHandler<ArrayResettable<T>>
             | undefined;
 
         return clone;

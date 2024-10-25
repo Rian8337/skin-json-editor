@@ -140,114 +140,85 @@ export default function LoadJsonGroup() {
                     return;
                 }
 
-                const {
-                    ComboColor,
-                    Slider,
-                    Cursor,
-                    Utils,
-                    Color,
-                    Fonts,
-                    Layout,
-                } = json;
-
                 // ComboColor
-                forceOverride.setValue(ComboColor?.forceOverride);
-                //@ts-expect-error: existential generics are not supported
-                comboColors.setValue(ComboColor?.colors);
+                forceOverride.loadFromJSON(json);
+                comboColors.loadFromJSON(json);
 
                 // Slider
-                sliderBodyWidth.setValue(Slider?.sliderBodyWidth);
-                sliderBorderWidth.setValue(Slider?.sliderBodyBaseAlpha);
-                sliderBodyBaseAlpha.setValue(Slider?.sliderBodyBaseAlpha);
-                sliderFollowComboColor.setValue(Slider?.sliderFollowComboColor);
-                sliderBodyColor.setValue(Slider?.sliderBodyColor);
-                sliderBorderColor.setValue(Slider?.sliderBorderColor);
-                sliderBallFlip.setValue(Slider?.sliderBallFlip);
-                sliderHintEnable.setValue(Slider?.sliderHintEnable);
-                sliderHintAlpha.setValue(Slider?.sliderHintAlpha);
-                sliderHintColor.setValue(Slider?.sliderHintColor);
-                sliderHintWidth.setValue(Slider?.sliderHintWidth);
-                sliderHintShowMinLength.setValue(
-                    Slider?.sliderHintShowMinLength
-                );
+                sliderBodyWidth.loadFromJSON(json);
+                sliderBorderWidth.loadFromJSON(json);
+                sliderBodyBaseAlpha.loadFromJSON(json);
+                sliderFollowComboColor.loadFromJSON(json);
+                sliderBodyColor.loadFromJSON(json);
+                sliderBorderColor.loadFromJSON(json);
+                sliderBallFlip.loadFromJSON(json);
+                sliderHintEnable.loadFromJSON(json);
+                sliderHintAlpha.loadFromJSON(json);
+                sliderHintColor.loadFromJSON(json);
+                sliderHintWidth.loadFromJSON(json);
+                sliderHintShowMinLength.loadFromJSON(json);
 
                 // Cursor
-                rotateCursor.setValue(Cursor?.rotateCursor);
+                rotateCursor.loadFromJSON(json);
 
                 // Utilities
-                limitComboTextLength.setValue(Utils?.limitComboTextLength);
-                disableKiai.setValue(Utils?.limitComboTextLength);
-                comboTextScale.setValue(Utils?.comboTextScale);
-                animationFramerate.setValue(Utils?.animationFramerate);
-                layeredHitSounds.setValue(Utils?.layeredHitSounds);
-                spinnerFrequencyModulate.setValue(
-                    Utils?.spinnerFrequencyModulate
-                );
+                limitComboTextLength.loadFromJSON(json);
+                disableKiai.loadFromJSON(json);
+                comboTextScale.loadFromJSON(json);
+                animationFramerate.loadFromJSON(json);
+                layeredHitSounds.loadFromJSON(json);
+                spinnerFrequencyModulate.loadFromJSON(json);
 
                 // Color
-                menuItemDefaultColor.setValue(Color?.MenuItemDefaultColor);
-                menuItemOnTouchColor.setValue(Color?.MenuItemOnTouchColor);
-                menuItemVersionsDefaultColor.setValue(
-                    Color?.MenuItemVersionsDefaultColor
-                );
-                menuItemVersionsSelectedColor.setValue(
-                    Color?.MenuItemVersionsSelectedColor
-                );
-                menuItemDefaultTextColor.setValue(
-                    Color?.MenuItemDefaultTextColor
-                );
-                menuItemSelectedTextColor.setValue(
-                    Color?.MenuItemSelectedTextColor
-                );
+                menuItemDefaultColor.loadFromJSON(json);
+                menuItemOnTouchColor.loadFromJSON(json);
+                menuItemVersionsDefaultColor.loadFromJSON(json);
+                menuItemVersionsSelectedColor.loadFromJSON(json);
+                menuItemDefaultTextColor.loadFromJSON(json);
+                menuItemSelectedTextColor.loadFromJSON(json);
 
                 // Fonts
-                comboPrefix.setValue(Fonts?.comboPrefix);
-                scorePrefix.setValue(Fonts?.scorePrefix);
-                hitCirclePrefix.setValue(Fonts?.hitCirclePrefix);
-                hitCircleOverlap.setValue(Fonts?.hitCircleOverlap);
+                comboPrefix.loadFromJSON(json);
+                scorePrefix.loadFromJSON(json);
+                hitCirclePrefix.loadFromJSON(json);
+                hitCircleOverlap.loadFromJSON(json);
 
                 // Layout
                 // Back Button
-                backButtonWidth.setValue(Layout?.BackButton?.w);
-                backButtonHeight.setValue(Layout?.BackButton?.h);
-                backButtonScale.setValue(Layout?.BackButton?.scale);
-                backButtonX.setValue(Layout?.BackButton?.x);
-                backButtonY.setValue(Layout?.BackButton?.y);
-                backButtonScaleWhenHold.setValue(
-                    Layout?.BackButton?.scaleWhenHold
-                );
+                backButtonWidth.loadFromJSON(json);
+                backButtonHeight.loadFromJSON(json);
+                backButtonScale.loadFromJSON(json);
+                backButtonX.loadFromJSON(json);
+                backButtonY.loadFromJSON(json);
+                backButtonScaleWhenHold.loadFromJSON(json);
 
                 // Mods Button
-                modsButtonWidth.setValue(Layout?.ModsButton?.w);
-                modsButtonHeight.setValue(Layout?.ModsButton?.h);
-                modsButtonScale.setValue(Layout?.ModsButton?.scale);
-                modsButtonX.setValue(Layout?.ModsButton?.x);
-                modsButtonY.setValue(Layout?.ModsButton?.y);
+                modsButtonWidth.loadFromJSON(json);
+                modsButtonHeight.loadFromJSON(json);
+                modsButtonScale.loadFromJSON(json);
+                modsButtonX.loadFromJSON(json);
+                modsButtonY.loadFromJSON(json);
 
                 // Options Button
-                optionsButtonWidth.setValue(Layout?.OptionsButton?.w);
-                optionsButtonHeight.setValue(Layout?.OptionsButton?.h);
-                optionsButtonScale.setValue(Layout?.OptionsButton?.scale);
-                optionsButtonX.setValue(Layout?.OptionsButton?.x);
-                optionsButtonY.setValue(Layout?.OptionsButton?.y);
+                optionsButtonWidth.loadFromJSON(json);
+                optionsButtonHeight.loadFromJSON(json);
+                optionsButtonScale.loadFromJSON(json);
+                optionsButtonX.loadFromJSON(json);
+                optionsButtonY.loadFromJSON(json);
 
                 // Random Button
-                randomButtonWidth.setValue(Layout?.RandomButton?.w);
-                randomButtonHeight.setValue(Layout?.RandomButton?.h);
-                randomButtonScale.setValue(Layout?.RandomButton?.scale);
-                randomButtonX.setValue(Layout?.RandomButton?.x);
-                randomButtonY.setValue(Layout?.RandomButton?.y);
+                randomButtonWidth.loadFromJSON(json);
+                randomButtonHeight.loadFromJSON(json);
+                randomButtonScale.loadFromJSON(json);
+                randomButtonX.loadFromJSON(json);
+                randomButtonY.loadFromJSON(json);
 
                 // Difficulty Switcher Button
-                difficultySwitcherWidth.setValue(Layout?.DifficultySwitcher?.w);
-                difficultySwitcherHeight.setValue(
-                    Layout?.DifficultySwitcher?.h
-                );
-                difficultySwitcherScale.setValue(
-                    Layout?.DifficultySwitcher?.scale
-                );
-                difficultySwitcherX.setValue(Layout?.DifficultySwitcher?.x);
-                difficultySwitcherY.setValue(Layout?.DifficultySwitcher?.y);
+                difficultySwitcherWidth.loadFromJSON(json);
+                difficultySwitcherHeight.loadFromJSON(json);
+                difficultySwitcherScale.loadFromJSON(json);
+                difficultySwitcherX.loadFromJSON(json);
+                difficultySwitcherY.loadFromJSON(json);
 
                 alert("The skin.json file has been loaded successfully!");
             })

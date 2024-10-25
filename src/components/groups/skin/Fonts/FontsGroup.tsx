@@ -16,9 +16,9 @@ export default function FontsGroup() {
                     These options define the prefix of skin texture files that
                     will be used by the game.
                     <br />
-                    For example, putting prefix &quot;score&quot; on the combo
-                    numbers option will make the game use &quot;score-0&quot;,
-                    &quot;score-1&quot;, &quot;score-2&quot;, and so on.
+                    For example, putting prefix <code>score</code> on the combo
+                    numbers option will make the game use <code>score-0</code>,
+                    <code>score-1</code>, <code>score-2</code>, and so on.
                 </div>
 
                 <EditorContainer>

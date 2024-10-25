@@ -5,12 +5,12 @@ interface Props {
     /**
      * The title of the editor.
      */
-    title: string;
+    title: JSX.Element | string;
 
     /**
      * The description of the editor.
      */
-    description?: string;
+    description?: JSX.Element | string;
 }
 
 export default function BaseEditor(props: PropsWithChildren<Props>) {

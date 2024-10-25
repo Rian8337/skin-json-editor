@@ -1,5 +1,4 @@
-import { NumberResettable } from "@structures/resettable";
-import { Resettable } from "@structures/resettable";
+import { NumberResettable, Resettable } from "@structures/resettable";
 import BaseEditor from "./BaseEditor";
 import "./SliderInputEditor.css";
 
@@ -7,12 +6,12 @@ interface Props {
     /**
      * The title of the input.
      */
-    title: string;
+    title: JSX.Element | string;
 
     /**
      * The description of the input.
      */
-    description?: string;
+    description?: JSX.Element | string;
 
     /**
      * The configuration that the input is responsible for.

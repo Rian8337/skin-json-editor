@@ -7,12 +7,12 @@ interface Props {
     /**
      * The title of the input.
      */
-    title: string;
+    title: JSX.Element | string;
 
     /**
      * The description of the input.
      */
-    description?: string;
+    description?: JSX.Element | string;
 
     /**
      * The configuration that the input is responsible for.
@@ -22,7 +22,7 @@ interface Props {
     /**
      * The label beside the color input box.
      */
-    inputLabel?: string;
+    inputLabel?: JSX.Element | string;
 }
 
 export default function MultipleColorEditor(props: Props) {

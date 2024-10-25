@@ -5,12 +5,12 @@ interface Props {
     /**
      * The title of the checkbox.
      */
-    title: string;
+    title: JSX.Element | string;
 
     /**
      * The description of the checkbox.
      */
-    description?: string;
+    description?: JSX.Element | string;
 
     /**
      * The configuration that the checkbox is responsible for.

@@ -8,7 +8,12 @@ export default function SpinnerFrequencyModulate() {
     return (
         <CheckBoxEditor
             title="Modulate Spinner Frequency"
-            description="Whether spinnerspin hitsounds should pitch up as a spinner progresses."
+            description={
+                <>
+                    Whether <code>spinnerspin</code> hitsounds should pitch up
+                    as a spinner progresses.
+                </>
+            }
             resettable={ctx}
         />
     );

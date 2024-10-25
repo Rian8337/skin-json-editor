@@ -8,7 +8,12 @@ export default function LayeredHitSounds() {
     return (
         <CheckBoxEditor
             title="Layered Hit Sounds"
-            description="Whether hitnormal hitsounds should always be played."
+            description={
+                <>
+                    Whether <code>hitnormal</code> hitsounds should always be
+                    played.
+                </>
+            }
             resettable={ctx}
         />
     );

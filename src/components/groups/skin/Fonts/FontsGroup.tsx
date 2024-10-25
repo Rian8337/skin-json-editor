@@ -1,6 +1,7 @@
 import Group from "../../Group";
 import SubGroup from "../../SubGroup";
 import ComboPrefix from "./ComboPrefix";
+import HitCircleOverlap from "./HitCircleOverlap";
 import HitCirclePrefix from "./HitCirclePrefix";
 import ScorePrefix from "./ScorePrefix";
 
@@ -16,9 +17,21 @@ export default function FontsGroup() {
                     numbers option will make the game use &quot;score-0&quot;,
                     &quot;score-1&quot;, &quot;score-2&quot;, and so on.
                 </div>
+
                 <ComboPrefix />
                 <ScorePrefix />
                 <HitCirclePrefix />
+            </SubGroup>
+
+            <SubGroup title="Texture Overlaps">
+                <div className="group-description">
+                    These options define the amount of pixels that skin texture
+                    files will overlap.
+                    <br />
+                    Negative numbers will add a gap between textures.
+                </div>
+
+                <HitCircleOverlap />
             </SubGroup>
         </Group>
     );

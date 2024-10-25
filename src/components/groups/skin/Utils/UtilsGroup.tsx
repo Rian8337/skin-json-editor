@@ -3,7 +3,6 @@ import SubGroup from "../../SubGroup";
 import ComboNumberIllustrationCanvas from "../../illustration/combonumber/ComboNumberIllustrationCanvas";
 import ComboNumberIllustrationCircleSize from "../../illustration/combonumber/ComboNumberIllustrationCircleSize";
 import ComboNumberIllustrationNumbers from "../../illustration/combonumber/ComboNumberIllustrationNumbers";
-import HitCircleOverlap from "../Fonts/HitCircleOverlap";
 import AnimationFramerate from "./AnimationFramerate";
 import ComboTextScale from "./ComboTextScale";
 import DisableKiai from "./DisableKiai";
@@ -23,7 +22,6 @@ export default function UtilsGroup() {
                 <hr />
                 <LimitComboTextLength />
                 <ComboTextScale />
-                <HitCircleOverlap />
                 <AnimationFramerate />
                 <LayeredHitSounds />
                 <SpinnerFrequencyModulate />

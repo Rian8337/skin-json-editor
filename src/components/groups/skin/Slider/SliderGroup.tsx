@@ -18,6 +18,7 @@ import SliderHintShowMinLength from "./SliderHintShowMinLength";
 import SubGroup from "../../SubGroup";
 import SliderIllustrationGroup from "../../illustration/slider/SliderIllustrationGroup";
 import SliderBallFlip from "./SliderBallFlip";
+import EditorContainer from "@components/editors/EditorContainer";
 
 export default function SliderGroup() {
     const followComboColor = useContext(SliderFollowComboColorContext);
@@ -28,13 +29,16 @@ export default function SliderGroup() {
             <SliderIllustrationGroup />
 
             <SubGroup title="Body">
-                <SliderBodyWidth />
-                <SliderBodyBaseAlpha />
+                <EditorContainer>
+                    <SliderBodyWidth />
+                    <SliderBodyBaseAlpha />
+                </EditorContainer>
+
                 <SliderFollowComboColor />
                 {!followComboColor.value ? <SliderBodyColor /> : null}
             </SubGroup>
 
-            <SubGroup title="Border">
+            <SubGroup title="Border" withEditorContainer>
                 <SliderBorderWidth />
                 <SliderBorderColor />
             </SubGroup>
@@ -46,12 +50,12 @@ export default function SliderGroup() {
             <SubGroup title="Hint">
                 <SliderHintEnable />
                 {sliderHintEnable.value ? (
-                    <>
+                    <EditorContainer>
                         <SliderHintAlpha />
                         <SliderHintColor />
                         <SliderHintWidth />
                         <SliderHintShowMinLength />
-                    </>
+                    </EditorContainer>
                 ) : null}
             </SubGroup>
         </Group>

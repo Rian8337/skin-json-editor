@@ -10,12 +10,12 @@ import MenuItemVersionsSelectedColor from "./MenuItemVersionsSelectedColor";
 export default function ColorGroup() {
     return (
         <Group title="Song Selection Menu Beatmap(set) Cards" collapsible>
-            <SubGroup title="Beatmapset Card">
+            <SubGroup title="Beatmapset Card" withEditorContainer>
                 <MenuItemDefaultColor />
                 <MenuItemOnTouchColor />
             </SubGroup>
 
-            <SubGroup title="Beatmap Card">
+            <SubGroup title="Beatmap Card" withEditorContainer>
                 <MenuItemVersionsDefaultColor />
                 <MenuItemDefaultTextColor />
                 <MenuItemVersionsSelectedColor />

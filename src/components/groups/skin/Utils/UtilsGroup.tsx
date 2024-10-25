@@ -1,3 +1,4 @@
+import EditorContainer from "@components/editors/EditorContainer";
 import Group from "../../Group";
 import SubGroup from "../../SubGroup";
 import ComboNumberIllustrationCanvas from "../../illustration/combonumber/ComboNumberIllustrationCanvas";
@@ -17,14 +18,21 @@ export default function UtilsGroup() {
 
             <SubGroup title="Combo Number">
                 <ComboNumberIllustrationCanvas />
-                <ComboNumberIllustrationCircleSize />
-                <ComboNumberIllustrationNumbers />
+
+                <EditorContainer>
+                    <ComboNumberIllustrationCircleSize />
+                    <ComboNumberIllustrationNumbers />
+                </EditorContainer>
+
                 <hr />
-                <LimitComboTextLength />
-                <ComboTextScale />
-                <AnimationFramerate />
-                <LayeredHitSounds />
-                <SpinnerFrequencyModulate />
+
+                <EditorContainer>
+                    <LimitComboTextLength />
+                    <ComboTextScale />
+                    <AnimationFramerate />
+                    <LayeredHitSounds />
+                    <SpinnerFrequencyModulate />
+                </EditorContainer>
             </SubGroup>
         </Group>
     );

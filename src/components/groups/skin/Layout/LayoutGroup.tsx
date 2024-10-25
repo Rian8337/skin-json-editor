@@ -49,23 +49,23 @@ export default function LayoutGroup() {
                 </ul>
             </div>
 
-            <SubGroup title="Back Button">
+            <SubGroup title="Back Button" withEditorContainer>
                 <LayoutBackButton />
             </SubGroup>
 
-            <SubGroup title="Mods Button">
+            <SubGroup title="Mods Button" withEditorContainer>
                 <LayoutModsButton />
             </SubGroup>
 
-            <SubGroup title="Options Button">
+            <SubGroup title="Options Button" withEditorContainer>
                 <LayoutOptionsButton />
             </SubGroup>
 
-            <SubGroup title="Random Button">
+            <SubGroup title="Random Button" withEditorContainer>
                 <LayoutRandomButton />
             </SubGroup>
 
-            <SubGroup title="Difficulty Switcher Button">
+            <SubGroup title="Difficulty Switcher Button" withEditorContainer>
                 <LayoutDifficultySwitcher />
             </SubGroup>
         </Group>

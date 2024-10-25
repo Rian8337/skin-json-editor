@@ -27,6 +27,7 @@ export default function LayoutBackButton() {
                 x={x}
                 y={y}
             />
+
             <CheckBoxEditor
                 title="Scale When Hold"
                 description="When enabled, the button's size will change accordingly when tapped."

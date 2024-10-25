@@ -1,3 +1,4 @@
+import EditorContainer from "@components/editors/EditorContainer";
 import Group from "../../Group";
 import SubGroup from "../../SubGroup";
 import ComboOverlap from "./ComboOverlap";
@@ -20,9 +21,11 @@ export default function FontsGroup() {
                     &quot;score-1&quot;, &quot;score-2&quot;, and so on.
                 </div>
 
-                <ComboPrefix />
-                <ScorePrefix />
-                <HitCirclePrefix />
+                <EditorContainer>
+                    <ComboPrefix />
+                    <ScorePrefix />
+                    <HitCirclePrefix />
+                </EditorContainer>
             </SubGroup>
 
             <SubGroup title="Texture Overlaps">
@@ -33,9 +36,11 @@ export default function FontsGroup() {
                     Negative numbers will add a gap between textures.
                 </div>
 
-                <ComboOverlap />
-                <ScoreOverlap />
-                <HitCircleOverlap />
+                <EditorContainer>
+                    <ComboOverlap />
+                    <ScoreOverlap />
+                    <HitCircleOverlap />
+                </EditorContainer>
             </SubGroup>
         </Group>
     );

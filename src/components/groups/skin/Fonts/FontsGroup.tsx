@@ -30,8 +30,8 @@ export default function FontsGroup() {
 
             <SubGroup title="Texture Overlaps">
                 <div className="group-description">
-                    These options define the amount of pixels that skin texture
-                    files will overlap.
+                    These options define the amount of pixels that textures will
+                    overlap.
                     <br />
                     Negative numbers will add a gap between textures.
                 </div>

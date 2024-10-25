@@ -8,7 +8,7 @@ export default function HitCircleOverlap() {
     return (
         <UserInputEditor
             title="Hit Circle Number Overlap"
-            description="The amount of pixels that the hit circle numbers overlap."
+            description="The amount of pixels that hit circle numbers overlap."
             resettable={ctx}
         />
     );

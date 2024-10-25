@@ -10,7 +10,7 @@ export interface SkinJsonFonts {
     hitCirclePrefix?: string;
 
     /**
-     * The amount of pixels that the hit circle numbers overlap.
+     * The amount of pixels that hit circle numbers overlap.
      *
      * Defaults to -2.
      */
@@ -31,7 +31,7 @@ export interface SkinJsonFonts {
     comboPrefix?: string;
 
     /**
-     * The amount of pixels that the combo numbers overlap.
+     * The amount of pixels that combo numbers overlap.
      *
      * Defaults to 0.
      */

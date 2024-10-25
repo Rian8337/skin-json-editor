@@ -36,6 +36,7 @@ export const Providers = compose(
     Fonts.HitCirclePrefixContextProvider,
     Fonts.HitCircleOverlapContextProvider,
     Fonts.ScorePrefixContextProvider,
+    Fonts.ScoreOverlapContextProvider,
     Fonts.ComboPrefixContextProvider,
     Fonts.ComboOverlapContextProvider,
 

@@ -4,6 +4,7 @@ import ComboOverlap from "./ComboOverlap";
 import ComboPrefix from "./ComboPrefix";
 import HitCircleOverlap from "./HitCircleOverlap";
 import HitCirclePrefix from "./HitCirclePrefix";
+import ScoreOverlap from "./ScoreOverlap";
 import ScorePrefix from "./ScorePrefix";
 
 export default function FontsGroup() {
@@ -33,6 +34,7 @@ export default function FontsGroup() {
                 </div>
 
                 <ComboOverlap />
+                <ScoreOverlap />
                 <HitCircleOverlap />
             </SubGroup>
         </Group>

@@ -24,6 +24,13 @@ export interface SkinJsonFonts {
     scorePrefix?: string;
 
     /**
+     * The amount of pixels that score numbers overlap.
+     *
+     * Defaults to 0.
+     */
+    scoreOverlap?: number;
+
+    /**
      * The prefix of combo number texture file names.
      *
      * Defaults to `score`.

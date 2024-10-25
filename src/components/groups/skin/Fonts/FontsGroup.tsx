@@ -17,7 +17,7 @@ export default function FontsGroup() {
                     will be used by the game.
                     <br />
                     For example, putting prefix <code>score</code> on the combo
-                    numbers option will make the game use <code>score-0</code>,
+                    numbers option will make the game use <code>score-0</code>,{" "}
                     <code>score-1</code>, <code>score-2</code>, and so on.
                 </div>
 

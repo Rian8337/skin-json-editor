@@ -6,6 +6,9 @@ const resettable = new NumberResettable({ defaultValue: 300, minValue: 0 });
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintShowMinLength;
 
+// Game forces the slider hint to always show for skin.ini.
+resettable.iniPropertyGetter = () => 1;
+
 export const SliderHintShowMinLengthContext = createContext(resettable.clone());
 
 export function SliderHintShowMinLengthContextProvider(

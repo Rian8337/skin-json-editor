@@ -5,6 +5,9 @@ const resettable = new Resettable(false);
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintEnable;
 
+// Game forces the slider hint to be enabled for skin.ini.
+resettable.iniPropertyGetter = () => true;
+
 resettable.jsonSaveHandler = function (json) {
     json.Slider ??= {};
     json.Slider.sliderHintEnable = this.value;

@@ -5,6 +5,16 @@ const resettable = new NumberResettable({ defaultValue: 0 });
 
 resettable.jsonPropertyGetter = (json) => json.Fonts?.scoreOverlap;
 
+resettable.iniPropertyGetter = (ini) => {
+    const scoreOverlap = ini.get("Fonts", "ScoreOverlap");
+
+    if (!scoreOverlap) {
+        return resettable.defaultValue;
+    }
+
+    return parseFloat(scoreOverlap);
+};
+
 resettable.jsonSaveHandler = function (json) {
     json.Fonts ??= {};
     json.Fonts.scoreOverlap = this.value;

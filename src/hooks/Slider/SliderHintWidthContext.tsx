@@ -6,6 +6,9 @@ const resettable = new NumberResettable({ defaultValue: 3, minValue: 0 });
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintWidth;
 
+// Game forces the slider hint width to be 25 for skin.ini.
+resettable.iniPropertyGetter = () => 25;
+
 export const SliderHintWidthContext = createContext(resettable.clone());
 
 export function SliderHintWidthContextProvider(props: PropsWithChildren) {

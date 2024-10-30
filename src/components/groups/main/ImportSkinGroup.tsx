@@ -1,6 +1,6 @@
 import { FormEvent, useContext } from "react";
 import Group from "../Group";
-import "./LoadJsonGroup.css";
+import "./ImportSkinGroup.css";
 import * as Color from "@hooks/Color";
 import * as ComboColor from "@hooks/ComboColor";
 import * as Cursor from "@hooks/Cursor";
@@ -9,6 +9,8 @@ import * as Layout from "@hooks/Layout";
 import * as Slider from "@hooks/Slider";
 import * as Utils from "@hooks/Utils";
 import { SkinJson } from "@structures/skin/SkinJson";
+import SubGroup from "../SubGroup";
+import { SkinIni } from "@structures/skin/SkinIni";
 
 export default function LoadJsonGroup() {
     // A bit dirty, but oh well...
@@ -68,6 +70,7 @@ export default function LoadJsonGroup() {
     const comboPrefix = useContext(Fonts.ComboPrefixContext);
     const comboOverlap = useContext(Fonts.ComboOverlapContext);
     const scorePrefix = useContext(Fonts.ScorePrefixContext);
+    const scoreOverlap = useContext(Fonts.ScoreOverlapContext);
     const hitCirclePrefix = useContext(Fonts.HitCirclePrefixContext);
     const hitCircleOverlap = useContext(Fonts.HitCircleOverlapContext);
 
@@ -116,7 +119,7 @@ export default function LoadJsonGroup() {
     const difficultySwitcherX = useContext(Layout.DifficultySwitcherXContext);
     const difficultySwitcherY = useContext(Layout.DifficultySwitcherYContext);
 
-    const onSubmit = (event: FormEvent<HTMLFormElement>) => {
+    const onJsonSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         const file = (
@@ -186,6 +189,7 @@ export default function LoadJsonGroup() {
                 comboPrefix.loadFromJSON(json, resetAll);
                 comboOverlap.loadFromJSON(json, resetAll);
                 scorePrefix.loadFromJSON(json, resetAll);
+                scoreOverlap.loadFromJSON(json, resetAll);
                 hitCirclePrefix.loadFromJSON(json, resetAll);
                 hitCircleOverlap.loadFromJSON(json, resetAll);
 
@@ -235,21 +239,108 @@ export default function LoadJsonGroup() {
             });
     };
 
+    const onIniSubmit = (event: FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+
+        const file = (
+            (event.target as HTMLFormElement).elements[0] as HTMLInputElement
+        ).files?.[0];
+
+        if (!file) {
+            return;
+        }
+
+        file.text()
+            .then((text) => {
+                const resetAll = confirm(
+                    "Would you like to reset all values before loading the skin.json file?"
+                );
+
+                const ini = new SkinIni(text);
+
+                // Cursor
+                rotateCursor.loadFromIni(ini, resetAll);
+
+                // ComboColor
+                comboColors.loadFromIni(ini, resetAll);
+
+                // Slider
+                sliderHintColor.loadFromIni(ini, resetAll);
+                sliderHintAlpha.loadFromIni(ini, resetAll);
+                sliderHintWidth.loadFromIni(ini, resetAll);
+                sliderHintEnable.loadFromIni(ini, resetAll);
+                sliderHintShowMinLength.loadFromIni(ini, resetAll);
+                sliderBodyColor.loadFromIni(ini, resetAll);
+                sliderBodyBaseAlpha.loadFromIni(ini, resetAll);
+                sliderFollowComboColor.loadFromIni(ini, resetAll);
+                sliderBorderColor.loadFromIni(ini, resetAll);
+
+                // Color
+                menuItemDefaultTextColor.loadFromIni(ini, resetAll);
+                menuItemSelectedTextColor.loadFromIni(ini, resetAll);
+                menuItemDefaultColor.loadFromIni(ini, resetAll);
+
+                // Fonts
+                hitCirclePrefix.loadFromIni(ini, resetAll);
+                hitCircleOverlap.loadFromIni(ini, resetAll);
+                scorePrefix.loadFromIni(ini, resetAll);
+                scoreOverlap.loadFromIni(ini, resetAll);
+                comboPrefix.loadFromIni(ini, resetAll);
+                comboOverlap.loadFromIni(ini, resetAll);
+
+                // Utils
+                comboTextScale.loadFromIni(ini, resetAll);
+                animationFramerate.loadFromIni(ini, resetAll);
+                layeredHitSounds.loadFromIni(ini, resetAll);
+                sliderBallFlip.loadFromIni(ini, resetAll);
+                spinnerFrequencyModulate.loadFromIni(ini, resetAll);
+
+                // Layout
+                backButtonScaleWhenHold.loadFromIni(ini, resetAll);
+                modsButtonY.loadFromIni(ini, resetAll);
+                optionsButtonY.loadFromIni(ini, resetAll);
+                randomButtonY.loadFromIni(ini, resetAll);
+            })
+            .catch(() => {
+                alert(
+                    "Encountered an error when attempting to process your skin.ini file."
+                );
+            });
+    };
+
     return (
-        <Group title="Load existing skin.json">
-            <form
-                className="load-json-form"
-                onSubmit={onSubmit}
-                encType="multipart/form-data"
-            >
-                <input type="file" accept=".json" name="jsonFile" />
-                <br />
-                <input
-                    className="load-json-form-submit"
-                    type="submit"
-                    value="Load"
-                />
-            </form>
+        <Group title="Load Existing Configuration">
+            <SubGroup title="skin.json">
+                <form
+                    className="import-skin-form"
+                    onSubmit={onJsonSubmit}
+                    encType="multipart/form-data"
+                >
+                    <input type="file" accept=".json" name="jsonFile" />
+                    <br />
+                    <input
+                        className="import-skin-form-submit"
+                        type="submit"
+                        value="Load"
+                    />
+                </form>
+            </SubGroup>
+
+            <SubGroup title="skin.ini">
+                <form
+                    className="import-skin-form"
+                    onSubmit={onIniSubmit}
+                    encType="multipart/form-data"
+                >
+                    <input type="file" accept=".ini" name="iniFile" />
+                    <br />
+                    <input
+                        className="import-skin-form-submit"
+                        type="submit"
+                        value="Load"
+                    />
+                </form>
+            </SubGroup>
         </Group>
     );
 }

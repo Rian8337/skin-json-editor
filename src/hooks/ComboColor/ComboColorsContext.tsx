@@ -2,12 +2,31 @@ import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { ForceOverrideContext } from "./ForceOverrideContext";
 import { createColorError, validateColor } from "@utils/validators";
 import { ArrayResettable } from "@structures/resettable";
+import { rgbToHex } from "@utils/converters";
 
 const resettable = new ArrayResettable(["#FFFFFF"]);
 
 resettable.jsonPropertyGetter = (json) => json.ComboColor?.colors;
 
-resettable.jsonPropertyValidator = (value) => {
+resettable.iniPropertyGetter = (ini) => {
+    const colors: string[] = [];
+
+    // osu! skins supports up to 7 combo colors
+    for (let i = 0; i < 8; ++i) {
+        const color = ini.get("Colours", `Combo${i + 1}`);
+
+        if (!color) {
+            continue;
+        }
+
+        // Convert from RGB to hex
+        colors.push(rgbToHex(color));
+    }
+
+    return colors;
+};
+
+resettable.propertyValidator = (value) => {
     for (const c of value) {
         if (!validateColor(c)) {
             throw createColorError(

@@ -5,6 +5,16 @@ const resettable = new NumberResettable({ defaultValue: 60, minValue: -1 });
 
 resettable.jsonPropertyGetter = (json) => json.Utils?.animationFramerate;
 
+resettable.iniPropertyGetter = (ini) => {
+    const animationFramerate = ini.get("Utils", "AnimationFramerate");
+
+    if (!animationFramerate) {
+        return resettable.defaultValue;
+    }
+
+    return parseFloat(animationFramerate);
+};
+
 resettable.jsonSaveHandler = function (json) {
     json.Utils ??= {};
     json.Utils.animationFramerate = this.value;

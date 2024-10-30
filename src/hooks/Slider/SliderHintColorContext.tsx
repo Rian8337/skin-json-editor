@@ -2,12 +2,23 @@ import { PropsWithChildren, createContext, useContext, useState } from "react";
 import { SliderHintEnableContext } from "./SliderHintEnableContext";
 import { createColorError, validateColor } from "@utils/validators";
 import { Resettable } from "@structures/resettable";
+import { rgbToHex } from "@utils/converters";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintColor;
 
-resettable.jsonPropertyValidator = (value) => {
+resettable.iniPropertyGetter = (ini) => {
+    const color = ini.get("Colours", "SliderTrackOverride");
+
+    if (!color) {
+        return;
+    }
+
+    return rgbToHex(color, 15);
+};
+
+resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(`The slider hint color (${value}) is invalid`);
     }

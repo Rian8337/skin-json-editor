@@ -5,6 +5,16 @@ const resettable = new NumberResettable({ defaultValue: -2 });
 
 resettable.jsonPropertyGetter = (json) => json.Fonts?.hitCircleOverlap;
 
+resettable.iniPropertyGetter = (ini) => {
+    const hitCircleOverlap = ini.get("Fonts", "HitCircleOverlap");
+
+    if (!hitCircleOverlap) {
+        return resettable.defaultValue;
+    }
+
+    return parseFloat(hitCircleOverlap);
+};
+
 resettable.jsonSaveHandler = function (json) {
     json.Fonts ??= {};
     json.Fonts.hitCircleOverlap = this.value;

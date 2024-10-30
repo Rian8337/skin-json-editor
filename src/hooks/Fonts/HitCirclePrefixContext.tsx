@@ -5,6 +5,9 @@ const resettable = new Resettable("default");
 
 resettable.jsonPropertyGetter = (json) => json.Fonts?.hitCirclePrefix;
 
+resettable.iniPropertyGetter = (ini) =>
+    ini.get("Fonts", "HitCirclePrefix") ?? resettable.defaultValue;
+
 resettable.jsonSaveHandler = function (json) {
     json.Fonts ??= {};
     json.Fonts.hitCirclePrefix = this.value;

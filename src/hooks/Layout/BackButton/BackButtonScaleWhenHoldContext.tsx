@@ -6,6 +6,9 @@ const resettable = new Resettable(true);
 resettable.jsonPropertyGetter = (json) =>
     json.Layout?.BackButton?.scaleWhenHold;
 
+// Game forces the scale when hold to be disabled in skin.ini.
+resettable.iniPropertyGetter = () => false;
+
 resettable.jsonSaveHandler = function (json) {
     json.Layout ??= {};
     json.Layout.useNewLayout = true;

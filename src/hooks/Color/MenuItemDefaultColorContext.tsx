@@ -6,7 +6,10 @@ const resettable = new Resettable<string | undefined>(undefined);
 
 resettable.jsonPropertyGetter = (json) => json.Color?.MenuItemDefaultColor;
 
-resettable.jsonPropertyValidator = (value) => {
+// osu!stable's inactive color
+resettable.iniPropertyGetter = () => "#EB4999";
+
+resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
             `The default color for an unselected beatmapset card (${value}) is invalid`

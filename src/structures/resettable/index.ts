@@ -2,6 +2,7 @@ export * from "./ArrayResettable";
 export * from "./NumberResettable";
 export * from "./NumberResettableType";
 export * from "./Resettable";
+export * from "./ResettableIniPropertyGetter";
 export * from "./ResettableJSONPropertyGetter";
 export * from "./ResettableJSONPropertyValidator";
 export * from "./ResettableJSONSaveHandler";

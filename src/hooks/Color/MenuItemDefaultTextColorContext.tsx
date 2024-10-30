@@ -1,12 +1,23 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { validateColor, createColorError } from "@utils/validators";
 import { Resettable } from "@structures/resettable";
+import { rgbToHex } from "@utils/converters";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
 resettable.jsonPropertyGetter = (json) => json.Color?.MenuItemDefaultTextColor;
 
-resettable.jsonPropertyValidator = (value) => {
+resettable.iniPropertyGetter = (ini) => {
+    const color = ini.get("Colours", "SongSelectInactiveText");
+
+    if (!color) {
+        return "#000000";
+    }
+
+    return rgbToHex(color);
+};
+
+resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
             `The default text color for an unselected beatmap card (${value}) is invalid`

@@ -5,6 +5,9 @@ const resettable = new Resettable("score");
 
 resettable.jsonPropertyGetter = (json) => json.Fonts?.scorePrefix;
 
+resettable.iniPropertyGetter = (ini) =>
+    ini.get("Fonts", "ScorePrefix") ?? resettable.defaultValue;
+
 resettable.jsonSaveHandler = function (json) {
     json.Fonts ??= {};
     json.Fonts.scorePrefix = this.value;

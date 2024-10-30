@@ -7,7 +7,7 @@ const resettable = new Resettable<string | undefined>(undefined);
 resettable.jsonPropertyGetter = (json) =>
     json.Color?.MenuItemVersionsDefaultColor;
 
-resettable.jsonPropertyValidator = (value) => {
+resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
             `The color for an unselected beatmap card (${value}) is invalid`

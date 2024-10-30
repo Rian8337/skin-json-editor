@@ -6,7 +6,17 @@ const resettable = new Resettable<string | undefined>(undefined);
 
 resettable.jsonPropertyGetter = (json) => json.Color?.MenuItemSelectedTextColor;
 
-resettable.jsonPropertyValidator = (value) => {
+resettable.iniPropertyGetter = (ini) => {
+    const color = ini.get("Colours", "SongSelectActiveText");
+
+    if (!color) {
+        return "#FFFFFF";
+    }
+
+    return color;
+};
+
+resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
             `The text color for a selected beatmap card (${value}) is invalid`

@@ -1,9 +1,9 @@
-.load-json-form {
+.import-skin-form {
     margin-top: 0.5em;
     text-align: center;
 }
 
-.load-json-form-submit {
+.import-skin-form-submit {
     margin-top: 0.5em;
     background-color: rgb(46, 46, 46, 0.8);
     font-family: Exo-Medium;

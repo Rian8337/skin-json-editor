@@ -23,7 +23,7 @@ export class ArrayResettable<T> extends Resettable<T[]> {
         clone._value = this._value.slice();
 
         clone.jsonPropertyGetter = this.jsonPropertyGetter;
-        clone.jsonPropertyValidator = this.jsonPropertyValidator;
+        clone.propertyValidator = this.propertyValidator;
 
         clone.jsonSaveHandler = this.jsonSaveHandler as
             | ResettableJSONSaveHandler<ArrayResettable<T>>

@@ -1,12 +1,23 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { createColorError, validateColor } from "@utils/validators";
 import { Resettable } from "@structures/resettable";
+import { rgbToHex } from "@utils/converters";
 
 const resettable = new Resettable("#FFFFFF");
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBorderColor;
 
-resettable.jsonPropertyValidator = (value) => {
+resettable.iniPropertyGetter = (ini) => {
+    const color = ini.get("Colours", "SliderBorder");
+
+    if (!color) {
+        return resettable.defaultValue;
+    }
+
+    return rgbToHex(color);
+};
+
+resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(`The slider border color (${value}) is invalid`);
     }

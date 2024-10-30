@@ -11,6 +11,9 @@ const resettable = new NumberResettable({
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintAlpha;
 
+// Game forces the slider hint alpha to be 1 for skin.ini.
+resettable.iniPropertyGetter = () => 1;
+
 export const SliderHintAlphaContext = createContext(resettable.clone());
 
 export function SliderHintAlphaContextProvider(props: PropsWithChildren) {

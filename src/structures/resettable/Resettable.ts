@@ -3,6 +3,8 @@ import { ResettableJSONSaveHandler } from "./ResettableJSONSaveHandler";
 import { ResettableJSONPropertyGetter } from "./ResettableJSONPropertyGetter";
 import { ResettableStateHook } from "./ResettableStateHook";
 import { ResettableJSONPropertyValidator } from "./ResettableJSONPropertyValidator";
+import { ResettableIniPropertyGetter } from "./ResettableIniPropertyGetter";
+import { SkinIni } from "@structures/skin/SkinIni";
 
 /**
  * A storage structure that allows the stored value to be reset.
@@ -26,14 +28,19 @@ export class Resettable<T> {
     }
 
     /**
+     * The function to call when getting a value from a skin.ini.
+     */
+    iniPropertyGetter?: ResettableIniPropertyGetter<T>;
+
+    /**
      * The function to call when getting a value from a skin.json.
      */
     jsonPropertyGetter?: ResettableJSONPropertyGetter<T>;
 
     /**
-     * The function to call when validating a value from a skin.json.
+     * The function to call when validating a value.
      */
-    jsonPropertyValidator?: ResettableJSONPropertyValidator<T>;
+    propertyValidator?: ResettableJSONPropertyValidator<T>;
 
     /**
      * The function to call when saving to a skin.json.
@@ -50,20 +57,6 @@ export class Resettable<T> {
      */
     get isDefault(): boolean {
         return this.value === this.defaultValue;
-    }
-
-    /**
-     * Whether this `Resettable` can be loaded from a skin.json.
-     */
-    get canLoadFromSkinJson(): boolean {
-        return !!this.jsonPropertyGetter;
-    }
-
-    /**
-     * Whether this `Resettable` can be saved to a skin.json.
-     */
-    get canSaveToSkinJson() {
-        return !!this.jsonSaveHandler;
     }
 
     /**
@@ -109,7 +102,7 @@ export class Resettable<T> {
      * @param value The new value. Defaults to the default value.
      */
     setValue(value = this.defaultValue) {
-        this.jsonPropertyValidator?.(value);
+        this.propertyValidator?.(value);
 
         this._value = value;
         this.stateHook?.[1](value);
@@ -122,13 +115,35 @@ export class Resettable<T> {
      * @param fallbackToDefault Whether to fallback to the default value if the value is not found in the skin.json.
      */
     loadFromJSON(json: SkinJson, fallbackToDefault: boolean) {
-        if (!this.canLoadFromSkinJson) {
+        if (!this.jsonPropertyGetter) {
             throw new Error(
                 "This `Resettable` cannot be loaded from a skin.json."
             );
         }
 
-        const value = this.jsonPropertyGetter?.(json);
+        const value = this.jsonPropertyGetter(json);
+
+        if (value === undefined && !fallbackToDefault) {
+            return;
+        }
+
+        this.setValue(value);
+    }
+
+    /**
+     * Loads this `Resettable` data from a skin.ini.
+     *
+     * @param ini The skin.ini to load from.
+     * @param fallbackToDefault Whether to fallback to the default value if the value is not found in the skin.ini.
+     */
+    loadFromIni(ini: SkinIni, fallbackToDefault: boolean) {
+        if (!this.iniPropertyGetter) {
+            throw new Error(
+                "This `Resettable` cannot be loaded from a skin.ini."
+            );
+        }
+
+        const value = this.iniPropertyGetter(ini);
 
         if (value === undefined && !fallbackToDefault) {
             return;
@@ -143,7 +158,7 @@ export class Resettable<T> {
      * @param json The skin.json to save to.
      */
     saveToJSON(json: SkinJson) {
-        if (!this.canSaveToSkinJson) {
+        if (!this.jsonSaveHandler) {
             throw new Error(
                 "This `Resettable` cannot be saved to a skin.json."
             );
@@ -153,8 +168,8 @@ export class Resettable<T> {
             return;
         }
 
-        this.jsonPropertyValidator?.(this.value);
-        this.jsonSaveHandler?.call(this, json);
+        this.propertyValidator?.(this.value);
+        this.jsonSaveHandler.call(this, json);
     }
 
     /**
@@ -175,7 +190,7 @@ export class Resettable<T> {
         clone._value = this._value;
 
         clone.jsonPropertyGetter = this.jsonPropertyGetter;
-        clone.jsonPropertyValidator = this.jsonPropertyValidator;
+        clone.propertyValidator = this.propertyValidator;
 
         clone.jsonSaveHandler = this.jsonSaveHandler as
             | ResettableJSONSaveHandler<Resettable<T>>

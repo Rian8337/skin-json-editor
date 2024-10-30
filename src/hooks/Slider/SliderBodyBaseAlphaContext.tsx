@@ -10,6 +10,9 @@ const resettable = new NumberResettable({
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBodyBaseAlpha;
 
+// Game forces the slider body alpha to be opaque for skin.ini.
+resettable.iniPropertyGetter = () => 1;
+
 resettable.jsonSaveHandler = function (json) {
     json.Slider ??= {};
     json.Slider.sliderBodyBaseAlpha = this.value;

@@ -1,9 +1,9 @@
-.reset-json-group-description,
-.reset-json-button-container {
+.reset-config-group-description,
+.reset-config-button-container {
     text-align: center;
 }
 
-.reset-json-button {
+.reset-config-button {
     margin-top: 0.5em;
     background-color: rgb(46, 46, 46, 0.8);
     font-family: Exo-Medium;

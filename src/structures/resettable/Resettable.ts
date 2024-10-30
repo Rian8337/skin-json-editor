@@ -111,11 +111,8 @@ export class Resettable<T> {
      * @param value The new value. Defaults to the default value.
      */
     setValue(value = this.defaultValue) {
-        if (this.stateHook) {
-            this.stateHook[1](value);
-        } else {
-            this._value = value;
-        }
+        this._value = value;
+        this.stateHook?.[1](value);
     }
 
     /**

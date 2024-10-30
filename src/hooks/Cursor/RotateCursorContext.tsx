@@ -3,16 +3,12 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(true);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Cursor?.rotateCursor);
-});
+resettable.jsonPropertyGetter = (json) => json.Cursor?.rotateCursor;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Cursor ??= {};
-        json.Cursor.rotateCursor = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Cursor ??= {};
+    json.Cursor.rotateCursor = this.value;
+};
 
 export const RotateCursorContext = createContext(resettable.clone());
 

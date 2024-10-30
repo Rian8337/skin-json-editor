@@ -3,19 +3,16 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(true);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Layout?.BackButton?.scaleWhenHold);
-});
+resettable.jsonPropertyGetter = (json) =>
+    json.Layout?.BackButton?.scaleWhenHold;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Layout ??= {};
-        json.Layout.useNewLayout = true;
+resettable.jsonSaveHandler = function (json) {
+    json.Layout ??= {};
+    json.Layout.useNewLayout = true;
 
-        json.Layout.BackButton ??= {};
-        json.Layout.BackButton.scaleWhenHold = this.value;
-    }
-});
+    json.Layout.BackButton ??= {};
+    json.Layout.BackButton.scaleWhenHold = this.value;
+};
 
 export const BackButtonScaleWhenHoldContext = createContext(resettable.clone());
 

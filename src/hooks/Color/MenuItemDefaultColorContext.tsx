@@ -4,22 +4,20 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Color?.MenuItemDefaultColor);
-});
+resettable.jsonPropertyGetter = (json) => json.Color?.MenuItemDefaultColor;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!validateColor(this.value)) {
+resettable.jsonPropertyValidator = (value) => {
+    if (!validateColor(value)) {
         throw createColorError(
-            `The default color for an unselected beatmapset card (${this.value}) is invalid`
+            `The default color for an unselected beatmapset card (${value}) is invalid`
         );
     }
+};
 
-    if (!this.isDefault) {
-        json.Color ??= {};
-        json.Color.MenuItemDefaultColor = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Color ??= {};
+    json.Color.MenuItemDefaultColor = this.value;
+};
 
 export const MenuItemDefaultColorContext = createContext(resettable.clone());
 

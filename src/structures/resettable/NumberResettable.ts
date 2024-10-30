@@ -1,9 +1,7 @@
-import {
-    Resettable,
-    ResettableJSONHandler,
-    ResettableStateHook,
-} from "./Resettable";
+import { Resettable } from "./Resettable";
 import { NumberResettableType } from "./NumberResettableType";
+import { ResettableJSONSaveHandler } from "./ResettableJSONSaveHandler";
+import { ResettableStateHook } from "./ResettableStateHook";
 
 /**
  * The options for a `NumberResettable`.
@@ -93,12 +91,11 @@ export class NumberResettable
 
         clone._value = this._value;
 
-        clone.jsonLoadHandler = this.jsonLoadHandler as
-            | ResettableJSONHandler<NumberResettable>
-            | undefined;
+        clone.jsonPropertyGetter = this.jsonPropertyGetter;
+        clone.jsonPropertyValidator = this.jsonPropertyValidator;
 
         clone.jsonSaveHandler = this.jsonSaveHandler as
-            | ResettableJSONHandler<NumberResettable>
+            | ResettableJSONSaveHandler<NumberResettable>
             | undefined;
 
         return clone;

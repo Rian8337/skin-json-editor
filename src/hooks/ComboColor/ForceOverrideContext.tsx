@@ -3,16 +3,12 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(false);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.ComboColor?.forceOverride);
-});
+resettable.jsonPropertyGetter = (json) => json.ComboColor?.forceOverride;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (this.value) {
-        json.ComboColor ??= {};
-        json.ComboColor.forceOverride = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.ComboColor ??= {};
+    json.ComboColor.forceOverride = this.value;
+};
 
 export const ForceOverrideContext = createContext(resettable.clone());
 

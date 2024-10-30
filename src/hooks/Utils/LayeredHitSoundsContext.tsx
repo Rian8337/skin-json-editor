@@ -3,16 +3,12 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Utils?.layeredHitSounds);
-});
+resettable.jsonPropertyGetter = (json) => json.Utils?.layeredHitSounds;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Utils ??= {};
-        json.Utils.layeredHitSounds = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Utils ??= {};
+    json.Utils.layeredHitSounds = this.value;
+};
 
 export const LayeredHitSoundsContext = createContext(resettable.clone());
 

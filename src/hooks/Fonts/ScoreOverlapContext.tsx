@@ -3,16 +3,12 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new NumberResettable({ defaultValue: 0 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Fonts?.scoreOverlap);
-});
+resettable.jsonPropertyGetter = (json) => json.Fonts?.scoreOverlap;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Fonts ??= {};
-        json.Fonts.scoreOverlap = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Fonts ??= {};
+    json.Fonts.scoreOverlap = this.value;
+};
 
 export const ScoreOverlapContext = createContext(resettable.clone());
 

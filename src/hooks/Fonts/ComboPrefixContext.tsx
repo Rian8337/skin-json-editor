@@ -3,16 +3,12 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable("score");
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Fonts?.comboPrefix);
-});
+resettable.jsonPropertyGetter = (json) => json.Fonts?.comboPrefix;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Fonts ??= {};
-        json.Fonts.comboPrefix = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Fonts ??= {};
+    json.Fonts.comboPrefix = this.value;
+};
 
 export const ComboPrefixContext = createContext(resettable.clone());
 

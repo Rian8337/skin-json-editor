@@ -3,16 +3,12 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: 5.2, minValue: 0 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderBorderWidth);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBorderWidth;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Slider ??= {};
-        json.Slider.sliderBorderWidth = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Slider ??= {};
+    json.Slider.sliderBorderWidth = this.value;
+};
 
 export const SliderBorderWidthContext = createContext(resettable.clone());
 

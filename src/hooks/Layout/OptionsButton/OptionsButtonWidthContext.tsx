@@ -3,19 +3,19 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: -1, minValue: -1 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Layout?.OptionsButton?.w);
-});
+resettable.jsonPropertyGetter = (json) => json.Layout?.OptionsButton?.w;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (this.value >= 0) {
-        json.Layout ??= {};
-        json.Layout.useNewLayout = true;
-
-        json.Layout.OptionsButton ??= {};
-        json.Layout.OptionsButton.w = this.value;
+resettable.jsonSaveHandler = function (json) {
+    if (this.value < 0) {
+        return;
     }
-});
+
+    json.Layout ??= {};
+    json.Layout.useNewLayout = true;
+
+    json.Layout.OptionsButton ??= {};
+    json.Layout.OptionsButton.w = this.value;
+};
 
 export const OptionsButtonWidthContext = createContext(resettable.clone());
 

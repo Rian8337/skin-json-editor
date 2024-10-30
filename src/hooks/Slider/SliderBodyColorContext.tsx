@@ -5,31 +5,27 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable("#FFFFFF");
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderBodyColor);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBodyColor;
+
+resettable.jsonPropertyValidator = (value) => {
+    if (!validateColor(value)) {
+        throw createColorError(`The slider body color (${value}) is invalid`);
+    }
+};
 
 export const SliderBodyColorContext = createContext(resettable.clone());
 
 export function SliderBodyColorContextProvider(props: PropsWithChildren) {
     const sliderFollowComboColor = useContext(SliderFollowComboColorContext);
 
-    resettable.setJsonSaveHandler(function (json) {
+    resettable.jsonSaveHandler = function (json) {
         if (sliderFollowComboColor.value) {
             return;
         }
 
-        if (!validateColor(this.value)) {
-            throw createColorError(
-                `The slider body color (${this.value}) is invalid`
-            );
-        }
-
-        if (!this.isDefault) {
-            json.Slider ??= {};
-            json.Slider.sliderBodyColor = this.value;
-        }
-    });
+        json.Slider ??= {};
+        json.Slider.sliderBodyColor = this.value;
+    };
 
     return (
         <SliderBodyColorContext.Provider

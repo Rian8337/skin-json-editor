@@ -9,21 +9,21 @@ const resettable = new NumberResettable({
     step: 0.01,
 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderHintAlpha);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintAlpha;
 
 export const SliderHintAlphaContext = createContext(resettable.clone());
 
 export function SliderHintAlphaContextProvider(props: PropsWithChildren) {
     const sliderHintEnable = useContext(SliderHintEnableContext);
 
-    resettable.setJsonSaveHandler(function (json) {
-        if (sliderHintEnable.value && !this.isDefault) {
-            json.Slider ??= {};
-            json.Slider.sliderHintAlpha = this.value;
+    resettable.jsonSaveHandler = function (json) {
+        if (!sliderHintEnable.value) {
+            return;
         }
-    });
+
+        json.Slider ??= {};
+        json.Slider.sliderHintAlpha = this.value;
+    };
 
     return (
         <SliderHintAlphaContext.Provider

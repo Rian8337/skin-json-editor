@@ -8,16 +8,12 @@ const resettable = new NumberResettable({
     step: 0.01,
 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderBodyBaseAlpha);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBodyBaseAlpha;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Slider ??= {};
-        json.Slider.sliderBodyBaseAlpha = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Slider ??= {};
+    json.Slider.sliderBodyBaseAlpha = this.value;
+};
 
 export const SliderBodyBaseAlphaContext = createContext(resettable.clone());
 

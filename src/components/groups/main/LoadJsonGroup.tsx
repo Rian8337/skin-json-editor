@@ -141,86 +141,90 @@ export default function LoadJsonGroup() {
                     return;
                 }
 
+                const resetAll = confirm(
+                    "Would you like to reset all values before loading the skin.json file?"
+                );
+
                 // ComboColor
-                forceOverride.loadFromJSON(json);
-                comboColors.loadFromJSON(json);
+                forceOverride.loadFromJSON(json, resetAll);
+                comboColors.loadFromJSON(json, resetAll);
 
                 // Slider
-                sliderBodyWidth.loadFromJSON(json);
-                sliderBorderWidth.loadFromJSON(json);
-                sliderBodyBaseAlpha.loadFromJSON(json);
-                sliderFollowComboColor.loadFromJSON(json);
-                sliderBodyColor.loadFromJSON(json);
-                sliderBorderColor.loadFromJSON(json);
-                sliderBallFlip.loadFromJSON(json);
-                sliderHintEnable.loadFromJSON(json);
-                sliderHintAlpha.loadFromJSON(json);
-                sliderHintColor.loadFromJSON(json);
-                sliderHintWidth.loadFromJSON(json);
-                sliderHintShowMinLength.loadFromJSON(json);
+                sliderBodyWidth.loadFromJSON(json, resetAll);
+                sliderBorderWidth.loadFromJSON(json, resetAll);
+                sliderBodyBaseAlpha.loadFromJSON(json, resetAll);
+                sliderFollowComboColor.loadFromJSON(json, resetAll);
+                sliderBodyColor.loadFromJSON(json, resetAll);
+                sliderBorderColor.loadFromJSON(json, resetAll);
+                sliderBallFlip.loadFromJSON(json, resetAll);
+                sliderHintEnable.loadFromJSON(json, resetAll);
+                sliderHintAlpha.loadFromJSON(json, resetAll);
+                sliderHintColor.loadFromJSON(json, resetAll);
+                sliderHintWidth.loadFromJSON(json, resetAll);
+                sliderHintShowMinLength.loadFromJSON(json, resetAll);
 
                 // Cursor
-                rotateCursor.loadFromJSON(json);
+                rotateCursor.loadFromJSON(json, resetAll);
 
                 // Utilities
-                limitComboTextLength.loadFromJSON(json);
-                disableKiai.loadFromJSON(json);
-                comboTextScale.loadFromJSON(json);
-                animationFramerate.loadFromJSON(json);
-                layeredHitSounds.loadFromJSON(json);
-                spinnerFrequencyModulate.loadFromJSON(json);
+                limitComboTextLength.loadFromJSON(json, resetAll);
+                disableKiai.loadFromJSON(json, resetAll);
+                comboTextScale.loadFromJSON(json, resetAll);
+                animationFramerate.loadFromJSON(json, resetAll);
+                layeredHitSounds.loadFromJSON(json, resetAll);
+                spinnerFrequencyModulate.loadFromJSON(json, resetAll);
 
                 // Color
-                menuItemDefaultColor.loadFromJSON(json);
-                menuItemOnTouchColor.loadFromJSON(json);
-                menuItemVersionsDefaultColor.loadFromJSON(json);
-                menuItemVersionsSelectedColor.loadFromJSON(json);
-                menuItemDefaultTextColor.loadFromJSON(json);
-                menuItemSelectedTextColor.loadFromJSON(json);
+                menuItemDefaultColor.loadFromJSON(json, resetAll);
+                menuItemOnTouchColor.loadFromJSON(json, resetAll);
+                menuItemVersionsDefaultColor.loadFromJSON(json, resetAll);
+                menuItemVersionsSelectedColor.loadFromJSON(json, resetAll);
+                menuItemDefaultTextColor.loadFromJSON(json, resetAll);
+                menuItemSelectedTextColor.loadFromJSON(json, resetAll);
 
                 // Fonts
-                comboPrefix.loadFromJSON(json);
-                comboOverlap.loadFromJSON(json);
-                scorePrefix.loadFromJSON(json);
-                hitCirclePrefix.loadFromJSON(json);
-                hitCircleOverlap.loadFromJSON(json);
+                comboPrefix.loadFromJSON(json, resetAll);
+                comboOverlap.loadFromJSON(json, resetAll);
+                scorePrefix.loadFromJSON(json, resetAll);
+                hitCirclePrefix.loadFromJSON(json, resetAll);
+                hitCircleOverlap.loadFromJSON(json, resetAll);
 
                 // Layout
                 // Back Button
-                backButtonWidth.loadFromJSON(json);
-                backButtonHeight.loadFromJSON(json);
-                backButtonScale.loadFromJSON(json);
-                backButtonX.loadFromJSON(json);
-                backButtonY.loadFromJSON(json);
-                backButtonScaleWhenHold.loadFromJSON(json);
+                backButtonWidth.loadFromJSON(json, resetAll);
+                backButtonHeight.loadFromJSON(json, resetAll);
+                backButtonScale.loadFromJSON(json, resetAll);
+                backButtonX.loadFromJSON(json, resetAll);
+                backButtonY.loadFromJSON(json, resetAll);
+                backButtonScaleWhenHold.loadFromJSON(json, resetAll);
 
                 // Mods Button
-                modsButtonWidth.loadFromJSON(json);
-                modsButtonHeight.loadFromJSON(json);
-                modsButtonScale.loadFromJSON(json);
-                modsButtonX.loadFromJSON(json);
-                modsButtonY.loadFromJSON(json);
+                modsButtonWidth.loadFromJSON(json, resetAll);
+                modsButtonHeight.loadFromJSON(json, resetAll);
+                modsButtonScale.loadFromJSON(json, resetAll);
+                modsButtonX.loadFromJSON(json, resetAll);
+                modsButtonY.loadFromJSON(json, resetAll);
 
                 // Options Button
-                optionsButtonWidth.loadFromJSON(json);
-                optionsButtonHeight.loadFromJSON(json);
-                optionsButtonScale.loadFromJSON(json);
-                optionsButtonX.loadFromJSON(json);
-                optionsButtonY.loadFromJSON(json);
+                optionsButtonWidth.loadFromJSON(json, resetAll);
+                optionsButtonHeight.loadFromJSON(json, resetAll);
+                optionsButtonScale.loadFromJSON(json, resetAll);
+                optionsButtonX.loadFromJSON(json, resetAll);
+                optionsButtonY.loadFromJSON(json, resetAll);
 
                 // Random Button
-                randomButtonWidth.loadFromJSON(json);
-                randomButtonHeight.loadFromJSON(json);
-                randomButtonScale.loadFromJSON(json);
-                randomButtonX.loadFromJSON(json);
-                randomButtonY.loadFromJSON(json);
+                randomButtonWidth.loadFromJSON(json, resetAll);
+                randomButtonHeight.loadFromJSON(json, resetAll);
+                randomButtonScale.loadFromJSON(json, resetAll);
+                randomButtonX.loadFromJSON(json, resetAll);
+                randomButtonY.loadFromJSON(json, resetAll);
 
                 // Difficulty Switcher Button
-                difficultySwitcherWidth.loadFromJSON(json);
-                difficultySwitcherHeight.loadFromJSON(json);
-                difficultySwitcherScale.loadFromJSON(json);
-                difficultySwitcherX.loadFromJSON(json);
-                difficultySwitcherY.loadFromJSON(json);
+                difficultySwitcherWidth.loadFromJSON(json, resetAll);
+                difficultySwitcherHeight.loadFromJSON(json, resetAll);
+                difficultySwitcherScale.loadFromJSON(json, resetAll);
+                difficultySwitcherX.loadFromJSON(json, resetAll);
+                difficultySwitcherY.loadFromJSON(json, resetAll);
 
                 alert("The skin.json file has been loaded successfully!");
             })

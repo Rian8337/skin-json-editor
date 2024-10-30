@@ -5,34 +5,31 @@ import { ArrayResettable } from "@structures/resettable";
 
 const resettable = new ArrayResettable(["#FFFFFF"]);
 
-resettable.setJsonLoadHandler(function (json) {
-    //@ts-expect-error: existential generics are not supported
-    this.setValue(json.ComboColor?.colors);
-});
+resettable.jsonPropertyGetter = (json) => json.ComboColor?.colors;
+
+resettable.jsonPropertyValidator = (value) => {
+    for (const c of value) {
+        if (!validateColor(c)) {
+            throw createColorError(
+                `The hex color "${c}" in combo colors is invalid`
+            );
+        }
+    }
+};
 
 export const ComboColorsContext = createContext(resettable.clone());
 
 export function ComboColorsContextProvider(props: PropsWithChildren) {
     const forceOverride = useContext(ForceOverrideContext);
 
-    resettable.setJsonSaveHandler(function (json) {
+    resettable.jsonSaveHandler = function (json) {
         if (!forceOverride.value) {
             return;
         }
 
         json.ComboColor ??= {};
-
-        for (const color of this.value) {
-            if (!validateColor(color)) {
-                throw createColorError(
-                    `The hex color "${color}" in combo colors is invalid`
-                );
-            }
-
-            json.ComboColor.colors ??= [];
-            json.ComboColor.colors.push(color);
-        }
-    });
+        json.ComboColor.colors = this.value;
+    };
 
     return (
         <ComboColorsContext.Provider

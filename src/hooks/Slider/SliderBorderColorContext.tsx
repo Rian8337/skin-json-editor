@@ -4,22 +4,18 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable("#FFFFFF");
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderBorderColor);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBorderColor;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!validateColor(this.value)) {
-        throw createColorError(
-            `The slider border color (${this.value}) is invalid`
-        );
+resettable.jsonPropertyValidator = (value) => {
+    if (!validateColor(value)) {
+        throw createColorError(`The slider border color (${value}) is invalid`);
     }
+};
 
-    if (!this.isDefault) {
-        json.Slider ??= {};
-        json.Slider.sliderBorderColor = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Slider ??= {};
+    json.Slider.sliderBorderColor = this.value;
+};
 
 export const SliderBorderColorContext = createContext(resettable.clone());
 

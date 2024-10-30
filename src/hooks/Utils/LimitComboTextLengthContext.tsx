@@ -3,16 +3,12 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(false);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Utils?.limitComboTextLength);
-});
+resettable.jsonPropertyGetter = (json) => json.Utils?.limitComboTextLength;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Utils ??= {};
-        json.Utils.limitComboTextLength = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Utils ??= {};
+    json.Utils.limitComboTextLength = this.value;
+};
 
 export const LimitComboTextLengthContext = createContext(resettable.clone());
 

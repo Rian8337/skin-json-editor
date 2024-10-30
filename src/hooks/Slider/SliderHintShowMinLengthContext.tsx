@@ -4,9 +4,7 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: 300, minValue: 0 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderHintShowMinLength);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintShowMinLength;
 
 export const SliderHintShowMinLengthContext = createContext(resettable.clone());
 
@@ -15,12 +13,14 @@ export function SliderHintShowMinLengthContextProvider(
 ) {
     const sliderHintEnable = useContext(SliderHintEnableContext);
 
-    resettable.setJsonSaveHandler(function (json) {
-        if (sliderHintEnable.value && !this.isDefault) {
-            json.Slider ??= {};
-            json.Slider.sliderHintShowMinLength = this.value;
+    resettable.jsonSaveHandler = function (json) {
+        if (!sliderHintEnable.value) {
+            return;
         }
-    });
+
+        json.Slider ??= {};
+        json.Slider.sliderHintShowMinLength = this.value;
+    };
 
     return (
         <SliderHintShowMinLengthContext.Provider

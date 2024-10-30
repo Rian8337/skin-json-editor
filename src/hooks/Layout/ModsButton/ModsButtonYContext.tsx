@@ -3,19 +3,15 @@ import { NumberResettable } from "@structures/resettable";
 
 const resettable = new NumberResettable({ defaultValue: 0, minValue: 0 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Layout?.ModsButton?.y);
-});
+resettable.jsonPropertyGetter = (json) => json.Layout?.ModsButton?.y;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Layout ??= {};
-        json.Layout.useNewLayout = true;
+resettable.jsonSaveHandler = function (json) {
+    json.Layout ??= {};
+    json.Layout.useNewLayout = true;
 
-        json.Layout.ModsButton ??= {};
-        json.Layout.ModsButton.y = this.value;
-    }
-});
+    json.Layout.ModsButton ??= {};
+    json.Layout.ModsButton.y = this.value;
+};
 
 export const ModsButtonYContext = createContext(resettable.clone());
 

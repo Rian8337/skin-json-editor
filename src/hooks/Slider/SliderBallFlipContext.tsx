@@ -3,16 +3,12 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderBallFlip);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBallFlip;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Slider ??= {};
-        json.Slider.sliderBallFlip = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Slider ??= {};
+    json.Slider.sliderBallFlip = this.value;
+};
 
 export const SliderBallFlipContext = createContext(resettable.clone());
 

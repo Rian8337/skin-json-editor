@@ -7,16 +7,12 @@ const resettable = new NumberResettable({
     step: 0.1,
 });
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Utils?.comboTextScale);
-});
+resettable.jsonPropertyGetter = (json) => json.Utils?.comboTextScale;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Utils ??= {};
-        json.Utils.comboTextScale = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Utils ??= {};
+    json.Utils.comboTextScale = this.value;
+};
 
 export const ComboTextScaleContext = createContext(resettable.clone());
 

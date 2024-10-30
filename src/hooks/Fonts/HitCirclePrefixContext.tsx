@@ -3,16 +3,12 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable("default");
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Fonts?.hitCirclePrefix);
-});
+resettable.jsonPropertyGetter = (json) => json.Fonts?.hitCirclePrefix;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Fonts ??= {};
-        json.Fonts.hitCirclePrefix = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Fonts ??= {};
+    json.Fonts.hitCirclePrefix = this.value;
+};
 
 export const HitCirclePrefixContext = createContext(resettable.clone());
 

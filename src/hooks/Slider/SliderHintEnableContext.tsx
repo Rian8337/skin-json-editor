@@ -3,16 +3,12 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(false);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Slider?.sliderHintEnable);
-});
+resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintEnable;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Slider ??= {};
-        json.Slider.sliderHintEnable = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Slider ??= {};
+    json.Slider.sliderHintEnable = this.value;
+};
 
 export const SliderHintEnableContext = createContext(resettable.clone());
 

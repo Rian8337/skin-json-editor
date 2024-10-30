@@ -3,16 +3,12 @@ import { Resettable } from "@structures/resettable";
 
 const resettable = new Resettable(false);
 
-resettable.setJsonLoadHandler(function (json) {
-    this.setValue(json.Utils?.disableKiai);
-});
+resettable.jsonPropertyGetter = (json) => json.Utils?.disableKiai;
 
-resettable.setJsonSaveHandler(function (json) {
-    if (!this.isDefault) {
-        json.Utils ??= {};
-        json.Utils.disableKiai = this.value;
-    }
-});
+resettable.jsonSaveHandler = function (json) {
+    json.Utils ??= {};
+    json.Utils.disableKiai = this.value;
+};
 
 export const DisableKiaiContext = createContext(resettable.clone());
 

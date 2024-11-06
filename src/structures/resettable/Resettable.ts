@@ -102,6 +102,11 @@ export class Resettable<T> {
      * @param value The new value. Defaults to the default value.
      */
     setValue(value = this.defaultValue) {
+        // Handle potentially NaN values from user inputs.
+        if (typeof value === "number" && Number.isNaN(value)) {
+            value = this.defaultValue;
+        }
+
         this.propertyValidator?.(value);
 
         this._value = value;

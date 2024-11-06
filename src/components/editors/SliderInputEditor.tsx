@@ -1,4 +1,5 @@
 import { NumberResettable, Resettable } from "@structures/resettable";
+import { useState } from "react";
 import BaseEditor from "./BaseEditor";
 import "./SliderInputEditor.css";
 
@@ -21,6 +22,9 @@ interface Props {
 
 export default function SliderInputEditor(props: Props) {
     const { title, description, resettable } = props;
+    const [displayValue, setDisplayValue] = useState(
+        resettable.defaultValue.toString()
+    );
 
     return (
         <BaseEditor title={title} description={description}>
@@ -28,7 +32,7 @@ export default function SliderInputEditor(props: Props) {
                 <input
                     className="slider-input-editor-display"
                     type="number"
-                    value={resettable.value}
+                    value={displayValue}
                     min={
                         resettable instanceof NumberResettable
                             ? resettable.minValue
@@ -40,9 +44,11 @@ export default function SliderInputEditor(props: Props) {
                             : undefined
                     }
                     onChange={(event) => {
-                        resettable.setValue(
-                            parseFloat(event.target.value) || undefined
-                        );
+                        setDisplayValue(event.target.value || "");
+                    }}
+                    onBlur={() => {
+                        resettable.setValue(parseFloat(displayValue));
+                        setDisplayValue(resettable.value.toString());
                     }}
                 />
 
@@ -51,6 +57,7 @@ export default function SliderInputEditor(props: Props) {
                     type="reset"
                     onClick={() => {
                         resettable.reset();
+                        setDisplayValue(resettable.defaultValue.toString());
                     }}
                 />
             </div>
@@ -75,6 +82,7 @@ export default function SliderInputEditor(props: Props) {
                 }
                 onChange={(event) => {
                     resettable.setValue(parseFloat(event.target.value));
+                    setDisplayValue(event.target.value);
                 }}
             />
         </BaseEditor>

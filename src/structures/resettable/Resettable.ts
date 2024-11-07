@@ -28,6 +28,16 @@ export class Resettable<T> {
     }
 
     /**
+     * The current value without the state hook.
+     *
+     * Use this if you want to get direct updates to this `Resettable`'s value without waiting for
+     * React to update the state hook.
+     */
+    get directValue(): T {
+        return this._value;
+    }
+
+    /**
      * The function to call when getting a value from a skin.ini.
      */
     iniPropertyGetter?: ResettableIniPropertyGetter<T>;

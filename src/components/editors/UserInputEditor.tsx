@@ -71,7 +71,7 @@ export default function UserInputEditor(props: Props) {
                             );
                         }
 
-                        setDisplayValue(resettable.value.toString());
+                        setDisplayValue(resettable.directValue.toString());
                     }}
                 />
 

@@ -48,7 +48,7 @@ export default function SliderInputEditor(props: Props) {
                     }}
                     onBlur={() => {
                         resettable.setValue(parseFloat(displayValue));
-                        setDisplayValue(resettable.value.toString());
+                        setDisplayValue(resettable.directValue.toString());
                     }}
                 />
 

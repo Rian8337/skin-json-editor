@@ -106,19 +106,6 @@ export default function LoadJsonGroup() {
     const randomButtonX = useContext(Layout.RandomButtonXContext);
     const randomButtonY = useContext(Layout.RandomButtonYContext);
 
-    // Difficulty Switcher Button
-    const difficultySwitcherWidth = useContext(
-        Layout.DifficultySwitcherWidthContext
-    );
-    const difficultySwitcherHeight = useContext(
-        Layout.DifficultySwitcherHeightContext
-    );
-    const difficultySwitcherScale = useContext(
-        Layout.DifficultySwitcherScaleContext
-    );
-    const difficultySwitcherX = useContext(Layout.DifficultySwitcherXContext);
-    const difficultySwitcherY = useContext(Layout.DifficultySwitcherYContext);
-
     const onJsonSubmit = (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
@@ -222,13 +209,6 @@ export default function LoadJsonGroup() {
                 randomButtonScale.loadFromJSON(json, resetAll);
                 randomButtonX.loadFromJSON(json, resetAll);
                 randomButtonY.loadFromJSON(json, resetAll);
-
-                // Difficulty Switcher Button
-                difficultySwitcherWidth.loadFromJSON(json, resetAll);
-                difficultySwitcherHeight.loadFromJSON(json, resetAll);
-                difficultySwitcherScale.loadFromJSON(json, resetAll);
-                difficultySwitcherX.loadFromJSON(json, resetAll);
-                difficultySwitcherY.loadFromJSON(json, resetAll);
 
                 alert("The skin.json file has been loaded successfully!");
             })

@@ -102,19 +102,6 @@ export default function ResetJsonGroup() {
     const randomButtonX = useContext(Layout.RandomButtonXContext);
     const randomButtonY = useContext(Layout.RandomButtonYContext);
 
-    // Difficulty Switcher Button
-    const difficultySwitcherWidth = useContext(
-        Layout.DifficultySwitcherWidthContext
-    );
-    const difficultySwitcherHeight = useContext(
-        Layout.DifficultySwitcherHeightContext
-    );
-    const difficultySwitcherScale = useContext(
-        Layout.DifficultySwitcherScaleContext
-    );
-    const difficultySwitcherX = useContext(Layout.DifficultySwitcherXContext);
-    const difficultySwitcherY = useContext(Layout.DifficultySwitcherYContext);
-
     const onClick = () => {
         const confirmation = confirm(
             "Are you sure you want to reset all configurations to their default state?"
@@ -197,13 +184,6 @@ export default function ResetJsonGroup() {
         randomButtonScale.reset();
         randomButtonX.reset();
         randomButtonY.reset();
-
-        // Difficulty switcher button
-        difficultySwitcherWidth.reset();
-        difficultySwitcherHeight.reset();
-        difficultySwitcherScale.reset();
-        difficultySwitcherX.reset();
-        difficultySwitcherY.reset();
 
         alert("All configurations have been reset successfully!");
     };

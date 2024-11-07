@@ -32,11 +32,6 @@ export interface SkinJsonLayout {
     RandomButton?: SkinJsonLayoutSettings;
 
     /**
-     * Layout configurations for the difficulty switcher button in song selection menu.
-     */
-    DifficultySwitcher?: SkinJsonLayoutSettings;
-
-    /**
      * Whether to use these layout settings.
      *
      * Defaults to `false`.

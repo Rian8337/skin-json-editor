@@ -1,7 +1,6 @@
 import Group from "../../Group";
 import SubGroup from "../../SubGroup";
 import LayoutBackButton from "./LayoutBackButton";
-import LayoutDifficultySwitcher from "./LayoutDifficultySwitcher";
 import LayoutModsButton from "./LayoutModsButton";
 import LayoutOptionsButton from "./LayoutOptionsButton";
 import LayoutRandomButton from "./LayoutRandomButton";
@@ -63,10 +62,6 @@ export default function LayoutGroup() {
 
             <SubGroup title="Random Button" withEditorContainer>
                 <LayoutRandomButton />
-            </SubGroup>
-
-            <SubGroup title="Difficulty Switcher Button" withEditorContainer>
-                <LayoutDifficultySwitcher />
             </SubGroup>
         </Group>
     );

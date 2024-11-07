@@ -69,13 +69,6 @@ export const Providers = compose(
     Layout.RandomButtonXContextProvider,
     Layout.RandomButtonYContextProvider,
 
-    // Layout (Difficulty Switcher),
-    Layout.DifficultySwitcherHeightContextProvider,
-    Layout.DifficultySwitcherScaleContextProvider,
-    Layout.DifficultySwitcherWidthContextProvider,
-    Layout.DifficultySwitcherXContextProvider,
-    Layout.DifficultySwitcherYContextProvider,
-
     // Slider
     Slider.SliderBodyBaseAlphaContextProvider,
     Slider.SliderBodyColorContextProvider,

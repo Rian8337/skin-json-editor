@@ -103,19 +103,6 @@ export default function SaveJsonGroup() {
     const randomButtonX = useContext(Layout.RandomButtonXContext);
     const randomButtonY = useContext(Layout.RandomButtonYContext);
 
-    // Difficulty Switcher Button
-    const difficultySwitcherWidth = useContext(
-        Layout.DifficultySwitcherWidthContext
-    );
-    const difficultySwitcherHeight = useContext(
-        Layout.DifficultySwitcherHeightContext
-    );
-    const difficultySwitcherScale = useContext(
-        Layout.DifficultySwitcherScaleContext
-    );
-    const difficultySwitcherX = useContext(Layout.DifficultySwitcherXContext);
-    const difficultySwitcherY = useContext(Layout.DifficultySwitcherYContext);
-
     const onClick = () => {
         const json: SkinJson = {};
 
@@ -193,13 +180,6 @@ export default function SaveJsonGroup() {
             randomButtonScale.saveToJSON(json);
             randomButtonX.saveToJSON(json);
             randomButtonY.saveToJSON(json);
-
-            // Difficulty switcher button
-            difficultySwitcherWidth.saveToJSON(json);
-            difficultySwitcherHeight.saveToJSON(json);
-            difficultySwitcherScale.saveToJSON(json);
-            difficultySwitcherX.saveToJSON(json);
-            difficultySwitcherY.saveToJSON(json);
         } catch (e) {
             alert((e as Error).message);
 

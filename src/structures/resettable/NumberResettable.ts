@@ -74,7 +74,19 @@ export class NumberResettable
                 break;
 
             case NumberResettableType.float:
-                super.setValue(Math.fround(value));
+                value = Math.fround(value);
+
+                if (this.step !== undefined) {
+                    value = Math.fround(value / this.step) * this.step;
+
+                    // Ensure that the precision follows the step.
+                    const precision =
+                        this.step.toString().split(".").at(1)?.length ?? 0;
+
+                    value = parseFloat(value.toFixed(precision));
+                }
+
+                super.setValue(value);
                 break;
         }
     }

@@ -1,7 +1,7 @@
 import { NumberResettable } from "@structures/resettable";
 import { createContext, PropsWithChildren, useState } from "react";
 
-const resettable = new NumberResettable({ defaultValue: 60, minValue: -1 });
+const resettable = new NumberResettable({ defaultValue: -1, minValue: -1 });
 
 resettable.jsonPropertyGetter = (json) => json.Utils?.animationFramerate;
 

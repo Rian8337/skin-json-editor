@@ -36,6 +36,7 @@ export default function ResetJsonGroup() {
 
     // Cursor
     const rotateCursor = useContext(Cursor.RotateCursorContext);
+    const rotateCursorTrail = useContext(Cursor.RotateCursorTrailContext);
 
     // Utilities
     const limitComboTextLength = useContext(Utils.LimitComboTextLengthContext);
@@ -131,6 +132,7 @@ export default function ResetJsonGroup() {
 
         // Cursor
         rotateCursor.reset();
+        rotateCursorTrail.reset();
 
         // Utilities
         limitComboTextLength.reset();

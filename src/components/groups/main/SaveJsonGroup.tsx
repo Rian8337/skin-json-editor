@@ -37,6 +37,7 @@ export default function SaveJsonGroup() {
 
     // Cursor
     const rotateCursor = useContext(Cursor.RotateCursorContext);
+    const rotateCursorTrail = useContext(Cursor.RotateCursorTrailContext);
 
     // Utilities
     const limitComboTextLength = useContext(Utils.LimitComboTextLengthContext);
@@ -127,6 +128,7 @@ export default function SaveJsonGroup() {
 
             // Cursor
             rotateCursor.saveToJSON(json);
+            rotateCursorTrail.saveToJSON(json);
 
             // Utilities
             limitComboTextLength.saveToJSON(json);

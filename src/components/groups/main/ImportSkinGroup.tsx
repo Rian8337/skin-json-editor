@@ -39,6 +39,7 @@ export default function LoadJsonGroup() {
 
     // Cursor
     const rotateCursor = useContext(Cursor.RotateCursorContext);
+    const rotateCursorTrail = useContext(Cursor.RotateCursorTrailContext);
 
     // Utilities
     const limitComboTextLength = useContext(Utils.LimitComboTextLengthContext);
@@ -155,6 +156,7 @@ export default function LoadJsonGroup() {
 
                 // Cursor
                 rotateCursor.loadFromJSON(json, resetAll);
+                rotateCursorTrail.loadFromJSON(json, resetAll);
 
                 // Utilities
                 limitComboTextLength.loadFromJSON(json, resetAll);

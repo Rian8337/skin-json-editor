@@ -31,6 +31,7 @@ export const Providers = compose(
 
     // Cursor
     Cursor.RotateCursorContextProvider,
+    Cursor.RotateCursorTrailContextProvider,
 
     // Fonts
     Fonts.HitCirclePrefixContextProvider,

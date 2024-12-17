@@ -12,7 +12,7 @@ import { SkinJson } from "@structures/skin/SkinJson";
 import SubGroup from "../SubGroup";
 import { SkinIni } from "@structures/skin/SkinIni";
 
-export default function LoadJsonGroup() {
+export default function ImportSkinGroup() {
     // A bit dirty, but oh well...
 
     // ComboColor
@@ -283,7 +283,9 @@ export default function LoadJsonGroup() {
                 optionsButtonY.loadFromIni(ini, resetAll);
                 randomButtonY.loadFromIni(ini, resetAll);
             })
-            .catch(() => {
+            .catch((e) => {
+                console.error(e);
+
                 alert(
                     "Encountered an error when attempting to process your skin.ini file."
                 );

@@ -1,4 +1,5 @@
 import { NumberResettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new NumberResettable({ defaultValue: -1, minValue: -1 });
@@ -6,7 +7,10 @@ const resettable = new NumberResettable({ defaultValue: -1, minValue: -1 });
 resettable.jsonPropertyGetter = (json) => json.Utils?.animationFramerate;
 
 resettable.iniPropertyGetter = (ini) => {
-    const animationFramerate = ini.get("Utils", "AnimationFramerate");
+    const animationFramerate = ini.get(
+        SkinIniSection.general,
+        "AnimationFramerate"
+    );
 
     if (!animationFramerate) {
         return resettable.defaultValue;

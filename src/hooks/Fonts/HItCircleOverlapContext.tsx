@@ -1,12 +1,13 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { NumberResettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new NumberResettable({ defaultValue: -2 });
 
 resettable.jsonPropertyGetter = (json) => json.Fonts?.hitCircleOverlap;
 
 resettable.iniPropertyGetter = (ini) => {
-    const hitCircleOverlap = ini.get("Fonts", "HitCircleOverlap");
+    const hitCircleOverlap = ini.get(SkinIniSection.fonts, "HitCircleOverlap");
 
     if (!hitCircleOverlap) {
         return resettable.defaultValue;

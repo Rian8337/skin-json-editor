@@ -2,13 +2,14 @@ import { PropsWithChildren, createContext, useState } from "react";
 import { createColorError, validateColor } from "@utils/validators";
 import { Resettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new Resettable("#FFFFFF");
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBorderColor;
 
 resettable.iniPropertyGetter = (ini) => {
-    const color = ini.get("Colours", "SliderBorder");
+    const color = ini.get(SkinIniSection.colors, "SliderBorder");
 
     if (!color) {
         return resettable.defaultValue;

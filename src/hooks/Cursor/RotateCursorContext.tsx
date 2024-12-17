@@ -1,12 +1,13 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { Resettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new Resettable(true);
 
 resettable.jsonPropertyGetter = (json) => json.Cursor?.rotateCursor;
 
 resettable.iniPropertyGetter = (ini) => {
-    const rotateCursor = ini.get("General", "CursorRotate");
+    const rotateCursor = ini.get(SkinIniSection.general, "CursorRotate");
 
     if (!rotateCursor) {
         return resettable.defaultValue;

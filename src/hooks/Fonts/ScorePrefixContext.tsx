@@ -1,12 +1,13 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { Resettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new Resettable("score");
 
 resettable.jsonPropertyGetter = (json) => json.Fonts?.scorePrefix;
 
 resettable.iniPropertyGetter = (ini) =>
-    ini.get("Fonts", "ScorePrefix") ?? resettable.defaultValue;
+    ini.get(SkinIniSection.fonts, "ScorePrefix") ?? resettable.defaultValue;
 
 resettable.jsonSaveHandler = function (json) {
     json.Fonts ??= {};

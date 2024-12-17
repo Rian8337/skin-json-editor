@@ -1,4 +1,5 @@
 import { NumberResettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new NumberResettable({ defaultValue: 0 });
@@ -6,7 +7,7 @@ const resettable = new NumberResettable({ defaultValue: 0 });
 resettable.jsonPropertyGetter = (json) => json.Fonts?.comboOverlap;
 
 resettable.iniPropertyGetter = (ini) => {
-    const comboOverlap = ini.get("Fonts", "ComboOverlap");
+    const comboOverlap = ini.get(SkinIniSection.fonts, "ComboOverlap");
 
     if (!comboOverlap) {
         return resettable.defaultValue;

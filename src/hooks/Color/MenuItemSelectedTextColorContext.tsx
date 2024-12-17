@@ -2,13 +2,14 @@ import { PropsWithChildren, createContext, useState } from "react";
 import { validateColor, createColorError } from "@utils/validators";
 import { Resettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
 resettable.jsonPropertyGetter = (json) => json.Color?.MenuItemSelectedTextColor;
 
 resettable.iniPropertyGetter = (ini) => {
-    const color = ini.get("Colours", "SongSelectActiveText");
+    const color = ini.get(SkinIniSection.colors, "SongSelectActiveText");
 
     if (!color) {
         return "#FFFFFF";

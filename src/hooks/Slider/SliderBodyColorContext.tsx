@@ -3,13 +3,14 @@ import { createColorError, validateColor } from "@utils/validators";
 import { SliderFollowComboColorContext } from "./SliderFollowComboColorContext";
 import { Resettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new Resettable("#FFFFFF");
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBodyColor;
 
 resettable.iniPropertyGetter = (ini) => {
-    const color = ini.get("Colours", "SliderTrackOverride");
+    const color = ini.get(SkinIniSection.colors, "SliderTrackOverride");
 
     if (!color) {
         return;

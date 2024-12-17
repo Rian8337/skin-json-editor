@@ -1,8 +1,10 @@
+import { SkinIniSection } from "constants/SkinIniSection";
+
 /**
  * Represents a skin.ini.
  */
 export class SkinIni {
-    private readonly sections = new Map<string, Map<string, string>>();
+    private readonly sections = new Map<SkinIniSection, Map<string, string>>();
 
     /**
      * Creates a new `SkinIni`.
@@ -20,7 +22,24 @@ export class SkinIni {
             }
 
             if (line.startsWith("[") && line.endsWith("]")) {
-                const sectionName = line.slice(1, -1);
+                let sectionName: SkinIniSection;
+
+                switch (line.slice(1, -1)) {
+                    case "General":
+                        sectionName = SkinIniSection.general;
+                        break;
+
+                    case "Colours":
+                        sectionName = SkinIniSection.colors;
+                        break;
+
+                    case "Fonts":
+                        sectionName = SkinIniSection.fonts;
+                        break;
+
+                    default:
+                        continue;
+                }
 
                 currentSection = this.sections.get(sectionName);
 
@@ -47,7 +66,7 @@ export class SkinIni {
      * @param section The section of the value.
      * @param property The property of the value.
      */
-    get(section: string, property: string): string | undefined {
+    get(section: SkinIniSection, property: string): string | undefined {
         return this.sections.get(section)?.get(property);
     }
 }

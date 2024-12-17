@@ -1,4 +1,5 @@
 import { Resettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);
@@ -6,7 +7,7 @@ const resettable = new Resettable(true);
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderBallFlip;
 
 resettable.iniPropertyGetter = (ini) => {
-    const sliderBallFlip = ini.get("Slider", "SliderBallFlip");
+    const sliderBallFlip = ini.get(SkinIniSection.general, "SliderBallFlip");
 
     if (!sliderBallFlip) {
         return resettable.defaultValue;

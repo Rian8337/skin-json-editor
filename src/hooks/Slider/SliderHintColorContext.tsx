@@ -3,13 +3,14 @@ import { SliderHintEnableContext } from "./SliderHintEnableContext";
 import { createColorError, validateColor } from "@utils/validators";
 import { Resettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
 resettable.jsonPropertyGetter = (json) => json.Slider?.sliderHintColor;
 
 resettable.iniPropertyGetter = (ini) => {
-    const color = ini.get("Colours", "SliderTrackOverride");
+    const color = ini.get(SkinIniSection.colors, "SliderTrackOverride");
 
     if (!color) {
         return;

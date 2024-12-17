@@ -1,4 +1,5 @@
 import { Resettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);
@@ -7,7 +8,7 @@ resettable.jsonPropertyGetter = (json) => json.Utils?.spinnerFrequencyModulate;
 
 resettable.iniPropertyGetter = (ini) => {
     const spinnerFrequencyModulate = ini.get(
-        "Utils",
+        SkinIniSection.general,
         "SpinnerFrequencyModulate"
     );
 

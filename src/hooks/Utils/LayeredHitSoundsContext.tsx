@@ -1,4 +1,5 @@
 import { Resettable } from "@structures/resettable";
+import { SkinIniSection } from "constants/SkinIniSection";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);
@@ -6,7 +7,10 @@ const resettable = new Resettable(true);
 resettable.jsonPropertyGetter = (json) => json.Utils?.layeredHitSounds;
 
 resettable.iniPropertyGetter = (ini) => {
-    const layeredHitSounds = ini.get("Utils", "LayeredHitSounds");
+    const layeredHitSounds = ini.get(
+        SkinIniSection.general,
+        "LayeredHitSounds"
+    );
 
     if (!layeredHitSounds) {
         return resettable.defaultValue;

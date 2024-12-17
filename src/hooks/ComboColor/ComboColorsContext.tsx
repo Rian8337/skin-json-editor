@@ -3,6 +3,7 @@ import { ForceOverrideContext } from "./ForceOverrideContext";
 import { createColorError, validateColor } from "@utils/validators";
 import { ArrayResettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
+import { SkinIniSection } from "constants/SkinIniSection";
 
 const resettable = new ArrayResettable(["#FFFFFF"]);
 
@@ -13,7 +14,7 @@ resettable.iniPropertyGetter = (ini) => {
 
     // osu! skins supports up to 7 combo colors
     for (let i = 0; i < 8; ++i) {
-        const color = ini.get("Colours", `Combo${i + 1}`);
+        const color = ini.get(SkinIniSection.colors, `Combo${i + 1}`);
 
         if (!color) {
             continue;

@@ -1,9 +1,9 @@
-import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { createColorError, validateColor } from "@utils/validators";
-import { SliderFollowComboColorContext } from "./SliderFollowComboColorContext";
+import { SkinIniSection } from "@constants/SkinIniSection";
 import { Resettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
-import { SkinIniSection } from "constants/SkinIniSection";
+import { createColorError, validateColor } from "@utils/validators";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
+import { SliderFollowComboColorContext } from "./SliderFollowComboColorContext";
 
 const resettable = new Resettable("#FFFFFF");
 

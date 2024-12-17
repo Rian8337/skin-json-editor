@@ -1,6 +1,6 @@
-import { PropsWithChildren, createContext, useState } from "react";
+import { SkinIniSection } from "@constants/SkinIniSection";
 import { NumberResettable } from "@structures/resettable";
-import { SkinIniSection } from "constants/SkinIniSection";
+import { PropsWithChildren, createContext, useState } from "react";
 
 const resettable = new NumberResettable({ defaultValue: -2 });
 

@@ -1,4 +1,4 @@
-import { SkinIniSection } from "constants/SkinIniSection";
+import { SkinIniSection } from "@constants/SkinIniSection";
 
 /**
  * Represents a skin.ini.

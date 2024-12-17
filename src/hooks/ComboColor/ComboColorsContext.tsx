@@ -1,9 +1,9 @@
-import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { ForceOverrideContext } from "./ForceOverrideContext";
-import { createColorError, validateColor } from "@utils/validators";
+import { SkinIniSection } from "@constants/SkinIniSection";
 import { ArrayResettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
-import { SkinIniSection } from "constants/SkinIniSection";
+import { createColorError, validateColor } from "@utils/validators";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
+import { ForceOverrideContext } from "./ForceOverrideContext";
 
 const resettable = new ArrayResettable(["#FFFFFF"]);
 

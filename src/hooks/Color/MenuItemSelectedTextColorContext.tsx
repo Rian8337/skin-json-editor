@@ -1,8 +1,8 @@
-import { PropsWithChildren, createContext, useState } from "react";
-import { validateColor, createColorError } from "@utils/validators";
+import { SkinIniSection } from "@constants/SkinIniSection";
 import { Resettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
-import { SkinIniSection } from "constants/SkinIniSection";
+import { createColorError, validateColor } from "@utils/validators";
+import { PropsWithChildren, createContext, useState } from "react";
 
 const resettable = new Resettable<string | undefined>(undefined);
 

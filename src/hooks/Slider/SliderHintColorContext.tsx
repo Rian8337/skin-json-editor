@@ -1,9 +1,9 @@
-import { PropsWithChildren, createContext, useContext, useState } from "react";
-import { SliderHintEnableContext } from "./SliderHintEnableContext";
-import { createColorError, validateColor } from "@utils/validators";
+import { SkinIniSection } from "@constants/SkinIniSection";
 import { Resettable } from "@structures/resettable";
 import { rgbToHex } from "@utils/converters";
-import { SkinIniSection } from "constants/SkinIniSection";
+import { createColorError, validateColor } from "@utils/validators";
+import { PropsWithChildren, createContext, useContext, useState } from "react";
+import { SliderHintEnableContext } from "./SliderHintEnableContext";
 
 const resettable = new Resettable<string | undefined>(undefined);
 

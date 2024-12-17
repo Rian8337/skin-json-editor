@@ -1,5 +1,5 @@
+import { SkinIniSection } from "@constants/SkinIniSection";
 import { Resettable } from "@structures/resettable";
-import { SkinIniSection } from "constants/SkinIniSection";
 import { createContext, PropsWithChildren, useState } from "react";
 
 const resettable = new Resettable(true);

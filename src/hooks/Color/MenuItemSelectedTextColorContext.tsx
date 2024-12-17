@@ -1,6 +1,7 @@
 import { PropsWithChildren, createContext, useState } from "react";
 import { validateColor, createColorError } from "@utils/validators";
 import { Resettable } from "@structures/resettable";
+import { rgbToHex } from "@utils/converters";
 
 const resettable = new Resettable<string | undefined>(undefined);
 
@@ -13,7 +14,7 @@ resettable.iniPropertyGetter = (ini) => {
         return "#FFFFFF";
     }
 
-    return color;
+    return rgbToHex(color);
 };
 
 resettable.propertyValidator = (value) => {

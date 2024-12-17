@@ -285,9 +285,7 @@ export default function ImportSkinGroup() {
 
                 alert("The skin.ini file has been loaded successfully!");
             })
-            .catch((e) => {
-                console.error(e);
-
+            .catch(() => {
                 alert(
                     "Encountered an error when attempting to process your skin.ini file."
                 );

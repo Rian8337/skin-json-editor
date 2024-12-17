@@ -282,6 +282,8 @@ export default function ImportSkinGroup() {
                 modsButtonY.loadFromIni(ini, resetAll);
                 optionsButtonY.loadFromIni(ini, resetAll);
                 randomButtonY.loadFromIni(ini, resetAll);
+
+                alert("The skin.ini file has been loaded successfully!");
             })
             .catch((e) => {
                 console.error(e);

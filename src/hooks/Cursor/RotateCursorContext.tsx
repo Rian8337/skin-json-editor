@@ -6,7 +6,7 @@ const resettable = new Resettable(true);
 resettable.jsonPropertyGetter = (json) => json.Cursor?.rotateCursor;
 
 resettable.iniPropertyGetter = (ini) => {
-    const rotateCursor = ini.get("Cursor", "RotateCursor");
+    const rotateCursor = ini.get("General", "CursorRotate");
 
     if (!rotateCursor) {
         return resettable.defaultValue;

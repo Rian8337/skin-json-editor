@@ -242,6 +242,7 @@ export default function ImportSkinGroup() {
 
                 // Cursor
                 rotateCursor.loadFromIni(ini, resetAll);
+                rotateCursorTrail.loadFromIni(ini, resetAll);
 
                 // ComboColor
                 comboColors.loadFromIni(ini, resetAll);

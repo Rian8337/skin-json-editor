@@ -104,6 +104,7 @@ export class NumberResettable
         clone._value = this._value;
 
         clone.jsonPropertyGetter = this.jsonPropertyGetter;
+        clone.iniPropertyGetter = this.iniPropertyGetter;
         clone.propertyValidator = this.propertyValidator;
 
         clone.jsonSaveHandler = this.jsonSaveHandler as

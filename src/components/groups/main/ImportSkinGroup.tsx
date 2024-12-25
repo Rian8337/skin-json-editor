@@ -1,4 +1,4 @@
-import { FormEvent, useContext } from "react";
+import { FormEvent, FormEventHandler, useContext } from "react";
 import Group from "../Group";
 import "./ImportSkinGroup.css";
 import * as Color from "@hooks/Color";
@@ -11,6 +11,30 @@ import * as Utils from "@hooks/Utils";
 import { SkinJson } from "@structures/skin/SkinJson";
 import SubGroup from "../SubGroup";
 import { SkinIni } from "@structures/skin/SkinIni";
+
+function ImportSkinSubGroup(props: {
+    title: string;
+    onSubmit: FormEventHandler<HTMLFormElement>;
+    accept: string;
+}) {
+    return (
+        <SubGroup title={props.title}>
+            <form
+                className="import-skin-form"
+                onSubmit={props.onSubmit}
+                encType="multipart/form-data"
+            >
+                <input type="file" accept={props.accept} name="file" />
+                <br />
+                <input
+                    className="import-skin-form-submit"
+                    type="submit"
+                    value="Load"
+                />
+            </form>
+        </SubGroup>
+    );
+}
 
 export default function ImportSkinGroup() {
     // A bit dirty, but oh well...
@@ -295,37 +319,17 @@ export default function ImportSkinGroup() {
 
     return (
         <Group title="Load Existing Configuration">
-            <SubGroup title="skin.json">
-                <form
-                    className="import-skin-form"
-                    onSubmit={onJsonSubmit}
-                    encType="multipart/form-data"
-                >
-                    <input type="file" accept=".json" name="jsonFile" />
-                    <br />
-                    <input
-                        className="import-skin-form-submit"
-                        type="submit"
-                        value="Load"
-                    />
-                </form>
-            </SubGroup>
+            <ImportSkinSubGroup
+                title="skin.json"
+                onSubmit={onJsonSubmit}
+                accept=".json"
+            />
 
-            <SubGroup title="skin.ini">
-                <form
-                    className="import-skin-form"
-                    onSubmit={onIniSubmit}
-                    encType="multipart/form-data"
-                >
-                    <input type="file" accept=".ini" name="iniFile" />
-                    <br />
-                    <input
-                        className="import-skin-form-submit"
-                        type="submit"
-                        value="Load"
-                    />
-                </form>
-            </SubGroup>
+            <ImportSkinSubGroup
+                title="skin.ini"
+                onSubmit={onIniSubmit}
+                accept=".ini"
+            />
         </Group>
     );
 }

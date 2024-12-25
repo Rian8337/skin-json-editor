@@ -88,7 +88,7 @@ export const Providers = compose(
     Utils.ComboTextScaleContextProvider,
     Utils.DisableKiaiContextProvider,
     Utils.LimitComboTextLengthContextProvider,
-    Utils.AnimationFrameContextProvider,
+    Utils.AnimationFramerateContextProvider,
     Utils.LayeredHitSoundsContextProvider,
     Utils.SpinnerFrequencyModulateContextProvider,
 

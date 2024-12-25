@@ -45,7 +45,7 @@ export default function ImportSkinGroup() {
     const limitComboTextLength = useContext(Utils.LimitComboTextLengthContext);
     const disableKiai = useContext(Utils.DisableKiaiContext);
     const comboTextScale = useContext(Utils.ComboTextScaleContext);
-    const animationFramerate = useContext(Utils.AnimationFrameContext);
+    const animationFramerate = useContext(Utils.AnimationFramerateContext);
     const layeredHitSounds = useContext(Utils.LayeredHitSoundsContext);
     const spinnerFrequencyModulate = useContext(
         Utils.SpinnerFrequencyModulateContext

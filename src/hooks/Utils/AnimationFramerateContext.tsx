@@ -24,14 +24,14 @@ resettable.jsonSaveHandler = function (json) {
     json.Utils.animationFramerate = this.value;
 };
 
-export const AnimationFrameContext = createContext(resettable.clone());
+export const AnimationFramerateContext = createContext(resettable.clone());
 
-export function AnimationFrameContextProvider(props: PropsWithChildren) {
+export function AnimationFramerateContextProvider(props: PropsWithChildren) {
     return (
-        <AnimationFrameContext.Provider
+        <AnimationFramerateContext.Provider
             value={resettable.with(useState(resettable.value))}
         >
             {props.children}
-        </AnimationFrameContext.Provider>
+        </AnimationFramerateContext.Provider>
     );
 }

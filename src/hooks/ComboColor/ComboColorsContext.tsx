@@ -9,24 +9,6 @@ const resettable = new ArrayResettable(["#FFFFFF"]);
 
 resettable.jsonPropertyGetter = (json) => json.ComboColor?.colors;
 
-resettable.iniPropertyGetter = (ini) => {
-    const colors: string[] = [];
-
-    // osu! skins supports up to 7 combo colors
-    for (let i = 0; i < 8; ++i) {
-        const color = ini.get(SkinIniSection.colors, `Combo${i + 1}`);
-
-        if (!color) {
-            continue;
-        }
-
-        // Convert from RGB to hex
-        colors.push(rgbToHex(color));
-    }
-
-    return colors;
-};
-
 resettable.propertyValidator = (value) => {
     for (const c of value) {
         if (!validateColor(c)) {
@@ -49,6 +31,28 @@ export function ComboColorsContextProvider(props: PropsWithChildren) {
 
         json.ComboColor ??= {};
         json.ComboColor.colors = this.value;
+    };
+
+    resettable.iniPropertyGetter = (ini) => {
+        const colors: string[] = [];
+
+        // osu! skins supports up to 7 combo colors
+        for (let i = 0; i < 8; ++i) {
+            const color = ini.get(SkinIniSection.colors, `Combo${i + 1}`);
+
+            if (!color) {
+                continue;
+            }
+
+            // Convert from RGB to hex
+            colors.push(rgbToHex(color));
+        }
+
+        if (colors.length > 0) {
+            forceOverride.setValue(true);
+        }
+
+        return colors;
     };
 
     return (

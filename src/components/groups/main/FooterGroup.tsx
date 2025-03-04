@@ -3,7 +3,7 @@ import "./FooterGroup.css";
 export default function FooterGroup() {
     return (
         <div className="footer-group">
-            &copy; 2024 Rian8337
+            &copy; {new Date().getUTCFullYear()} Rian8337
             <br />
             <br />
             <a href="https://discord.gg/nyD92cE">

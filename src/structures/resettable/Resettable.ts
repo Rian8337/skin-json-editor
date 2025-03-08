@@ -70,27 +70,6 @@ export class Resettable<T> {
     }
 
     /**
-     * Whether the value of this `Resettable` can be loaded from a skin.json.
-     */
-    get loadableFromJSON(): boolean {
-        return Boolean(this.jsonPropertyGetter);
-    }
-
-    /**
-     * Whether the value of this `Resettable` can be loaded from a skin.ini.
-     */
-    get loadableFromIni(): boolean {
-        return Boolean(this.iniPropertyGetter);
-    }
-
-    /**
-     * Whether the value of this `Resettable` can be saved to a skin.json.
-     */
-    get savableToJSON(): boolean {
-        return Boolean(this.jsonSaveHandler);
-    }
-
-    /**
      * Creates a new `Resettable`.
      *
      * @param defaultValue The default value of this `Resettable`.

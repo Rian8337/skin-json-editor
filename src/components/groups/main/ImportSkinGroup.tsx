@@ -24,7 +24,12 @@ function ImportSkinSubGroup(props: {
                 onSubmit={props.onSubmit}
                 encType="multipart/form-data"
             >
-                <input type="file" accept={props.accept} name="file" />
+                <input
+                    className="import-skin-form-file"
+                    type="file"
+                    accept={props.accept}
+                    name="file"
+                />
                 <br />
                 <input
                     className="import-skin-form-submit"

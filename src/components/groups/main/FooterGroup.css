@@ -4,5 +4,6 @@
     padding: 2em;
     border-radius: 1.5em;
     text-align: center;
-    font: 0.75em Exo-Bold;
+    font-size: 0.75em;
+    font-weight: bold;
 }

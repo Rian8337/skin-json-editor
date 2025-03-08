@@ -12,12 +12,14 @@
 
 .group-item .group-title {
     text-align: center;
-    font: 1.1em Exo-Bold;
+    font-size: 1.1em;
+    font-weight: bold;
 }
 
 .group-item .group-title-collapsible {
     text-align: center;
-    font: 1.1em Exo-Bold;
+    font-size: 1.1em;
+    font-weight: bold;
     cursor: pointer;
 }
 

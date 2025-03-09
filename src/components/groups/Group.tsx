@@ -20,7 +20,7 @@ export default function Group(props: PropsWithChildren<Props>) {
     const [visible, setVisible] = useState(!props.collapsible);
 
     return (
-        <div className="card">
+        <div className="card is-shadowless">
             <header className="card-header" onClick={() => {
                 setVisible((visible) =>
                     props.collapsible ? !visible : true

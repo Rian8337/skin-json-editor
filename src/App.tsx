@@ -10,13 +10,13 @@ import SaveJsonGroup from "./components/groups/main/SaveJsonGroup";
 import ResetJsonGroup from "./components/groups/main/ResetConfigGroup";
 import FontsGroup from "./components/groups/skin/Fonts/FontsGroup";
 import CursorGroup from "@components/groups/skin/Cursor/CursorGroup";
+import HeaderGroup from "@components/groups/main/HeaderGroup.tsx";
 
 export default function App() {
     return (
         <>
+            <HeaderGroup/>
             <section className="section">
-                <h1 className="title">osu!droid skin.json editor</h1>
-                <h2 className="subtitle">A tool for editing skin.json files that are used in osu!droid skins.</h2>
                 <div className="container">
                     <ImportSkinGroup/>
                     <ResetJsonGroup/>

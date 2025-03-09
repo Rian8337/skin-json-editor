@@ -39,3 +39,9 @@
     font-weight: 800;
     src: url(/fonts/Torus-Bold.otf);
 }
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("/background.jpg");
+    background-position: center;
+    background-attachment: fixed;
+}

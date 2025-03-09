@@ -1,6 +1,6 @@
 export default function HeaderGroup() {
     return (
-        <section className="hero">
+        <header className="hero">
             <div className="hero-body has-text-centered">
                 <h1 className="title">osu!droid skin.json editor</h1>
                 <h2 className="subtitle">
@@ -8,6 +8,6 @@ export default function HeaderGroup() {
                     osu!droid skins.
                 </h2>
             </div>
-        </section>
+        </header>
     );
 }

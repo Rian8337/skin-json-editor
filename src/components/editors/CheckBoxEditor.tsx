@@ -1,5 +1,7 @@
 import { Resettable } from "@structures/resettable";
 import BaseEditor from "./BaseEditor";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUndo} from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -23,23 +25,33 @@ export default function CheckBoxEditor(props: Props) {
 
     return (
         <BaseEditor title={title} description={description}>
-            <div className="json-item-editor-flex-container">
-                <input
-                    className="json-item-editor-input"
-                    type="checkbox"
-                    checked={resettable.value}
-                    onChange={(event) => {
-                        resettable.setValue(event.target.checked);
-                    }}
-                />
+            <div className="field is-grouped">
+                <div className="control">
+                    <label className="checkbox pr-2 py-3">
+                        <input
+                            type="checkbox"
+                            checked={resettable.value}
+                            onChange={(event) => {
+                                resettable.setValue(event.target.checked);
+                            }}
+                        />
+                    </label>
+                </div>
 
-                <input
-                    className="json-item-editor-input"
-                    type="reset"
-                    onClick={() => {
-                        resettable.reset();
-                    }}
-                />
+                <div className="control">
+                    <button
+                        className="button"
+                        type="reset"
+                        onClick={() => {
+                            resettable.reset();
+                        }}
+                    >
+                        <span className="icon">
+                            <FontAwesomeIcon icon={faUndo}/>
+                        </span>
+                        <span>Reset</span>
+                    </button>
+                </div>
             </div>
         </BaseEditor>
     );

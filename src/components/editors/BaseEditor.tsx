@@ -1,5 +1,4 @@
 import { PropsWithChildren } from "react";
-import "./BaseEditor.css";
 
 interface Props {
     /**
@@ -17,15 +16,12 @@ export default function BaseEditor(props: PropsWithChildren<Props>) {
     const { title, description, children } = props;
 
     return (
-        <div className="json-item-editor">
-            <div className="json-item-editor-title">{title}</div>
-            {description ? (
-                <div className="json-item-editor-description">
-                    {description}
-                </div>
-            ) : null}
-
-            {children}
+        <div className="cell">
+            <label className="label">{title}</label>
+            <p className="help">{description ?? 'No description'}</p>
+            <div className="block">
+                {children}
+            </div>
         </div>
     );
 }

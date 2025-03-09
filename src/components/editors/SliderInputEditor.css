@@ -1,9 +1,0 @@
-@import url("./BaseEditor.css");
-
-.slider-input-editor-display {
-    text-align: center;
-    background-color: rgb(46, 46, 46, 0.8);
-    font-family: Torus, sans-serif;
-    color: white;
-    min-width: 5em;
-}

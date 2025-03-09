@@ -7,7 +7,6 @@ import * as Layout from "@hooks/Layout";
 import * as Slider from "@hooks/Slider";
 import * as Utils from "@hooks/Utils";
 import Group from "../Group";
-import "./ResetConfigGroup.css";
 
 export default function ResetJsonGroup() {
     // A bit dirty, but oh well...
@@ -192,17 +191,15 @@ export default function ResetJsonGroup() {
 
     return (
         <Group title="Reset Configurations">
-            <div className="group-description reset-config-group-description">
-                This will reset all configurations to their default state.
-            </div>
-
-            <div className="reset-config-button-container">
-                <input
-                    className="reset-config-button"
+            <div className="block">
+                <p>
+                    This will reset all configurations to their default state.
+                </p>
+                <button
+                    className="button"
                     type="button"
                     onClick={onClick}
-                    value="Reset"
-                />
+                >Reset</button>
             </div>
         </Group>
     );

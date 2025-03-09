@@ -1,7 +1,8 @@
 import { NumberResettable, Resettable } from "@structures/resettable";
 import { useState } from "react";
 import BaseEditor from "./BaseEditor";
-import "./SliderInputEditor.css";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faUndo} from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -28,41 +29,50 @@ export default function SliderInputEditor(props: Props) {
 
     return (
         <BaseEditor title={title} description={description}>
-            <div className="json-item-editor-flex-container">
-                <input
-                    className="slider-input-editor-display"
-                    type="number"
-                    value={displayValue}
-                    min={
-                        resettable instanceof NumberResettable
-                            ? resettable.minValue
-                            : undefined
-                    }
-                    max={
-                        resettable instanceof NumberResettable
-                            ? resettable.maxValue
-                            : undefined
-                    }
-                    onChange={(event) => {
-                        setDisplayValue(event.target.value || "");
-                    }}
-                    onBlur={() => {
-                        resettable.setValue(parseFloat(displayValue));
-                        setDisplayValue(resettable.directValue.toString());
-                    }}
-                />
-
-                <input
-                    className="json-item-editor-input"
-                    type="reset"
-                    onClick={() => {
-                        resettable.reset();
-                        setDisplayValue(resettable.defaultValue.toString());
-                    }}
-                />
+            <div className="field has-addons">
+                <div className="control is-expanded">
+                    <input
+                        className="input"
+                        type="number"
+                        value={displayValue}
+                        min={
+                            resettable instanceof NumberResettable
+                                ? resettable.minValue
+                                : undefined
+                        }
+                        max={
+                            resettable instanceof NumberResettable
+                                ? resettable.maxValue
+                                : undefined
+                        }
+                        onChange={(event) => {
+                            setDisplayValue(event.target.value || "");
+                        }}
+                        onBlur={() => {
+                            resettable.setValue(parseFloat(displayValue));
+                            setDisplayValue(resettable.directValue.toString());
+                        }}
+                    />
+                </div>
+                <div className="control">
+                    <button
+                        className="button"
+                        type="reset"
+                        onClick={() => {
+                            resettable.reset();
+                            setDisplayValue(resettable.defaultValue.toString());
+                        }}
+                    >
+                        <span className="icon">
+                            <FontAwesomeIcon icon={faUndo}/>
+                        </span>
+                        <span>Reset</span>
+                    </button>
+                </div>
             </div>
 
             <input
+                className="input progress is-primary"
                 type="range"
                 value={resettable.value}
                 min={

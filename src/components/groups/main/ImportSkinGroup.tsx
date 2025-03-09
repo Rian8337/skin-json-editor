@@ -1,6 +1,5 @@
 import { FormEvent, FormEventHandler, useContext } from "react";
 import Group from "../Group";
-import "./ImportSkinGroup.css";
 import * as Color from "@hooks/Color";
 import * as ComboColor from "@hooks/ComboColor";
 import * as Cursor from "@hooks/Cursor";
@@ -11,6 +10,8 @@ import * as Utils from "@hooks/Utils";
 import { SkinJson } from "@structures/skin/SkinJson";
 import SubGroup from "../SubGroup";
 import { SkinIni } from "@structures/skin/SkinIni";
+import { faFileUpload } from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function ImportSkinSubGroup(props: {
     title: string;
@@ -20,22 +21,27 @@ function ImportSkinSubGroup(props: {
     return (
         <SubGroup title={props.title}>
             <form
-                className="import-skin-form"
                 onSubmit={props.onSubmit}
                 encType="multipart/form-data"
             >
-                <input
-                    className="import-skin-form-file"
-                    type="file"
-                    accept={props.accept}
-                    name="file"
-                />
-                <br />
-                <input
-                    className="import-skin-form-submit"
-                    type="submit"
-                    value="Load"
-                />
+                <div className="file has-name is-fullwidth">
+                    <label className="file-label">
+                        <input
+                            className="file-input"
+                            type="file"
+                            accept={props.accept}
+                            name="file"
+                        />
+                        <span className="file-cta">
+                          <span className="file-icon">
+                            <FontAwesomeIcon icon={faFileUpload}></FontAwesomeIcon>
+                          </span>
+                          <span className="file-label"> Choose a file… </span>
+                        </span>
+                        <span className="file-name"></span>
+                    </label>
+                </div>
+                <button className="button" type="submit">Load</button>
             </form>
         </SubGroup>
     );

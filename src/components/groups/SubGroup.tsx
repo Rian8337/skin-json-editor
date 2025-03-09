@@ -1,5 +1,4 @@
 import { PropsWithChildren } from "react";
-import "./SubGroup.css";
 import EditorContainer from "@components/editors/EditorContainer";
 
 interface Props {
@@ -16,10 +15,8 @@ interface Props {
 
 export default function SubGroup(props: PropsWithChildren<Props>) {
     return (
-        <div className="subgroup-item">
-            <hr />
-            <div className="subgroup-title">{props.title}</div>
-
+        <div className="block">
+            <p className="subtitle">{props.title}</p>
             {props.withEditorContainer ? (
                 <EditorContainer>{props.children}</EditorContainer>
             ) : (

@@ -1,4 +1,4 @@
-import "bulma/css/bulma.min.css"
+import "bulma/css/bulma.min.css";
 import ComboColorGroup from "./components/groups/skin/ComboColor/ComboColorGroup";
 import SliderGroup from "./components/groups/skin/Slider/SliderGroup";
 import UtilsGroup from "./components/groups/skin/Utils/UtilsGroup";
@@ -15,22 +15,24 @@ import HeaderGroup from "@components/groups/main/HeaderGroup.tsx";
 export default function App() {
     return (
         <>
-            <HeaderGroup/>
-            <section className="section">
+            <HeaderGroup />
+
+            <main className="section">
                 <div className="container">
-                    <ImportSkinGroup/>
-                    <ResetJsonGroup/>
-                    <ComboColorGroup/>
-                    <SliderGroup/>
-                    <CursorGroup/>
-                    <UtilsGroup/>
-                    <ColorGroup/>
-                    <LayoutGroup/>
-                    <FontsGroup/>
-                    <SaveJsonGroup/>
+                    <ImportSkinGroup />
+                    <ResetJsonGroup />
+                    <ComboColorGroup />
+                    <SliderGroup />
+                    <CursorGroup />
+                    <UtilsGroup />
+                    <ColorGroup />
+                    <LayoutGroup />
+                    <FontsGroup />
+                    <SaveJsonGroup />
                 </div>
-            </section>
-            <FooterGroup/>
+            </main>
+
+            <FooterGroup />
         </>
     );
 }

@@ -27,9 +27,9 @@ export default function SingleColorEditor(props: Props) {
     return (
         <BaseEditor title={title} description={description}>
             <div className="field has-addons">
-                <div className="control is-expanded">
+                <div className="control">
                     <input
-                        className="input"
+                        className="input color-input"
                         type="color"
                         // The default color of a color input is black.
                         // (ref: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/color#providing_a_default_color)
@@ -46,7 +46,7 @@ export default function SingleColorEditor(props: Props) {
                     />
                 </div>
 
-                <div className="control is-expanded">
+                <div className="control">
                     <input
                         className="input color"
                         type="text"
@@ -79,7 +79,6 @@ export default function SingleColorEditor(props: Props) {
                         <span className="icon">
                             <FontAwesomeIcon icon={faUndo}/>
                         </span>
-                        <span>Reset</span>
                     </button>
                 </div>
             </div>

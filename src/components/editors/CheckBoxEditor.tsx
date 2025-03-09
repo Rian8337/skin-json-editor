@@ -49,7 +49,6 @@ export default function CheckBoxEditor(props: Props) {
                         <span className="icon">
                             <FontAwesomeIcon icon={faUndo}/>
                         </span>
-                        <span>Reset</span>
                     </button>
                 </div>
             </div>

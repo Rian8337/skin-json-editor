@@ -2,6 +2,8 @@ import { useMemo, useState } from "react";
 import "./BaseEditor.css";
 import BaseEditor from "./BaseEditor";
 import { ArrayResettable, Resettable } from "@structures/resettable";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAdd, faArrowDown, faArrowUp, faRemove, faUndo} from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -32,70 +34,89 @@ export default function MultipleColorEditor(props: Props) {
     const colorList = useMemo(
         () =>
             resettable.value.map((color, index, arr) => (
-                <div key={index} className="json-item-editor-flex-container">
-                    <input
-                        className="json-item-editor-input"
-                        type="color"
-                        value={color}
-                        disabled
-                    />
+                <div key={index} className="field has-addons">
+                    <div className="control">
+                        <input
+                            className="input color-input has-background-black-bis"
+                            type="color"
+                            value={color}
+                            disabled
+                        />
+                    </div>
 
-                    <input
-                        className="json-item-editor-input color"
-                        type="text"
-                        value={color}
-                        disabled
-                    />
+                    <div className="control">
+                        <input
+                            className="input color has-background-black-bis"
+                            type="text"
+                            value={color}
+                            disabled
+                        />
+                    </div>
 
-                    <input
-                        className="json-item-editor-input"
-                        type="button"
-                        value="↑"
-                        disabled={index === 0}
-                        onClick={() => {
-                            const newValue = arr.slice();
+                    <div className="control">
+                        <button
+                            className="button"
+                            type="button"
+                            disabled={index === 0}
+                            onClick={() => {
+                                const newValue = arr.slice();
 
-                            [newValue[index - 1], newValue[index]] = [
-                                newValue[index],
-                                newValue[index - 1],
-                            ];
+                                [newValue[index - 1], newValue[index]] = [
+                                    newValue[index],
+                                    newValue[index - 1],
+                                ];
 
-                            //@ts-expect-error: existential generics are not supported
-                            resettable.setValue(newValue);
-                        }}
-                    />
+                                //@ts-expect-error: existential generics are not supported
+                                resettable.setValue(newValue);
+                            }}
+                        >
+                            <span className="icon">
+                                <FontAwesomeIcon icon={faArrowUp}/>
+                            </span>
+                        </button>
+                    </div>
 
-                    <input
-                        className="json-item-editor-input"
-                        type="button"
-                        value="↓"
-                        disabled={index === arr.length - 1}
-                        onClick={() => {
-                            const newValue = arr.slice();
+                    <div className="control">
+                        <button
+                            className="button"
+                            type="button"
+                            disabled={index === arr.length - 1}
+                            onClick={() => {
+                                const newValue = arr.slice();
 
-                            [newValue[index], newValue[index + 1]] = [
-                                newValue[index + 1],
-                                newValue[index],
-                            ];
+                                [newValue[index], newValue[index + 1]] = [
+                                    newValue[index + 1],
+                                    newValue[index],
+                                ];
 
-                            //@ts-expect-error: existential generics are not supported
-                            resettable.setValue(newValue);
-                        }}
-                    />
+                                //@ts-expect-error: existential generics are not supported
+                                resettable.setValue(newValue);
+                            }}
+                        >
+                            <span className="icon">
+                                <FontAwesomeIcon icon={faArrowDown}/>
+                            </span>
+                        </button>
+                    </div>
 
-                    <input
-                        className="json-item-editor-input"
-                        type="button"
-                        value="Remove"
-                        disabled={arr.length === 1}
-                        onClick={() => {
-                            const newValue = arr.slice();
-                            newValue.splice(index, 1);
+                    <div className="control">
+                        <button
+                            className="button"
+                            type="button"
+                            disabled={arr.length === 1}
+                            onClick={() => {
+                                const newValue = arr.slice();
+                                newValue.splice(index, 1);
 
-                            //@ts-expect-error: existential generics are not supported
-                            resettable.setValue(newValue);
-                        }}
-                    />
+                                //@ts-expect-error: existential generics are not supported
+                                resettable.setValue(newValue);
+                            }}
+                        >
+                        <span className="icon">
+                            <FontAwesomeIcon icon={faRemove}/>
+                        </span>
+                        </button>
+                    </div>
                 </div>
             )),
         [resettable]
@@ -103,46 +124,60 @@ export default function MultipleColorEditor(props: Props) {
 
     return (
         <BaseEditor title={title} description={description}>
-            <div className="json-item-editor-flex-container">
-                {inputLabel ? (
-                    <div className="color-editor-input-label">{inputLabel}</div>
-                ) : null}
+            <div className="field">
+                {inputLabel ? (<label className="label">{inputLabel}</label>) : null}
 
-                <input
-                    className="json-item-editor-input"
-                    type="reset"
-                    onClick={() => {
-                        resettable.reset();
-                    }}
-                />
+                <div className="control">
+                    <button
+                        className="button"
+                        type="reset"
+                        onClick={() => {
+                            resettable.reset();
+                        }}
+                    >
+                        <span className="icon">
+                            <FontAwesomeIcon icon={faUndo}/>
+                        </span>
+                    </button>
+                </div>
             </div>
 
-            <div className="json-item-editor-flex-container">
-                <input
-                    className="json-item-editor-input"
-                    type="color"
-                    value={hexCode}
-                    onChange={(event) => {
-                        setHexCode(event.target.value.toUpperCase());
-                    }}
-                />
+            <div className="field has-addons">
+                <div className="control">
+                    <input
+                        className="input color-input"
+                        type="color"
+                        value={hexCode}
+                        onChange={(event) => {
+                            setHexCode(event.target.value.toUpperCase());
+                        }}
+                    />
+                </div>
+                <div className="control">
+                    <input
+                        className="input color"
+                        type="text"
+                        value={hexCode}
+                        onChange={(event) => {
+                            setHexCode(event.target.value.toUpperCase());
+                        }}
+                    />
+                </div>
 
-                <input
-                    className="json-item-editor-input color"
-                    type="text"
-                    disabled
-                    value={hexCode}
-                />
-
-                <input
-                    className="json-item-editor-input"
-                    type="button"
-                    value="Add"
-                    onClick={() => {
-                        //@ts-expect-error: existential generics are not supported
-                        resettable.setValue(resettable.value.concat(hexCode));
-                    }}
-                />
+                <div className="control">
+                    <button
+                        className="button"
+                        type="button"
+                        onClick={() => {
+                            //@ts-expect-error: existential generics are not supported
+                            resettable.setValue(resettable.value.concat(hexCode));
+                        }}
+                    >
+                        <span className="icon px-5">
+                            <FontAwesomeIcon icon={faAdd} />
+                        </span>
+                    </button>
+                </div>
             </div>
 
             {colorList}

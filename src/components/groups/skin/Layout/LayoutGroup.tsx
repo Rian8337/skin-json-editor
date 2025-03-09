@@ -8,8 +8,9 @@ import LayoutRandomButton from "./LayoutRandomButton";
 export default function LayoutGroup() {
     return (
         <Group title="Song Selection Menu Buttons" collapsible>
-            <div className="group-description">
+            <p className="pb-2">
                 There are the same options for each button, namely:
+                <br />
                 <ul>
                     <li>
                         <b>Width</b>
@@ -46,7 +47,7 @@ export default function LayoutGroup() {
                         screen, in pixels.
                     </li>
                 </ul>
-            </div>
+            </p>
 
             <SubGroup title="Back Button" withEditorContainer>
                 <LayoutBackButton />

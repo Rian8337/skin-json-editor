@@ -30,7 +30,7 @@ export default function UserInputEditor(props: Props) {
     return (
         <BaseEditor title={title} description={description}>
             <div className="field has-addons">
-                <div className="control is-expanded">
+                <div className="control">
                     <input
                         className="input"
                         type={
@@ -90,7 +90,6 @@ export default function UserInputEditor(props: Props) {
                         <span className="icon">
                             <FontAwesomeIcon icon={faUndo}/>
                         </span>
-                        <span>Reset</span>
                     </button>
                 </div>
             </div>

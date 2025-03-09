@@ -30,7 +30,7 @@ export default function SliderInputEditor(props: Props) {
     return (
         <BaseEditor title={title} description={description}>
             <div className="field has-addons">
-                <div className="control is-expanded">
+                <div className="control">
                     <input
                         className="input"
                         type="number"
@@ -66,35 +66,37 @@ export default function SliderInputEditor(props: Props) {
                         <span className="icon">
                             <FontAwesomeIcon icon={faUndo}/>
                         </span>
-                        <span>Reset</span>
                     </button>
                 </div>
             </div>
 
-            <input
-                className="input progress is-primary"
-                type="range"
-                value={resettable.value}
-                min={
-                    resettable instanceof NumberResettable
-                        ? resettable.minValue
-                        : undefined
-                }
-                max={
-                    resettable instanceof NumberResettable
-                        ? resettable.maxValue
-                        : undefined
-                }
-                step={
-                    resettable instanceof NumberResettable
-                        ? resettable.step
-                        : undefined
-                }
-                onChange={(event) => {
-                    resettable.setValue(parseFloat(event.target.value));
-                    setDisplayValue(event.target.value);
-                }}
-            />
+            <div className="field">
+                <div className="control">
+                    <input
+                        type="range"
+                        value={resettable.value}
+                        min={
+                            resettable instanceof NumberResettable
+                                ? resettable.minValue
+                                : undefined
+                        }
+                        max={
+                            resettable instanceof NumberResettable
+                                ? resettable.maxValue
+                                : undefined
+                        }
+                        step={
+                            resettable instanceof NumberResettable
+                                ? resettable.step
+                                : undefined
+                        }
+                        onChange={(event) => {
+                            resettable.setValue(parseFloat(event.target.value));
+                            setDisplayValue(event.target.value);
+                        }}
+                    />
+                </div>
+            </div>
         </BaseEditor>
     );
 }

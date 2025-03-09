@@ -9,7 +9,7 @@ resettable.jsonPropertyGetter = (json) => json.Utils?.spinnerFrequencyModulate;
 resettable.iniPropertyGetter = (ini) => {
     const spinnerFrequencyModulate = ini.get(
         SkinIniSection.general,
-        "SpinnerFrequencyModulate"
+        "SpinnerFrequencyModulate",
     );
 
     if (!spinnerFrequencyModulate) {
@@ -25,11 +25,11 @@ resettable.jsonSaveHandler = function (json) {
 };
 
 export const SpinnerFrequencyModulateContext = createContext(
-    resettable.clone()
+    resettable.clone(),
 );
 
 export function SpinnerFrequencyModulateContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <SpinnerFrequencyModulateContext.Provider

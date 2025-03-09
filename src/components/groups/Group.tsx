@@ -1,6 +1,6 @@
 import { PropsWithChildren, useState } from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -12,8 +12,6 @@ interface Props {
      * Whether this group can be collapsed. Defaults to `false`.
      */
     collapsible?: boolean;
-
-
 }
 
 export default function Group(props: PropsWithChildren<Props>) {
@@ -21,25 +19,34 @@ export default function Group(props: PropsWithChildren<Props>) {
 
     return (
         <div className="card is-shadowless">
-            <header className="card-header" onClick={() => {
-                setVisible((visible) =>
-                    props.collapsible ? !visible : true
-                );
-            }}>
+            <header
+                className="card-header"
+                onClick={() => {
+                    setVisible((visible) =>
+                        props.collapsible ? !visible : true,
+                    );
+                }}
+            >
                 <p className="card-header-title">{props.title}</p>
-                {props.collapsible ?
-                    <button className="card-header-icon" aria-label="more options">
-                          <span className="icon">
-                            <FontAwesomeIcon icon={visible ? faAngleUp : faAngleDown} aria-hidden="true"/>
-                          </span>
+                {props.collapsible ? (
+                    <button
+                        className="card-header-icon"
+                        aria-label="more options"
+                    >
+                        <span className="icon">
+                            <FontAwesomeIcon
+                                icon={visible ? faAngleUp : faAngleDown}
+                                aria-hidden="true"
+                            />
+                        </span>
                     </button>
-                : '' }
+                ) : (
+                    ""
+                )}
             </header>
 
-            <div className={'card-content ' + (visible ? "" : "is-hidden")}>
-                <div className="content">
-                    {props.children}
-                </div>
+            <div className={"card-content " + (visible ? "" : "is-hidden")}>
+                <div className="content">{props.children}</div>
             </div>
         </div>
     );

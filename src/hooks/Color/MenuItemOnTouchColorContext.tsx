@@ -9,7 +9,7 @@ resettable.jsonPropertyGetter = (json) => json.Color?.MenuItemOnTouchColor;
 resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
-            `The color for an unselected beatmapset card when it is tapped on (${value}) is invalid`
+            `The color for an unselected beatmapset card when it is tapped on (${value}) is invalid`,
         );
     }
 };

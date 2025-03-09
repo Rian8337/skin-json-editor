@@ -9,7 +9,7 @@ resettable.jsonPropertyGetter = (json) => json.Utils?.layeredHitSounds;
 resettable.iniPropertyGetter = (ini) => {
     const layeredHitSounds = ini.get(
         SkinIniSection.general,
-        "LayeredHitSounds"
+        "LayeredHitSounds",
     );
 
     if (!layeredHitSounds) {

@@ -16,7 +16,7 @@ resettable.jsonSaveHandler = function (json) {
 export const SliderFollowComboColorContext = createContext(resettable.clone());
 
 export function SliderFollowComboColorContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <SliderFollowComboColorContext.Provider

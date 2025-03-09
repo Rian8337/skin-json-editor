@@ -21,7 +21,7 @@ resettable.iniPropertyGetter = (ini) => {
 resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
-            `The text color for a selected beatmap card (${value}) is invalid`
+            `The text color for a selected beatmap card (${value}) is invalid`,
         );
     }
 };
@@ -32,11 +32,11 @@ resettable.jsonSaveHandler = function (json) {
 };
 
 export const MenuItemSelectedTextColorContext = createContext(
-    resettable.clone()
+    resettable.clone(),
 );
 
 export function MenuItemSelectedTextColorContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <MenuItemSelectedTextColorContext.Provider

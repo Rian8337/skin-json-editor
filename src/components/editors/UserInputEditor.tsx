@@ -1,8 +1,8 @@
 import { NumberResettable, Resettable } from "@structures/resettable";
 import { useState } from "react";
 import BaseEditor from "./BaseEditor";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUndo} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -24,7 +24,7 @@ interface Props {
 export default function UserInputEditor(props: Props) {
     const { title, description, resettable } = props;
     const [displayValue, setDisplayValue] = useState(
-        resettable.defaultValue.toString()
+        resettable.defaultValue.toString(),
     );
 
     return (
@@ -65,11 +65,11 @@ export default function UserInputEditor(props: Props) {
                                 typeof resettable.value === "number"
                             ) {
                                 (resettable as Resettable<number>).setValue(
-                                    parseFloat(displayValue)
+                                    parseFloat(displayValue),
                                 );
                             } else {
                                 (resettable as Resettable<string>).setValue(
-                                    displayValue
+                                    displayValue,
                                 );
                             }
 
@@ -88,7 +88,7 @@ export default function UserInputEditor(props: Props) {
                         }}
                     >
                         <span className="icon">
-                            <FontAwesomeIcon icon={faUndo}/>
+                            <FontAwesomeIcon icon={faUndo} />
                         </span>
                     </button>
                 </div>

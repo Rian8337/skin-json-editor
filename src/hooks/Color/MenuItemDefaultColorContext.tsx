@@ -12,7 +12,7 @@ resettable.iniPropertyGetter = () => "#EB4999";
 resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
-            `The default color for an unselected beatmapset card (${value}) is invalid`
+            `The default color for an unselected beatmapset card (${value}) is invalid`,
         );
     }
 };

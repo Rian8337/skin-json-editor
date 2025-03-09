@@ -132,7 +132,7 @@ export class Resettable<T> {
     loadFromJSON(json: SkinJson, fallbackToDefault: boolean) {
         if (!this.jsonPropertyGetter) {
             throw new Error(
-                "This `Resettable` cannot be loaded from a skin.json."
+                "This `Resettable` cannot be loaded from a skin.json.",
             );
         }
 
@@ -154,7 +154,7 @@ export class Resettable<T> {
     loadFromIni(ini: SkinIni, fallbackToDefault: boolean) {
         if (!this.iniPropertyGetter) {
             throw new Error(
-                "This `Resettable` cannot be loaded from a skin.ini."
+                "This `Resettable` cannot be loaded from a skin.ini.",
             );
         }
 
@@ -175,7 +175,7 @@ export class Resettable<T> {
     saveToJSON(json: SkinJson) {
         if (!this.jsonSaveHandler) {
             throw new Error(
-                "This `Resettable` cannot be saved to a skin.json."
+                "This `Resettable` cannot be saved to a skin.json.",
             );
         }
 

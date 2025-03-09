@@ -15,6 +15,6 @@ export function validateColor(hexColor?: string): boolean {
  */
 export function createColorError(prefix: string): Error {
     return new Error(
-        `${prefix}. Please ensure it is prefixed with a hash tag (#) and only consist of numbers and characters from A to F.`
+        `${prefix}. Please ensure it is prefixed with a hash tag (#) and only consist of numbers and characters from A to F.`,
     );
 }

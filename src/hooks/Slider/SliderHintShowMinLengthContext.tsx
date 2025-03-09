@@ -12,7 +12,7 @@ resettable.iniPropertyGetter = () => 1;
 export const SliderHintShowMinLengthContext = createContext(resettable.clone());
 
 export function SliderHintShowMinLengthContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     const sliderHintEnable = useContext(SliderHintEnableContext);
 

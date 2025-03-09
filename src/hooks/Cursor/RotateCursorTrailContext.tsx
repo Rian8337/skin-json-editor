@@ -9,7 +9,7 @@ resettable.jsonPropertyGetter = (json) => json.Cursor?.rotateCursorTrail;
 resettable.iniPropertyGetter = (ini) => {
     const rotateCursorTrail = ini.get(
         SkinIniSection.general,
-        "CursorTrailRotate"
+        "CursorTrailRotate",
     );
 
     if (!rotateCursorTrail) {

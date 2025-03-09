@@ -9,11 +9,11 @@ const resettable = new NumberResettable({
 });
 
 export const ComboNumberIllustrationCircleSizeContext = createContext(
-    resettable.clone()
+    resettable.clone(),
 );
 
 export function ComboNumberIllustrationCircleSizeContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <ComboNumberIllustrationCircleSizeContext.Provider

@@ -1,8 +1,8 @@
 import { Resettable } from "@structures/resettable";
 import { validateColor } from "@utils/validators";
 import BaseEditor from "./BaseEditor";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUndo} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -40,7 +40,7 @@ export default function SingleColorEditor(props: Props) {
                         }
                         onChange={(event) => {
                             resettable.setValue(
-                                event.target.value.toUpperCase() || undefined
+                                event.target.value.toUpperCase() || undefined,
                             );
                         }}
                     />
@@ -59,7 +59,7 @@ export default function SingleColorEditor(props: Props) {
                                 resettable.setValue(
                                     validateColor(value)
                                         ? value.toUpperCase()
-                                        : value
+                                        : value,
                                 );
                             } else {
                                 resettable.reset();
@@ -77,7 +77,7 @@ export default function SingleColorEditor(props: Props) {
                         }}
                     >
                         <span className="icon">
-                            <FontAwesomeIcon icon={faUndo}/>
+                            <FontAwesomeIcon icon={faUndo} />
                         </span>
                     </button>
                 </div>

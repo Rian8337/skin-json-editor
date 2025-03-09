@@ -9,8 +9,8 @@ import * as Slider from "@hooks/Slider";
 import * as Utils from "@hooks/Utils";
 import { SkinJson } from "@structures/skin/SkinJson";
 import { SkinIni } from "@structures/skin/SkinIni";
-import { faFileUpload } from "@fortawesome/free-solid-svg-icons"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import { faFileUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function ImportSkinSubGroup(props: {
     title: string;
@@ -21,10 +21,7 @@ function ImportSkinSubGroup(props: {
         <div className="cell mb-0 box has-background-black-ter is-shadowless">
             <label className="label">{props.title}</label>
             <div className="block field">
-                <form
-                    onSubmit={props.onSubmit}
-                    encType="multipart/form-data"
-                >
+                <form onSubmit={props.onSubmit} encType="multipart/form-data">
                     <div className="file is-boxed">
                         <label className="file-label">
                             <input
@@ -34,12 +31,19 @@ function ImportSkinSubGroup(props: {
                                 name="file"
                             />
                             <span className="file-cta">
-                                <span className="file-icon"><FontAwesomeIcon icon={faFileUpload}/></span>
-                                <span className="file-label"> Choose a file… </span>
+                                <span className="file-icon">
+                                    <FontAwesomeIcon icon={faFileUpload} />
+                                </span>
+                                <span className="file-label">
+                                    {" "}
+                                    Choose a file…{" "}
+                                </span>
                             </span>
                         </label>
                     </div>
-                    <button className="button" type="submit">Load</button>
+                    <button className="button" type="submit">
+                        Load
+                    </button>
                 </form>
             </div>
         </div>
@@ -58,7 +62,7 @@ export default function ImportSkinGroup() {
     const sliderBorderWidth = useContext(Slider.SliderBorderWidthContext);
     const sliderBodyBaseAlpha = useContext(Slider.SliderBodyBaseAlphaContext);
     const sliderFollowComboColor = useContext(
-        Slider.SliderFollowComboColorContext
+        Slider.SliderFollowComboColorContext,
     );
     const sliderBodyColor = useContext(Slider.SliderBodyColorContext);
     const sliderBorderColor = useContext(Slider.SliderBorderColorContext);
@@ -68,7 +72,7 @@ export default function ImportSkinGroup() {
     const sliderHintColor = useContext(Slider.SliderHintColorContext);
     const sliderHintWidth = useContext(Slider.SliderHintWidthContext);
     const sliderHintShowMinLength = useContext(
-        Slider.SliderHintShowMinLengthContext
+        Slider.SliderHintShowMinLengthContext,
     );
 
     // Cursor
@@ -82,23 +86,23 @@ export default function ImportSkinGroup() {
     const animationFramerate = useContext(Utils.AnimationFramerateContext);
     const layeredHitSounds = useContext(Utils.LayeredHitSoundsContext);
     const spinnerFrequencyModulate = useContext(
-        Utils.SpinnerFrequencyModulateContext
+        Utils.SpinnerFrequencyModulateContext,
     );
 
     // Color
     const menuItemDefaultColor = useContext(Color.MenuItemDefaultColorContext);
     const menuItemOnTouchColor = useContext(Color.MenuItemOnTouchColorContext);
     const menuItemVersionsDefaultColor = useContext(
-        Color.MenuItemVersionsDefaultColorContext
+        Color.MenuItemVersionsDefaultColorContext,
     );
     const menuItemVersionsSelectedColor = useContext(
-        Color.MenuItemVersionsSelectedColorContext
+        Color.MenuItemVersionsSelectedColorContext,
     );
     const menuItemDefaultTextColor = useContext(
-        Color.MenuItemDefaultTextColorContext
+        Color.MenuItemDefaultTextColorContext,
     );
     const menuItemSelectedTextColor = useContext(
-        Color.MenuItemSelectedTextColorContext
+        Color.MenuItemSelectedTextColorContext,
     );
 
     // Fonts
@@ -117,7 +121,7 @@ export default function ImportSkinGroup() {
     const backButtonX = useContext(Layout.BackButtonXContext);
     const backButtonY = useContext(Layout.BackButtonYContext);
     const backButtonScaleWhenHold = useContext(
-        Layout.BackButtonScaleWhenHoldContext
+        Layout.BackButtonScaleWhenHoldContext,
     );
 
     // Mods Button
@@ -160,14 +164,14 @@ export default function ImportSkinGroup() {
                     json = JSON.parse(text) as SkinJson;
                 } catch {
                     alert(
-                        "Encountered an error when attempting to process your skin.json file."
+                        "Encountered an error when attempting to process your skin.json file.",
                     );
 
                     return;
                 }
 
                 const resetAll = confirm(
-                    "Would you like to reset all values before loading the skin.json file?"
+                    "Would you like to reset all values before loading the skin.json file?",
                 );
 
                 // ComboColor
@@ -250,7 +254,7 @@ export default function ImportSkinGroup() {
             })
             .catch(() => {
                 alert(
-                    "Encountered an error when attempting to process your skin.json file."
+                    "Encountered an error when attempting to process your skin.json file.",
                 );
             });
     };
@@ -269,7 +273,7 @@ export default function ImportSkinGroup() {
         file.text()
             .then((text) => {
                 const resetAll = confirm(
-                    "Would you like to reset all values before loading the skin.json file?"
+                    "Would you like to reset all values before loading the skin.json file?",
                 );
 
                 const ini = new SkinIni(text);
@@ -322,7 +326,7 @@ export default function ImportSkinGroup() {
             })
             .catch(() => {
                 alert(
-                    "Encountered an error when attempting to process your skin.ini file."
+                    "Encountered an error when attempting to process your skin.ini file.",
                 );
             });
     };

@@ -13,7 +13,7 @@ const compose =
     (props: { children: JSX.Element }) =>
         components.reduce(
             (children, Current) => <Current {...props}>{children}</Current>,
-            props.children
+            props.children,
         );
 
 export const Providers = compose(
@@ -98,5 +98,5 @@ export const Providers = compose(
 
     // Combo Number Illustration
     Illustration.ComboNumberIllustrationCircleSizeContextProvider,
-    Illustration.ComboNumberIllustrationNumbersContextProvider
+    Illustration.ComboNumberIllustrationNumbersContextProvider,
 );

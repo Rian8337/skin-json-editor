@@ -9,11 +9,11 @@ const resettable = new NumberResettable({
 });
 
 export const SliderIllustrationCircleSizeContext = createContext(
-    resettable.clone()
+    resettable.clone(),
 );
 
 export function SliderIllustrationCircleSizeContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <SliderIllustrationCircleSizeContext.Provider

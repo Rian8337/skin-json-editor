@@ -2,8 +2,14 @@ import { useMemo, useState } from "react";
 import "./BaseEditor.css";
 import BaseEditor from "./BaseEditor";
 import { ArrayResettable, Resettable } from "@structures/resettable";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faAdd, faArrowDown, faArrowUp, faRemove, faUndo} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+    faAdd,
+    faArrowDown,
+    faArrowUp,
+    faRemove,
+    faUndo,
+} from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -71,7 +77,7 @@ export default function MultipleColorEditor(props: Props) {
                             }}
                         >
                             <span className="icon">
-                                <FontAwesomeIcon icon={faArrowUp}/>
+                                <FontAwesomeIcon icon={faArrowUp} />
                             </span>
                         </button>
                     </div>
@@ -94,7 +100,7 @@ export default function MultipleColorEditor(props: Props) {
                             }}
                         >
                             <span className="icon">
-                                <FontAwesomeIcon icon={faArrowDown}/>
+                                <FontAwesomeIcon icon={faArrowDown} />
                             </span>
                         </button>
                     </div>
@@ -112,20 +118,22 @@ export default function MultipleColorEditor(props: Props) {
                                 resettable.setValue(newValue);
                             }}
                         >
-                        <span className="icon">
-                            <FontAwesomeIcon icon={faRemove}/>
-                        </span>
+                            <span className="icon">
+                                <FontAwesomeIcon icon={faRemove} />
+                            </span>
                         </button>
                     </div>
                 </div>
             )),
-        [resettable]
+        [resettable],
     );
 
     return (
         <BaseEditor title={title} description={description}>
             <div className="field">
-                {inputLabel ? (<label className="label">{inputLabel}</label>) : null}
+                {inputLabel ? (
+                    <label className="label">{inputLabel}</label>
+                ) : null}
 
                 <div className="control">
                     <button
@@ -136,7 +144,7 @@ export default function MultipleColorEditor(props: Props) {
                         }}
                     >
                         <span className="icon">
-                            <FontAwesomeIcon icon={faUndo}/>
+                            <FontAwesomeIcon icon={faUndo} />
                         </span>
                     </button>
                 </div>
@@ -169,8 +177,10 @@ export default function MultipleColorEditor(props: Props) {
                         className="button"
                         type="button"
                         onClick={() => {
-                            //@ts-expect-error: existential generics are not supported
-                            resettable.setValue(resettable.value.concat(hexCode));
+                            resettable.setValue(
+                                //@ts-expect-error: existential generics are not supported
+                                resettable.value.concat(hexCode),
+                            );
                         }}
                     >
                         <span className="icon px-5">

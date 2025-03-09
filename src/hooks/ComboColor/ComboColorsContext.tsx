@@ -13,7 +13,7 @@ resettable.propertyValidator = (value) => {
     for (const c of value) {
         if (!validateColor(c)) {
             throw createColorError(
-                `The hex color "${c}" in combo colors is invalid`
+                `The hex color "${c}" in combo colors is invalid`,
             );
         }
     }

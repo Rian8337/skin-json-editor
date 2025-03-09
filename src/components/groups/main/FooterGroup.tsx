@@ -2,9 +2,7 @@ export default function FooterGroup() {
     return (
         <footer className="footer">
             <div className="content has-text-centered">
-                <p>
-                    &copy; {new Date().getUTCFullYear()} Rian8337
-                </p>
+                <p>&copy; {new Date().getUTCFullYear()} Rian8337</p>
                 <div className="is-flex is-justify-content-center is-align-items-center">
                     <a href="https://discord.gg/nyD92cE" className="pr-2">
                         <img
@@ -17,7 +15,8 @@ export default function FooterGroup() {
                             src="https://bulma.io/assets/images/made-with-bulma.png"
                             alt="Made with Bulma"
                             width="128"
-                            height="24"/>
+                            height="24"
+                        />
                     </a>
                 </div>
             </div>

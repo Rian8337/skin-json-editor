@@ -9,7 +9,7 @@ resettable.jsonPropertyGetter = (json) => json.Utils?.animationFramerate;
 resettable.iniPropertyGetter = (ini) => {
     const animationFramerate = ini.get(
         SkinIniSection.general,
-        "AnimationFramerate"
+        "AnimationFramerate",
     );
 
     if (!animationFramerate) {

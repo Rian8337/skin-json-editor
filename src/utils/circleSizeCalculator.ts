@@ -11,7 +11,7 @@ export function circleSizeToScale(cs: number, height: number): number {
     return Math.max(
         (((1280 * width) / height / 480) * (54.42 - cs * 4.48) * 2) / 128 +
             (0.5 * (11 - 5.2450170716245195)) / 5,
-        1e-3
+        1e-3,
     );
 }
 

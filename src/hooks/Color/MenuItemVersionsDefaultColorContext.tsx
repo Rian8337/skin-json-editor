@@ -10,7 +10,7 @@ resettable.jsonPropertyGetter = (json) =>
 resettable.propertyValidator = (value) => {
     if (!validateColor(value)) {
         throw createColorError(
-            `The color for an unselected beatmap card (${value}) is invalid`
+            `The color for an unselected beatmap card (${value}) is invalid`,
         );
     }
 };
@@ -21,11 +21,11 @@ resettable.jsonSaveHandler = function (json) {
 };
 
 export const MenuItemVersionsDefaultColorContext = createContext(
-    resettable.clone()
+    resettable.clone(),
 );
 
 export function MenuItemVersionsDefaultColorContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <MenuItemVersionsDefaultColorContext.Provider

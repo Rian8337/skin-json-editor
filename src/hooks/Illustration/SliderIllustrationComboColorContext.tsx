@@ -4,11 +4,11 @@ import { Resettable } from "@structures/resettable";
 const resettable = new Resettable("#FFFFFF");
 
 export const SliderIllustrationComboColorContext = createContext(
-    resettable.clone()
+    resettable.clone(),
 );
 
 export function SliderIllustrationComboColorContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <SliderIllustrationComboColorContext.Provider

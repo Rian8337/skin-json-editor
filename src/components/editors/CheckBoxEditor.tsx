@@ -1,7 +1,7 @@
 import { Resettable } from "@structures/resettable";
 import BaseEditor from "./BaseEditor";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUndo} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
     /**
@@ -47,7 +47,7 @@ export default function CheckBoxEditor(props: Props) {
                         }}
                     >
                         <span className="icon">
-                            <FontAwesomeIcon icon={faUndo}/>
+                            <FontAwesomeIcon icon={faUndo} />
                         </span>
                     </button>
                 </div>

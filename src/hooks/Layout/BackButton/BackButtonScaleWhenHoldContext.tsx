@@ -20,7 +20,7 @@ resettable.jsonSaveHandler = function (json) {
 export const BackButtonScaleWhenHoldContext = createContext(resettable.clone());
 
 export function BackButtonScaleWhenHoldContextProvider(
-    props: PropsWithChildren
+    props: PropsWithChildren,
 ) {
     return (
         <BackButtonScaleWhenHoldContext.Provider

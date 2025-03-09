@@ -106,18 +106,18 @@ export default function ComboNumberIllustrationCanvas() {
                 -imageWidth / 2,
                 -imageHeight / 2,
                 imageWidth,
-                imageHeight
+                imageHeight,
             );
         } else {
             const images = comboLetters.map(
-                (letter) => numberImages[parseInt(letter)]
+                (letter) => numberImages[parseInt(letter)],
             );
 
             let totalWidth =
                 images.reduce(
                     (a, v) =>
                         a + ((v.width * v.height) / height) * comboNumberScale,
-                    0
+                    0,
                 ) +
                 hitCircleOverlap.value * (images.length - 1);
 
@@ -134,7 +134,7 @@ export default function ComboNumberIllustrationCanvas() {
                     -totalWidth / 2,
                     -imageHeight / 2,
                     imageWidth,
-                    imageHeight
+                    imageHeight,
                 );
 
                 totalWidth -= (imageWidth + hitCircleOverlap.value) * 2;

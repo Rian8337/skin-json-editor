@@ -1,6 +1,5 @@
 import { FormEvent, FormEventHandler, useContext } from "react";
 import Group from "../Group";
-import "./ImportSkinGroup.css";
 import * as Color from "@hooks/Color";
 import * as ComboColor from "@hooks/ComboColor";
 import * as Cursor from "@hooks/Cursor";
@@ -9,8 +8,9 @@ import * as Layout from "@hooks/Layout";
 import * as Slider from "@hooks/Slider";
 import * as Utils from "@hooks/Utils";
 import { SkinJson } from "@structures/skin/SkinJson";
-import SubGroup from "../SubGroup";
 import { SkinIni } from "@structures/skin/SkinIni";
+import { faFileUpload } from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 function ImportSkinSubGroup(props: {
     title: string;
@@ -18,26 +18,31 @@ function ImportSkinSubGroup(props: {
     accept: string;
 }) {
     return (
-        <SubGroup title={props.title}>
-            <form
-                className="import-skin-form"
-                onSubmit={props.onSubmit}
-                encType="multipart/form-data"
-            >
-                <input
-                    className="import-skin-form-file"
-                    type="file"
-                    accept={props.accept}
-                    name="file"
-                />
-                <br />
-                <input
-                    className="import-skin-form-submit"
-                    type="submit"
-                    value="Load"
-                />
-            </form>
-        </SubGroup>
+        <div className="cell mb-0 box has-background-black-ter is-shadowless">
+            <label className="label">{props.title}</label>
+            <div className="block field">
+                <form
+                    onSubmit={props.onSubmit}
+                    encType="multipart/form-data"
+                >
+                    <div className="file is-boxed">
+                        <label className="file-label">
+                            <input
+                                className="file-input"
+                                type="file"
+                                accept={props.accept}
+                                name="file"
+                            />
+                            <span className="file-cta">
+                                <span className="file-icon"><FontAwesomeIcon icon={faFileUpload}/></span>
+                                <span className="file-label"> Choose a file… </span>
+                            </span>
+                        </label>
+                    </div>
+                    <button className="button" type="submit">Load</button>
+                </form>
+            </div>
+        </div>
     );
 }
 
@@ -324,17 +329,18 @@ export default function ImportSkinGroup() {
 
     return (
         <Group title="Load Existing Configuration">
-            <ImportSkinSubGroup
-                title="skin.json"
-                onSubmit={onJsonSubmit}
-                accept=".json"
-            />
-
-            <ImportSkinSubGroup
-                title="skin.ini"
-                onSubmit={onIniSubmit}
-                accept=".ini"
-            />
+            <div className="grid">
+                <ImportSkinSubGroup
+                    title="skin.json"
+                    onSubmit={onJsonSubmit}
+                    accept=".json"
+                />
+                <ImportSkinSubGroup
+                    title="skin.ini"
+                    onSubmit={onIniSubmit}
+                    accept=".ini"
+                />
+            </div>
         </Group>
     );
 }

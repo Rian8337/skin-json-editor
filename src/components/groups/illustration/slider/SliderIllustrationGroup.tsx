@@ -7,9 +7,8 @@ import EditorContainer from "@components/editors/EditorContainer";
 export default function SliderIllustrationGroup() {
     return (
         <SubGroup title="Illustration">
-            <br />
             <SliderIllustrationCanvas />
-
+            <br />
             <EditorContainer>
                 <SliderIllustrationCircleSize />
                 <SliderIllustrationComboColor />

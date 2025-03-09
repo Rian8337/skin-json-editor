@@ -1,14 +1,13 @@
-import "./HeaderGroup.css";
-
 export default function HeaderGroup() {
     return (
-        <div className="header-group">
-            <div className="header-group-title">osu!droid skin.json editor</div>
-            <br />
-            <div className="header-group-description">
-                A tool for editing skin.json files that are used in osu!droid
-                skins.
+        <section className="hero">
+            <div className="hero-body has-text-centered">
+                <h1 className="title">osu!droid skin.json editor</h1>
+                <h2 className="subtitle">
+                    A tool for editing skin.json files that are used in
+                    osu!droid skins.
+                </h2>
             </div>
-        </div>
+        </section>
     );
 }

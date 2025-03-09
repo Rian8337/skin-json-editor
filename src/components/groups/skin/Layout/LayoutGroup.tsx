@@ -8,45 +8,46 @@ import LayoutRandomButton from "./LayoutRandomButton";
 export default function LayoutGroup() {
     return (
         <Group title="Song Selection Menu Buttons" collapsible>
-            <div className="group-description">
+            <p className="pb-2">
                 There are the same options for each button, namely:
-                <ul>
-                    <li>
-                        <b>Width</b>
-                        <br />
-                        Specifies the width of the button, in pixels. Use -1 to
-                        use the width of the button&apos;s texture.
-                    </li>
+            </p>
+
+            <ul>
+                <li>
+                    <b>Width</b>
                     <br />
-                    <li>
-                        <b>Height</b>
-                        <br />
-                        Specifies the height of the button, in pixels. Use -1 to
-                        use the height of the button&apos;s texture.
-                    </li>
+                    Specifies the width of the button, in pixels. Use -1 to use
+                    the width of the button&apos;s texture.
+                </li>
+                <br />
+                <li>
+                    <b>Height</b>
                     <br />
-                    <li>
-                        <b>Scale</b>
-                        <br />
-                        Increasing this number increases the size of the button,
-                        and vice versa.
-                    </li>
+                    Specifies the height of the button, in pixels. Use -1 to use
+                    the height of the button&apos;s texture.
+                </li>
+                <br />
+                <li>
+                    <b>Scale</b>
                     <br />
-                    <li>
-                        <b>Horizontal Offset</b>
-                        <br />
-                        The horizontal offset of the button from the left of the
-                        screen, in pixels.
-                    </li>
+                    Increasing this number increases the size of the button, and
+                    vice versa.
+                </li>
+                <br />
+                <li>
+                    <b>Horizontal Offset</b>
                     <br />
-                    <li>
-                        <b>Vertical Offset</b>
-                        <br />
-                        The vertical offset of the button from the bottom of the
-                        screen, in pixels.
-                    </li>
-                </ul>
-            </div>
+                    The horizontal offset of the button from the left of the
+                    screen, in pixels.
+                </li>
+                <br />
+                <li>
+                    <b>Vertical Offset</b>
+                    <br />
+                    The vertical offset of the button from the bottom of the
+                    screen, in pixels.
+                </li>
+            </ul>
 
             <SubGroup title="Back Button" withEditorContainer>
                 <LayoutBackButton />

@@ -1,5 +1,6 @@
-import "./Group.css";
 import { PropsWithChildren, useState } from "react";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faAngleDown, faAngleUp} from "@fortawesome/free-solid-svg-icons"
 
 interface Props {
     /**
@@ -11,34 +12,35 @@ interface Props {
      * Whether this group can be collapsed. Defaults to `false`.
      */
     collapsible?: boolean;
+
+
 }
 
 export default function Group(props: PropsWithChildren<Props>) {
     const [visible, setVisible] = useState(!props.collapsible);
 
     return (
-        <>
-            <hr className="group-break-line" />
-            <div className="group-item">
-                <div
-                    className={`group-title${
-                        props.collapsible ? "-collapsible" : ""
-                    }`}
-                    onClick={() => {
-                        setVisible((visible) =>
-                            props.collapsible ? !visible : true
-                        );
-                    }}
-                >
-                    {props.title}{" "}
-                    {props.collapsible &&
-                        (visible ? <>&#128316;</> : <>&#128317;</>)}
-                </div>
+        <div className="card is-shadowless">
+            <header className="card-header" onClick={() => {
+                setVisible((visible) =>
+                    props.collapsible ? !visible : true
+                );
+            }}>
+                <p className="card-header-title">{props.title}</p>
+                {props.collapsible ?
+                    <button className="card-header-icon" aria-label="more options">
+                          <span className="icon">
+                            <FontAwesomeIcon icon={visible ? faAngleUp : faAngleDown} aria-hidden="true"/>
+                          </span>
+                    </button>
+                : '' }
+            </header>
 
-                <div className={visible ? "" : "collapsed"}>
+            <div className={'card-content ' + (visible ? "" : "is-hidden")}>
+                <div className="content">
                     {props.children}
                 </div>
             </div>
-        </>
+        </div>
     );
 }

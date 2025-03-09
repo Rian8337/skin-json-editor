@@ -7,7 +7,6 @@ import * as Layout from "@hooks/Layout";
 import * as Slider from "@hooks/Slider";
 import * as Utils from "@hooks/Utils";
 import Group from "../Group";
-import "./SaveJsonGroup.css";
 import { SkinJson } from "@structures/skin/SkinJson";
 
 export default function SaveJsonGroup() {
@@ -204,14 +203,11 @@ export default function SaveJsonGroup() {
 
     return (
         <Group title="Save skin.json">
-            <div className="save-skin-json-container">
-                <input
-                    className="save-skin-json-input"
-                    type="button"
-                    value="Save"
-                    onClick={onClick}
-                />
-            </div>
+            <button
+                className="button"
+                type="button"
+                onClick={onClick}
+            >Save</button>
         </Group>
     );
 }

@@ -41,13 +41,7 @@
 }
 
 body {
-    background-color: #222;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("/background.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), url("/background.jpg");
     background-position: center;
     background-attachment: fixed;
-    font-family: Torus, sans-serif;
-    color: white;
-    margin: 0 auto;
-    max-width: min(800px, 100%);
 }

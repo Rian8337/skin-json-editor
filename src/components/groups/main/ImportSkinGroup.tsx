@@ -18,7 +18,7 @@ function ImportSkinSubGroup(props: {
     accept: string;
 }) {
     return (
-        <div className="cell box has-background-black-ter is-shadowless">
+        <div className="cell mb-0 box has-background-black-ter is-shadowless">
             <label className="label">{props.title}</label>
             <div className="block field">
                 <form

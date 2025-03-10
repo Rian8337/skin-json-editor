@@ -125,7 +125,7 @@ export default function MultipleColorEditor(props: Props) {
                     </div>
                 </div>
             )),
-        [resettable],
+        [resettable]
     );
 
     return (
@@ -161,6 +161,7 @@ export default function MultipleColorEditor(props: Props) {
                         }}
                     />
                 </div>
+
                 <div className="control">
                     <input
                         className="input color"
@@ -179,7 +180,7 @@ export default function MultipleColorEditor(props: Props) {
                         onClick={() => {
                             resettable.setValue(
                                 //@ts-expect-error: existential generics are not supported
-                                resettable.value.concat(hexCode),
+                                resettable.value.concat(hexCode)
                             );
                         }}
                     >

@@ -44,4 +44,10 @@ export interface SkinJson {
      * The `Fonts` section of this skin.json.
      */
     Fonts?: SkinJsonFonts;
+
+    /**
+     * The `HUD` section of this skin.json.
+     */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    HUD?: any;
 }

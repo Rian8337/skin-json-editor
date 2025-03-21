@@ -3,6 +3,7 @@ import * as Color from "./Color";
 import * as ComboColor from "./ComboColor";
 import * as Cursor from "./Cursor";
 import * as Fonts from "./Fonts";
+import * as HUD from "./HUD";
 import * as Illustration from "./Illustration";
 import * as Layout from "./Layout";
 import * as Slider from "./Slider";
@@ -13,7 +14,7 @@ const compose =
     (props: { children: JSX.Element }) =>
         components.reduce(
             (children, Current) => <Current {...props}>{children}</Current>,
-            props.children,
+            props.children
         );
 
 export const Providers = compose(
@@ -40,6 +41,9 @@ export const Providers = compose(
     Fonts.ScoreOverlapContextProvider,
     Fonts.ComboPrefixContextProvider,
     Fonts.ComboOverlapContextProvider,
+
+    // HUD
+    HUD.HUDDataContextProvider,
 
     // Layout (Back Button)
     Layout.BackButtonHeightContextProvider,
@@ -98,5 +102,5 @@ export const Providers = compose(
 
     // Combo Number Illustration
     Illustration.ComboNumberIllustrationCircleSizeContextProvider,
-    Illustration.ComboNumberIllustrationNumbersContextProvider,
+    Illustration.ComboNumberIllustrationNumbersContextProvider
 );

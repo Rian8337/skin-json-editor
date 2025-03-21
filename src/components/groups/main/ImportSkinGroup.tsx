@@ -4,6 +4,7 @@ import * as Color from "@hooks/Color";
 import * as ComboColor from "@hooks/ComboColor";
 import * as Cursor from "@hooks/Cursor";
 import * as Fonts from "@hooks/Fonts";
+import * as HUD from "@hooks/HUD";
 import * as Layout from "@hooks/Layout";
 import * as Slider from "@hooks/Slider";
 import * as Utils from "@hooks/Utils";
@@ -62,7 +63,7 @@ export default function ImportSkinGroup() {
     const sliderBorderWidth = useContext(Slider.SliderBorderWidthContext);
     const sliderBodyBaseAlpha = useContext(Slider.SliderBodyBaseAlphaContext);
     const sliderFollowComboColor = useContext(
-        Slider.SliderFollowComboColorContext,
+        Slider.SliderFollowComboColorContext
     );
     const sliderBodyColor = useContext(Slider.SliderBodyColorContext);
     const sliderBorderColor = useContext(Slider.SliderBorderColorContext);
@@ -72,7 +73,7 @@ export default function ImportSkinGroup() {
     const sliderHintColor = useContext(Slider.SliderHintColorContext);
     const sliderHintWidth = useContext(Slider.SliderHintWidthContext);
     const sliderHintShowMinLength = useContext(
-        Slider.SliderHintShowMinLengthContext,
+        Slider.SliderHintShowMinLengthContext
     );
 
     // Cursor
@@ -86,23 +87,23 @@ export default function ImportSkinGroup() {
     const animationFramerate = useContext(Utils.AnimationFramerateContext);
     const layeredHitSounds = useContext(Utils.LayeredHitSoundsContext);
     const spinnerFrequencyModulate = useContext(
-        Utils.SpinnerFrequencyModulateContext,
+        Utils.SpinnerFrequencyModulateContext
     );
 
     // Color
     const menuItemDefaultColor = useContext(Color.MenuItemDefaultColorContext);
     const menuItemOnTouchColor = useContext(Color.MenuItemOnTouchColorContext);
     const menuItemVersionsDefaultColor = useContext(
-        Color.MenuItemVersionsDefaultColorContext,
+        Color.MenuItemVersionsDefaultColorContext
     );
     const menuItemVersionsSelectedColor = useContext(
-        Color.MenuItemVersionsSelectedColorContext,
+        Color.MenuItemVersionsSelectedColorContext
     );
     const menuItemDefaultTextColor = useContext(
-        Color.MenuItemDefaultTextColorContext,
+        Color.MenuItemDefaultTextColorContext
     );
     const menuItemSelectedTextColor = useContext(
-        Color.MenuItemSelectedTextColorContext,
+        Color.MenuItemSelectedTextColorContext
     );
 
     // Fonts
@@ -113,6 +114,9 @@ export default function ImportSkinGroup() {
     const hitCirclePrefix = useContext(Fonts.HitCirclePrefixContext);
     const hitCircleOverlap = useContext(Fonts.HitCircleOverlapContext);
 
+    // HUD
+    const hudData = useContext(HUD.HUDDataContext);
+
     // Layout
     // Back Button
     const backButtonWidth = useContext(Layout.BackButtonWidthContext);
@@ -121,7 +125,7 @@ export default function ImportSkinGroup() {
     const backButtonX = useContext(Layout.BackButtonXContext);
     const backButtonY = useContext(Layout.BackButtonYContext);
     const backButtonScaleWhenHold = useContext(
-        Layout.BackButtonScaleWhenHoldContext,
+        Layout.BackButtonScaleWhenHoldContext
     );
 
     // Mods Button
@@ -164,14 +168,14 @@ export default function ImportSkinGroup() {
                     json = JSON.parse(text) as SkinJson;
                 } catch {
                     alert(
-                        "Encountered an error when attempting to process your skin.json file.",
+                        "Encountered an error when attempting to process your skin.json file."
                     );
 
                     return;
                 }
 
                 const resetAll = confirm(
-                    "Would you like to reset all values before loading the skin.json file?",
+                    "Would you like to reset all values before loading the skin.json file?"
                 );
 
                 // ComboColor
@@ -220,6 +224,9 @@ export default function ImportSkinGroup() {
                 hitCirclePrefix.loadFromJSON(json, resetAll);
                 hitCircleOverlap.loadFromJSON(json, resetAll);
 
+                // HUD
+                hudData.loadFromJSON(json, resetAll);
+
                 // Layout
                 // Back Button
                 backButtonWidth.loadFromJSON(json, resetAll);
@@ -254,7 +261,7 @@ export default function ImportSkinGroup() {
             })
             .catch(() => {
                 alert(
-                    "Encountered an error when attempting to process your skin.json file.",
+                    "Encountered an error when attempting to process your skin.json file."
                 );
             });
     };
@@ -273,7 +280,7 @@ export default function ImportSkinGroup() {
         file.text()
             .then((text) => {
                 const resetAll = confirm(
-                    "Would you like to reset all values before loading the skin.json file?",
+                    "Would you like to reset all values before loading the skin.json file?"
                 );
 
                 const ini = new SkinIni(text);
@@ -326,7 +333,7 @@ export default function ImportSkinGroup() {
             })
             .catch(() => {
                 alert(
-                    "Encountered an error when attempting to process your skin.ini file.",
+                    "Encountered an error when attempting to process your skin.ini file."
                 );
             });
     };

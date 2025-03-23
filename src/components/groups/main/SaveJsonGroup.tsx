@@ -156,9 +156,6 @@ export default function SaveJsonGroup() {
             hitCirclePrefix.saveToJSON(json);
             hitCircleOverlap.saveToJSON(json);
 
-            // HUD
-            hudData.saveToJSON(json);
-
             // Layout
             // Back button
             backButtonWidth.saveToJSON(json);
@@ -188,6 +185,9 @@ export default function SaveJsonGroup() {
             randomButtonScale.saveToJSON(json);
             randomButtonX.saveToJSON(json);
             randomButtonY.saveToJSON(json);
+
+            // HUD
+            hudData.saveToJSON(json);
         } catch (e) {
             alert((e as Error).message);
 

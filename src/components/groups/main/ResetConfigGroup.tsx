@@ -21,7 +21,7 @@ export default function ResetJsonGroup() {
     const sliderBorderWidth = useContext(Slider.SliderBorderWidthContext);
     const sliderBodyBaseAlpha = useContext(Slider.SliderBodyBaseAlphaContext);
     const sliderFollowComboColor = useContext(
-        Slider.SliderFollowComboColorContext
+        Slider.SliderFollowComboColorContext,
     );
     const sliderBodyColor = useContext(Slider.SliderBodyColorContext);
     const sliderBorderColor = useContext(Slider.SliderBorderColorContext);
@@ -31,7 +31,7 @@ export default function ResetJsonGroup() {
     const sliderHintColor = useContext(Slider.SliderHintColorContext);
     const sliderHintWidth = useContext(Slider.SliderHintWidthContext);
     const sliderHintShowMinLength = useContext(
-        Slider.SliderHintShowMinLengthContext
+        Slider.SliderHintShowMinLengthContext,
     );
 
     // Cursor
@@ -45,23 +45,23 @@ export default function ResetJsonGroup() {
     const animationFramerate = useContext(Utils.AnimationFramerateContext);
     const layeredHitSounds = useContext(Utils.LayeredHitSoundsContext);
     const spinnerFrequencyModulate = useContext(
-        Utils.SpinnerFrequencyModulateContext
+        Utils.SpinnerFrequencyModulateContext,
     );
 
     // Color
     const menuItemDefaultColor = useContext(Color.MenuItemDefaultColorContext);
     const menuItemOnTouchColor = useContext(Color.MenuItemOnTouchColorContext);
     const menuItemVersionsDefaultColor = useContext(
-        Color.MenuItemVersionsDefaultColorContext
+        Color.MenuItemVersionsDefaultColorContext,
     );
     const menuItemVersionsSelectedColor = useContext(
-        Color.MenuItemVersionsSelectedColorContext
+        Color.MenuItemVersionsSelectedColorContext,
     );
     const menuItemDefaultTextColor = useContext(
-        Color.MenuItemDefaultTextColorContext
+        Color.MenuItemDefaultTextColorContext,
     );
     const menuItemSelectedTextColor = useContext(
-        Color.MenuItemSelectedTextColorContext
+        Color.MenuItemSelectedTextColorContext,
     );
 
     // Fonts
@@ -82,7 +82,7 @@ export default function ResetJsonGroup() {
     const backButtonX = useContext(Layout.BackButtonXContext);
     const backButtonY = useContext(Layout.BackButtonYContext);
     const backButtonScaleWhenHold = useContext(
-        Layout.BackButtonScaleWhenHoldContext
+        Layout.BackButtonScaleWhenHoldContext,
     );
 
     // Mods Button
@@ -108,7 +108,7 @@ export default function ResetJsonGroup() {
 
     const onClick = () => {
         const confirmation = confirm(
-            "Are you sure you want to reset all configurations to their default state?"
+            "Are you sure you want to reset all configurations to their default state?",
         );
 
         if (!confirmation) {

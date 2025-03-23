@@ -125,7 +125,7 @@ export default function MultipleColorEditor(props: Props) {
                     </div>
                 </div>
             )),
-        [resettable]
+        [resettable],
     );
 
     return (
@@ -180,7 +180,7 @@ export default function MultipleColorEditor(props: Props) {
                         onClick={() => {
                             resettable.setValue(
                                 //@ts-expect-error: existential generics are not supported
-                                resettable.value.concat(hexCode)
+                                resettable.value.concat(hexCode),
                             );
                         }}
                     >

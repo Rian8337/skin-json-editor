@@ -1,5 +1,5 @@
-import { FormEvent, FormEventHandler, useContext } from "react";
-import Group from "../Group";
+import { faFileUpload } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import * as Color from "@hooks/Color";
 import * as ComboColor from "@hooks/ComboColor";
 import * as Cursor from "@hooks/Cursor";
@@ -7,11 +7,12 @@ import * as Fonts from "@hooks/Fonts";
 import * as HUD from "@hooks/HUD";
 import * as Layout from "@hooks/Layout";
 import * as Slider from "@hooks/Slider";
+import * as Theme from "@hooks/Theme";
 import * as Utils from "@hooks/Utils";
-import { SkinJson } from "@structures/skin/SkinJson";
 import { SkinIni } from "@structures/skin/SkinIni";
-import { faFileUpload } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { SkinJson } from "@structures/skin/SkinJson";
+import { FormEvent, FormEventHandler, useContext } from "react";
+import Group from "../Group";
 
 function ImportSkinSubGroup(props: {
     title: string;
@@ -116,6 +117,9 @@ export default function ImportSkinGroup() {
 
     // HUD
     const hudData = useContext(HUD.HUDDataContext);
+
+    // Theme
+    const accentColor = useContext(Theme.ThemeAccentColorContext);
 
     // Layout
     // Back Button
@@ -226,6 +230,9 @@ export default function ImportSkinGroup() {
 
                 // HUD
                 hudData.loadFromJSON(json, resetAll);
+
+                // Theme
+                accentColor.loadFromJSON(json, resetAll);
 
                 // Layout
                 // Back Button

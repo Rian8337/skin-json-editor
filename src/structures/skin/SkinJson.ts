@@ -4,6 +4,7 @@ import { SkinJsonCursor } from "./SkinJsonCursor";
 import { SkinJsonFonts } from "./SkinJsonFonts";
 import { SkinJsonLayout } from "./SkinJsonLayout";
 import { SkinJsonSlider } from "./SkinJsonSlider";
+import { SkinJsonTheme } from "./SkinJsonTheme";
 import { SkinJsonUtils } from "./SkinJsonUtils";
 
 /**
@@ -50,4 +51,9 @@ export interface SkinJson {
      */
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     HUD?: any;
+
+    /**
+     * The `Theme` section of this skin.json.
+     */
+    Theme?: SkinJsonTheme;
 }

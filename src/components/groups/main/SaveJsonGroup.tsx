@@ -7,6 +7,7 @@ import * as HUD from "@hooks/HUD";
 import * as Layout from "@hooks/Layout";
 import * as Slider from "@hooks/Slider";
 import * as Utils from "@hooks/Utils";
+import * as Theme from "@hooks/Theme";
 import Group from "../Group";
 import { SkinJson } from "@structures/skin/SkinJson";
 
@@ -74,6 +75,9 @@ export default function SaveJsonGroup() {
 
     // HUD
     const hudData = useContext(HUD.HUDDataContext);
+
+    // Theme
+    const accentColor = useContext(Theme.ThemeAccentColorContext);
 
     // Layout
     // Back Button
@@ -188,6 +192,9 @@ export default function SaveJsonGroup() {
 
             // HUD
             hudData.saveToJSON(json);
+
+            // Theme
+            accentColor.saveToJSON(json);
         } catch (e) {
             alert((e as Error).message);
 

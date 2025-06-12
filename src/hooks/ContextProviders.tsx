@@ -8,13 +8,14 @@ import * as Illustration from "./Illustration";
 import * as Layout from "./Layout";
 import * as Slider from "./Slider";
 import * as Utils from "./Utils";
+import * as Theme from "./Theme";
 
 const compose =
     (...components: FC<Record<string, unknown>>[]) =>
     (props: { children: JSX.Element }) =>
         components.reduce(
             (children, Current) => <Current {...props}>{children}</Current>,
-            props.children,
+            props.children
         );
 
 export const Providers = compose(
@@ -103,4 +104,7 @@ export const Providers = compose(
     // Combo Number Illustration
     Illustration.ComboNumberIllustrationCircleSizeContextProvider,
     Illustration.ComboNumberIllustrationNumbersContextProvider,
+
+    // Theme
+    Theme.ThemeAccentColorContextProvider
 );

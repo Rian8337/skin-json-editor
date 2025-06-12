@@ -11,6 +11,7 @@ import ResetJsonGroup from "./components/groups/main/ResetConfigGroup";
 import FontsGroup from "./components/groups/skin/Fonts/FontsGroup";
 import CursorGroup from "@components/groups/skin/Cursor/CursorGroup";
 import HeaderGroup from "@components/groups/main/HeaderGroup.tsx";
+import ThemeGroup from "@components/groups/skin/Theme/ThemeGroup";
 
 export default function App() {
     return (
@@ -28,6 +29,7 @@ export default function App() {
                     <ColorGroup />
                     <LayoutGroup />
                     <FontsGroup />
+                    <ThemeGroup />
                     <SaveJsonGroup />
                 </div>
             </main>

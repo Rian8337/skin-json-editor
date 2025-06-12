@@ -1,4 +1,5 @@
 import Group from "../../Group";
+import GroupDescription from "../../GroupDescription";
 import SubGroup from "../../SubGroup";
 import LayoutBackButton from "./LayoutBackButton";
 import LayoutModsButton from "./LayoutModsButton";
@@ -8,9 +9,9 @@ import LayoutRandomButton from "./LayoutRandomButton";
 export default function LayoutGroup() {
     return (
         <Group title="Song Selection Menu Buttons" collapsible>
-            <p className="pb-2">
+            <GroupDescription>
                 There are the same options for each button, namely:
-            </p>
+            </GroupDescription>
 
             <ul>
                 <li>
